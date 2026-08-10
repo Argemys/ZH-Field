@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>Fiche ZH — Saisie terrain</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#2E4A36">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+
+<!-- iOS / Safari standalone app support -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Fiche ZH">
+<link rel="apple-touch-icon" href="icon-180.png">
+<style>
+:root{
+  --bg: #EEF0E4;
+  --paper: #FBFBF6;
+  --ink: #1C2620;
+  --ink-soft: #4A5750;
+  --line: #C9CEBE;
+  --marsh: #2E4A36;
+  --marsh-light: #4C7358;
+  --water: #24506A;
+  --water-light: #3E7695;
+  --rust: #A6432A;
+  --amber: #A97C1F;
+  --chip-bg: #10201A;
+  --chip-fg: #6FE39B;
+  --radius: 10px;
+  --font-head: Georgia, 'Iowan Old Style', 'Times New Roman', serif;
+  --font-body: -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--font-body);
+  padding-bottom:90px;
+  -webkit-tap-highlight-color:transparent;
+}
+header.app-head{
+  background:var(--marsh);
+  color:#fff;
+  padding:14px 16px 10px;
+  position:sticky; top:0; z-index:50;
+  box-shadow:0 2px 8px rgba(0,0,0,.15);
+}
+header.app-head h1{
+  font-family:var(--font-head);
+  font-size:1.15rem;
+  margin:0 0 2px;
+  font-weight:700;
+  letter-spacing:.2px;
+}
+header.app-head .sub{font-size:.75rem;opacity:.85;}
+.status-row{display:flex;align-items:center;gap:10px;margin-top:8px;flex-wrap:wrap;}
+.gps-chip{
+  font-family:var(--font-mono);
+  background:var(--chip-bg); color:var(--chip-fg);
+  padding:6px 10px; border-radius:6px; font-size:.78rem;
+  display:flex; align-items:center; gap:6px;
+  border:1px solid #1f3a2c;
+}
+.gps-chip .dot{width:7px;height:7px;border-radius:50%;background:#3a5145;}
+.gps-chip.live .dot{background:var(--chip-fg); box-shadow:0 0 6px var(--chip-fg);}
+.btn{
+  border:none; border-radius:8px; padding:10px 14px; font-size:.85rem;
+  font-weight:600; cursor:pointer; font-family:var(--font-body);
+  display:inline-flex; align-items:center; gap:6px;
+}
+.btn-primary{background:var(--marsh-light); color:#fff;}
+.btn-water{background:var(--water); color:#fff;}
+.btn-ghost{background:transparent; color:#fff; border:1px solid rgba(255,255,255,.5);}
+.btn-outline{background:#fff; color:var(--marsh); border:1px solid var(--line);}
+.btn-danger{background:var(--rust); color:#fff;}
+.btn:active{transform:scale(.97);}
+nav.tabs{
+  display:flex; overflow-x:auto; gap:4px; padding:8px 10px;
+  background:var(--marsh); position:sticky; top:66px; z-index:49;
+  border-top:1px solid rgba(255,255,255,.15);
+}
+nav.tabs button{
+  flex:0 0 auto; background:rgba(255,255,255,.08); color:#dfe6df;
+  border:none; padding:8px 12px; border-radius:20px; font-size:.78rem;
+  font-family:var(--font-body); font-weight:600; white-space:nowrap; cursor:pointer;
+}
+nav.tabs button.active{background:#fff; color:var(--marsh);}
+main{padding:14px 12px; max-width:760px; margin:0 auto;}
+.section{display:none;}
+.section.active{display:block; animation:fade .15s ease;}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.card{
+  background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+  padding:14px; margin-bottom:14px;
+}
+.card h2{
+  font-family:var(--font-head); font-size:1rem; margin:0 0 10px;
+  color:var(--marsh); border-bottom:2px solid var(--line); padding-bottom:6px;
+}
+.card h3{font-size:.82rem; margin:14px 0 8px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.4px;}
+.field{margin-bottom:12px;}
+.field label{display:block; font-size:.8rem; font-weight:600; margin-bottom:5px; color:var(--ink-soft);}
+input[type=text], input[type=number], input[type=date], textarea, select{
+  width:100%; padding:9px 10px; border:1px solid var(--line); border-radius:7px;
+  font-size:.95rem; font-family:var(--font-body); background:#fff; color:var(--ink);
+}
+textarea{min-height:70px; resize:vertical;}
+.pillgroup{display:flex; flex-wrap:wrap; gap:6px;}
+.pill{
+  padding:7px 12px; border-radius:20px; border:1px solid var(--line);
+  background:#fff; font-size:.8rem; cursor:pointer; user-select:none; color:var(--ink);
+}
+.pill.sel{background:var(--marsh-light); color:#fff; border-color:var(--marsh-light);}
+.pill.sel.water{background:var(--water-light); border-color:var(--water-light);}
+.rowlist{display:flex; flex-direction:column; gap:0;}
+.rowlist .rli{
+  display:flex; align-items:center; justify-content:space-between; gap:8px;
+  padding:8px 0; border-bottom:1px solid var(--line); flex-wrap:wrap;
+}
+.rowlist .rli:last-child{border-bottom:none;}
+.rli .lbl{font-size:.85rem; flex:1 1 160px;}
+.mini-pills{display:flex; gap:5px;}
+.mini-pills .pill{padding:5px 9px; font-size:.72rem;}
+.twocol{display:grid; grid-template-columns:1fr 1fr; gap:6px;}
+.checklist{display:grid; grid-template-columns:1fr 1fr; gap:2px 10px;}
+.chk{display:flex; align-items:center; gap:7px; padding:5px 0; font-size:.83rem;}
+.chk input{width:17px; height:17px;}
+.gpsbox{
+  background:var(--chip-bg); color:var(--chip-fg); font-family:var(--font-mono);
+  border-radius:8px; padding:10px 12px; margin-bottom:10px; font-size:.85rem;
+  display:flex; justify-content:space-between; align-items:center; gap:10px;
+}
+.gpsbox .coords span{display:block;}
+.gpsbox button{white-space:nowrap;}
+.activity-table{width:100%; font-size:.72rem; border-collapse:collapse;}
+.activity-table th{font-size:.65rem; color:var(--ink-soft); text-align:center; padding:2px;}
+.activity-table td{padding:4px 2px; border-bottom:1px solid var(--line); vertical-align:middle;}
+.activity-table td.lbl{font-size:.75rem; text-align:left;}
+.activity-table select{padding:3px 2px; font-size:.68rem;}
+footer.bar{
+  position:fixed; bottom:0; left:0; right:0; background:var(--paper);
+  border-top:1px solid var(--line); padding:10px 12px; display:flex; gap:8px;
+  z-index:50; box-shadow:0 -2px 8px rgba(0,0,0,.08);
+}
+footer.bar .btn{flex:1; justify-content:center;}
+.hint{font-size:.72rem; color:var(--ink-soft); margin-top:2px;}
+.badge{background:var(--amber); color:#fff; font-size:.65rem; padding:2px 7px; border-radius:10px; margin-left:6px;}
+.recordrow{
+  display:flex; justify-content:space-between; align-items:center; padding:10px 0;
+  border-bottom:1px solid var(--line); font-size:.85rem;
+}
+.recordrow .rmeta{color:var(--ink-soft); font-size:.72rem; font-family:var(--font-mono);}
+.toast{
+  position:fixed; bottom:80px; left:50%; transform:translateX(-50%);
+  background:var(--marsh); color:#fff; padding:10px 18px; border-radius:20px;
+  font-size:.85rem; z-index:100; opacity:0; transition:opacity .25s;
+  pointer-events:none;
+}
+.toast.show{opacity:1;}
+.modal-bg{
+  position:fixed; inset:0; background:rgba(0,0,0,.45); z-index:80;
+  display:none; align-items:flex-end; justify-content:center;
+}
+.modal-bg.show{display:flex;}
+.modal{
+  background:var(--paper); width:100%; max-width:760px; max-height:80vh; overflow-y:auto;
+  border-radius:16px 16px 0 0; padding:16px;
+}
+.modal h2{font-family:var(--font-head); margin-top:0;}
+</style>
+</head>
+<body>
+
+<header class="app-head">
+  <h1>🌿 Fiche Zone Humide — Terrain</h1>
+  <div class="sub">Saisie hors connexion · export GeoJSON / CSV</div>
+  <div class="status-row">
+    <div class="gps-chip" id="gpsChip"><span class="dot"></span><span id="gpsText">GPS non localisé</span></div>
+    <button class="btn btn-ghost" id="btnRecords" type="button">📋 Fiches enregistrées (<span id="recCount">0</span>)</button>
+  </div>
+</header>
+
+<nav class="tabs" id="tabs"></nav>
+
+<main id="sections"></main>
+
+<footer class="bar">
+  <button class="btn btn-outline" id="btnNew" type="button">🆕 Nouvelle fiche</button>
+  <button class="btn btn-primary" id="btnSave" type="button">💾 Enregistrer la fiche</button>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<div class="modal-bg" id="recordsModal">
+  <div class="modal">
+    <h2>Fiches enregistrées</h2>
+    <div id="recordsList"></div>
+    <div style="display:flex; gap:8px; margin-top:14px; flex-wrap:wrap;">
+      <button class="btn btn-primary" id="btnExportGeojson" type="button">⬇️ Export GeoJSON</button>
+      <button class="btn btn-water" id="btnExportCsv" type="button">⬇️ Export CSV</button>
+      <button class="btn btn-outline" id="btnCloseModal" type="button">Fermer</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ===================== Config & helpers ===================== */
+const RATING3 = ['-','+/-','+'];
+const RATING4 = ['--','-','+/-','+'];
+const RATINGND = ['-','+/-','+','Nd'];
+const ACT_LEVELS = [['','—'],['princ','Princ'],['2nd','2°'],['cplt','Cplt']];
+
+function slug(s){
+  return s.normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+    .toLowerCase().replace(/[^a-z0-9]+/g,'_').replace(/^_+|_+$/g,'');
+}
+function el(tag, attrs={}, ...kids){
+  const e = document.createElement(tag);
+  for(const k in attrs){
+    if(k==='class') e.className = attrs[k];
+    else if(k==='html') e.innerHTML = attrs[k];
+    else e.setAttribute(k, attrs[k]);
+  }
+  kids.flat().forEach(k=>{ if(k) e.appendChild(typeof k==='string'?document.createTextNode(k):k); });
+  return e;
+}
+
+/* ===================== Data model ===================== */
+let record = {}; // current in-progress record (flat key/value)
+let editingId = null;
+
+function setVal(key, val){ record[key] = val; saveDraft(); }
+function getVal(key){ return record[key]; }
+
+function saveDraft(){ localStorage.setItem('zh_draft', JSON.stringify(record)); }
+function loadDraft(){
+  try{ record = JSON.parse(localStorage.getItem('zh_draft')||'{}'); }catch(e){ record = {}; }
+}
+
+function getRecords(){
+  try{ return JSON.parse(localStorage.getItem('zh_records')||'[]'); }catch(e){ return []; }
+}
+function setRecords(list){ localStorage.setItem('zh_records', JSON.stringify(list)); updateRecCount(); }
+function updateRecCount(){ document.getElementById('recCount').textContent = getRecords().length; }
+
+/* ===================== Species lists ===================== */
+const SP_NON_HUMIDE = ["Acer campestre","Acer pseudoplatanus","Achillea millefolium","Alopecurus pratensis","Arrhenatherum elatius","Bromus hordeaceus","Cirsium arvense","Clematis vitalba","Cornus sanguinea","Corylus avellana","Crataegus monogyna","Dactylis glomerata","Daucus carota","Fraxinus excelsior","Galium aparine","Geum urbanum","Hedera helix","Heracleum sphondylium","Schedonorus pratensis","Lolium perenne","Lotus corniculatus","Plantago lanceolata","Poa annua","Poa trivialis","Prunus spinosa","Quercus petraea","Quercus robur","Ranunculus acris","Ranunculus bulbosus","Rubus pruinosus","Rubus sp.","Rumex acetosa","Rumex crispus","Sambucus nigra","Torilis arvensis","Trifolium pratense","Trifolium repens","Urtica dioica"];
+
+const SP_GROUPS = {
+  "grp1_ligneux_prairial":{ title:"Groupe 1 — Ligneux humides & prairial", species:["Alnus glutinosa","Fraxinus angustifolia","Salix alba","Salix aurita","Salix cinerea","Salix purpurea","Salix sp.","Salix viminalis","Populus alba","Populus nigra","Prunus padus","Ulmus laevis","Ribes nigrum","Ribes rubrum","Rubus caesius","Achillea ptarmica","Agrostis stolonifera","Alisma plantago-aquatica","Alopecurus geniculatus","Cerastium dubium","Cirsium oleraceum","Cirsium palustre"]},
+  "grp2_carex":{ title:"Groupe 2 — Cariçaies & mégaphorbiaies", species:["Angelica sylvestris","Berula erecta","Bidens tripartita","Bolboschoenus maritimus","Caltha palustris","Cardamine pratensis","Carex acuta","Carex acutiformis","Carex cuprina","Carex disticha","Carex echinata","Carex hirta","Carex pendula","Carex pseudocyperus","Carex remota","Carex riparia","Carex vulpina","Carex sp.","Calystegia sepium"]},
+  "grp3_amphibies":{ title:"Groupe 3 — Amphibies & roselières", species:["Cyperus fuscus","Deschampsia cespitosa","Eleocharis acicularis","Eleocharis palustris","Epilobium hirsutum","Epilobium parviflorum","Equisetum fluviatile","Equisetum palustre","Eupatorium cannabinum","Filipendula ulmaria","Galium debile","Galium palustre","Galium uliginosum","Glyceria fluitans","Glyceria maxima","Helosciadium nodiflorum","Humulus lupulus","Impatiens glandulifera","Iris pseudacorus","Juncus acutiflorus","Juncus articulatus","Juncus conglomeratus"]},
+  "grp4_joncs":{ title:"Groupe 4 — Joncs & prairies humides", species:["Juncus effusus","Juncus inflexus","Lycopus europaeus","Lysimachia nummularia","Lysimachia vulgaris","Lythrum salicaria","Mentha aquatica","Mentha arvensis","Molinia caerulea","Myosotis scorpioides","Nasturtium officinale","Oenanthe aquatica","Persicaria amphibia","Persicaria hydropiper","Persicaria lapathifolia","Phalaris arundinacea","Phragmites australis","Polygonum hydropiper","Potentilla anserina","Pulicaria dysenterica","Ranunculus flammula","Ranunculus repens"]},
+  "grp5_renoncules":{ title:"Groupe 5 — Renoncules & bords d'eau", species:["Ranunculus sceleratus","Rorippa amphibia","Rumex conglomeratus","Rumex hydrolapathum","Rumex sanguineus","Scirpus sylvaticus","Scrophularia auriculata","Silaum silaus","Silene flos-cuculi","Solanum dulcamara","Sparganium erectum","Stachys palustris","Stellaria alsine","Symphytum officinale","Thalictrum flavum","Typha angustifolia","Typha latifolia","Valeriana officinalis","Veronica anagallis-aquatica","Veronica beccabunga"]}
+};
+
+const ATTEINTES = ["Assèchement, drainage","Atterrissement","Création plan d'eau","Décharge","Enfrichement","Fertilisation","Modif. cours d'eau, canalisation","Espèces invasives","Remblais","Extraction de matériaux","Suppr. haies, boisements","Surfréquentation","Urbanisation","Eutrophisation","Populiculture/enrésinement","Mise en culture","Rejet polluant","Surpâturage","Autre"];
+
+const ACTIVITES = ["Fauchage","Pâturage","Culture","Sylviculture","Aquaculture","Pêche","Chasse","Navigation","Tourisme / Loisirs","Urbanisation","Infrastructure linéaire","Aéroport","Port","Extractions matériaux","Hydroélectricité / Barrage","Militaire","Gestion conservatoire","Prélèvement d'eau","Autres","Pas d'activité marquante"];
+
+const VALEURS_SOCIOECO = ["Production agricole et sylvicole","Production biologique","Stockage eau potable","Loisirs, récréatif","Production matière première","Valorisation pédagogique","Tourisme","Paysage / patrimoine culturel / identité locale","Scientifique","Autre"];
+
+const ALIMENTATION_ITEMS = ["Précipitations","Cours d'eau","Plan d'eau","Nappe","Canaux & fossés","Pompage","Source","Évaporation","Crue","Ruissellement","Autre","Inconnu"];
+
+const SAGE_HABITATS = ["Ripisylve","Forêt alluviale (CE et plaines allu.)","Forêt inondable (plaine élargie)","Forêt inondable (régime étangs)","Peupleraie","Prairie amendée","Prairie inondable (plaine élargie)","Prairie inondable (CE et plaines allu.)","Prairie inondable (régime étangs)","Roselière, cariçaie (plaine élargie)","Roselière, cariçaie (CE et plaines allu.)","Roselière, cariçaie (régime étangs)","Végétation aquatique (plaine élargie)","Végétation aquatique (CE et plaine allu.)","Végétation aquatique (régime étangs)","Mare","Gravière","Petit lac","Tourbière","Lande humide","Prairie tourbeuse","Réservoir-barrage"];
+
+const PRECONISATIONS = ["Restaurer","Entretenir","Modifier les pratiques","Intervenir en périphérie","Évolution spontanée","Protection","Maintien","Suivi"];
+
+/* ===================== Generic field renderers ===================== */
+function fieldWrap(label, hint, node){
+  const w = el('div',{class:'field'});
+  if(label) w.appendChild(el('label',{},label));
+  w.appendChild(node);
+  if(hint) w.appendChild(el('div',{class:'hint'},hint));
+  return w;
+}
+
+function inputText(key, label, opts={}){
+  const i = el('input',{type: opts.type||'text', id:key});
+  if(opts.type==='number'){ if(opts.min!=null)i.min=opts.min; if(opts.max!=null)i.max=opts.max; }
+  i.value = getVal(key)||'';
+  i.addEventListener('input', ()=>setVal(key, i.value));
+  return fieldWrap(label, opts.hint, i);
+}
+
+function textarea(key, label){
+  const t = el('textarea',{id:key});
+  t.value = getVal(key)||'';
+  t.addEventListener('input', ()=>setVal(key, t.value));
+  return fieldWrap(label, null, t);
+}
+
+function pillRadio(key, label, options, styleClass=''){
+  const wrap = el('div',{class:'pillgroup'});
+  function refresh(){
+    wrap.querySelectorAll('.pill').forEach(p=>{
+      p.classList.toggle('sel', p.dataset.v === (getVal(key)||''));
+    });
+  }
+  options.forEach(opt=>{
+    const p = el('pill'in{}?{}:{class:'pill '+styleClass}, opt);
+    p.dataset.v = opt;
+    p.addEventListener('click', ()=>{ setVal(key, getVal(key)===opt?'':opt); refresh(); });
+    wrap.appendChild(p);
+  });
+  refresh();
+  return fieldWrap(label, null, wrap);
+}
+
+function checkGroup(key, label, options, cols=2){
+  const wrap = el('div',{class:'checklist'});
+  wrap.style.gridTemplateColumns = `repeat(${cols},1fr)`;
+  const arr = new Set(getVal(key)||[]);
+  options.forEach(opt=>{
+    const id = key+'_'+slug(opt);
+    const cb = el('input',{type:'checkbox', id});
+    cb.checked = arr.has(opt);
+    cb.addEventListener('change', ()=>{
+      if(cb.checked) arr.add(opt); else arr.delete(opt);
+      setVal(key, Array.from(arr));
+    });
+    const lab = el('label',{for:id}, opt);
+    wrap.appendChild(el('div',{class:'chk'}, cb, lab));
+  });
+  return fieldWrap(label, null, wrap);
+}
+
+function ratingList(keyPrefix, items, options){
+  const wrap = el('div',{class:'rowlist'});
+  items.forEach(item=>{
+    const k = keyPrefix+'_'+slug(item);
+    const row = el('div',{class:'rli'});
+    row.appendChild(el('div',{class:'lbl'}, item));
+    const mp = el('div',{class:'mini-pills'});
+    options.forEach(opt=>{
+      const p = el('span',{class:'pill'}, opt);
+      p.dataset.v = opt;
+      if(getVal(k)===opt) p.classList.add('sel');
+      p.addEventListener('click', ()=>{
+        setVal(k, getVal(k)===opt?'':opt);
+        mp.querySelectorAll('.pill').forEach(x=>x.classList.toggle('sel', x.dataset.v===getVal(k)));
+      });
+      mp.appendChild(p);
+    });
+    row.appendChild(mp);
+    wrap.appendChild(row);
+  });
+  return wrap;
+}
+
+function activityTable(keyPrefix, items){
+  const table = el('table',{class:'activity-table'});
+  const thead = el('tr',{},
+    el('th',{style:'text-align:left'},'Activité / usage'),
+    el('th',{},'Dans zone'), el('th',{},'Autour zone'));
+  table.appendChild(thead);
+  items.forEach(item=>{
+    const kd = keyPrefix+'_dans_'+slug(item);
+    const ka = keyPrefix+'_autour_'+slug(item);
+    const selDans = el('select',{});
+    const selAutour = el('select',{});
+    ACT_LEVELS.forEach(([v,l])=>{
+      const o1 = el('option',{value:v}, l); if(getVal(kd)===v) o1.selected=true; selDans.appendChild(o1);
+      const o2 = el('option',{value:v}, l); if(getVal(ka)===v) o2.selected=true; selAutour.appendChild(o2);
+    });
+    selDans.addEventListener('change', ()=>setVal(kd, selDans.value));
+    selAutour.addEventListener('change', ()=>setVal(ka, selAutour.value));
+    const tr = el('tr',{},
+      el('td',{class:'lbl'}, item),
+      el('td',{}, selDans),
+      el('td',{}, selAutour));
+    table.appendChild(tr);
+  });
+  return table;
+}
+
+function alimentationTable(items){
+  const table = el('table',{class:'activity-table'});
+  table.appendChild(el('tr',{}, el('th',{style:'text-align:left'},'Source / sortie'), el('th',{},'Alimentation'), el('th',{},'Sortie')));
+  items.forEach(item=>{
+    const ka = 'alim_'+slug(item);
+    const ks = 'sortie_'+slug(item);
+    const cbA = el('input',{type:'checkbox'}); cbA.checked = !!getVal(ka);
+    cbA.addEventListener('change', ()=>setVal(ka, cbA.checked));
+    const cbS = el('input',{type:'checkbox'}); cbS.checked = !!getVal(ks);
+    cbS.addEventListener('change', ()=>setVal(ks, cbS.checked));
+    table.appendChild(el('tr',{}, el('td',{class:'lbl'}, item), el('td',{style:'text-align:center'}, cbA), el('td',{style:'text-align:center'}, cbS)));
+  });
+  return table;
+}
+
+function speciesBlock(id, title, species){
+  const box = el('div',{});
+  box.appendChild(el('h3',{}, title));
+  const cov = el('input',{type:'number', min:0, max:100, placeholder:'% recouvrement (10–100)'});
+  cov.value = getVal('cover_'+id) || '';
+  cov.addEventListener('input', ()=>setVal('cover_'+id, cov.value));
+  box.appendChild(fieldWrap('% recouvrement du groupe', null, cov));
+  box.appendChild(checkGroup('species_'+id, null, species, 2));
+  return box;
+}
+
+/* ===================== GPS ===================== */
+function locate(){
+  const chip = document.getElementById('gpsChip');
+  const txt = document.getElementById('gpsText');
+  txt.textContent = 'Localisation en cours…';
+  if(!navigator.geolocation){ txt.textContent='GPS indisponible sur cet appareil'; return; }
+  navigator.geolocation.getCurrentPosition(pos=>{
+    const lat = pos.coords.latitude.toFixed(6);
+    const lon = pos.coords.longitude.toFixed(6);
+    setVal('lat', lat); setVal('lon', lon); setVal('gps_precision', Math.round(pos.coords.accuracy));
+    chip.classList.add('live');
+    txt.textContent = `${lat} / ${lon} (±${Math.round(pos.coords.accuracy)} m)`;
+    const latF = document.getElementById('f_lat'); if(latF) latF.value = lat;
+    const lonF = document.getElementById('f_lon'); if(lonF) lonF.value = lon;
+  }, err=>{
+    txt.textContent = 'Échec localisation — ' + err.message;
+  }, {enableHighAccuracy:true, timeout:15000});
+}
+
+/* ===================== Sections ===================== */
+const SECTIONS = [
+  {id:'ident', title:'1. Identification', build: buildIdent},
+  {id:'delim', title:'2. Délim. & Pédologie', build: buildDelim},
+  {id:'fonctions', title:'3. Fonctions & Atteintes', build: buildFonctions},
+  {id:'usages', title:'4. Usages & Valeurs', build: buildUsages},
+  {id:'especes', title:'5. Espèces & Habitats', build: buildEspeces},
+  {id:'actions', title:'6. Préconisations', build: buildActions},
+];
+
+function buildIdent(card){
+  card.appendChild(el('h2',{},'Identification'));
+  const gpsBox = el('div',{class:'gpsbox'});
+  gpsBox.appendChild(el('div',{class:'coords'}, el('span',{},'📍 Coordonnées relevé'), el('span',{id:'gpsInline'}, (getVal('lat')&&getVal('lon'))? `${getVal('lat')} / ${getVal('lon')}` : 'non localisé')));
+  const b = el('button',{class:'btn btn-water', type:'button'},'Localiser');
+  b.addEventListener('click', locate);
+  gpsBox.appendChild(b);
+  card.appendChild(gpsBox);
+
+  card.appendChild(inputText('planches_at','Planches AT'));
+  card.appendChild(inputText('id_fiche','ID fiche'));
+  card.appendChild(inputText('conf','Conf.'));
+  card.appendChild(inputText('personne','Observateur'));
+  const two = el('div',{class:'twocol'});
+  const ss = el('div'); ss.appendChild(inputText('ss','SS'));
+  const mm = el('div'); mm.appendChild(inputText('mm','MM'));
+  two.appendChild(ss); two.appendChild(mm);
+  card.appendChild(two);
+
+  const two2 = el('div',{class:'twocol'});
+  const lonWrap = el('input',{type:'text', id:'f_lon', placeholder:'auto (GPS)'}); lonWrap.value=getVal('lon')||'';
+  lonWrap.addEventListener('input',()=>setVal('lon', lonWrap.value));
+  const latWrap = el('input',{type:'text', id:'f_lat', placeholder:'auto (GPS)'}); latWrap.value=getVal('lat')||'';
+  latWrap.addEventListener('input',()=>setVal('lat', latWrap.value));
+  two2.appendChild(fieldWrap('Longitude', null, lonWrap));
+  two2.appendChild(fieldWrap('Latitude', null, latWrap));
+  card.appendChild(two2);
+
+  card.appendChild(inputText('date_obs','Date d\'observation', {type:'date'}));
+  card.appendChild(pillRadio('type_obs','Type d\'observation', ['in situ','ex situ','inaccessible']));
+}
+
+function buildDelim(card){
+  card.appendChild(el('h2',{},'Délimitation & pédologie'));
+  card.appendChild(pillRadio('delim_statut','Délim. préloc.', ['Ok','Sup','Modifié']));
+  card.appendChild(pillRadio('delim_div','Div.', ['a','b','c','d','e','f']));
+  card.appendChild(checkGroup('delim_fus', null, ['Fus (fusion de zones)'],1));
+  card.appendChild(checkGroup('delim_princ','Principal établi sur', ['Veg','Pedo','Topo','Hydro (eau)','Amenagt hum'],2));
+  card.appendChild(pillRadio('veget','Végétation observable', ['oui','non','doute','hors saison']));
+  card.appendChild(pillRadio('conclusion_zh','Conclusion — Zone humide ?', ['oui','non','pot','nd']));
+
+  card.appendChild(el('h3',{},'Submersion'));
+  card.appendChild(pillRadio('freq_submersion','Fréquence submersion', ['Inconnu','Jamais','Toujours','Régulièrement','Exceptionnellement']));
+  card.appendChild(pillRadio('etendue_submersion','Étendue submersion', ['Inconnu','Sans objet','Totalement','Partiellement']));
+
+  card.appendChild(el('h3',{},'Pédologie'));
+  card.appendChild(pillRadio('pedo','Sondage pédologique', ['oui','non','doute']));
+  const two = el('div',{class:'twocol'});
+  two.appendChild(inputText('nappe_app','Nappe apparente (cm)',{type:'number'}));
+  two.appendChild(inputText('nappe_disp','Nappe disparue (cm)',{type:'number'}));
+  card.appendChild(two);
+  ['histique','reductique','redoxique'].forEach(t=>{
+    const row = el('div',{class:'twocol'});
+    row.appendChild(inputText(t+'_cm', t.charAt(0).toUpperCase()+t.slice(1)+' (cm)', {type:'number'}));
+    const sel = el('select',{}); ['','+>++','+','++'].forEach(o=>{const op=el('option',{value:o},o||'—'); if(getVal(t+'_intensite')===o)op.selected=true; sel.appendChild(op);});
+    sel.addEventListener('change',()=>setVal(t+'_intensite', sel.value));
+    row.appendChild(fieldWrap('Intensité', null, sel));
+    card.appendChild(row);
+  });
+  card.appendChild(checkGroup('texture','Texture dominante', ['Sable','Argile','Limon','Cailloux','Humus'],2));
+  card.appendChild(pillRadio('classe','Classe GEPPA', ['Ivd','Va','Vb','Vc','Vd','VIc','VId','H','NZH']));
+  const two3 = el('div',{class:'twocol'});
+  two3.appendChild(inputText('profondeur_totale_1','Profondeur totale — pt 1 (cm)',{type:'number'}));
+  two3.appendChild(inputText('profondeur_totale_2','Profondeur totale — pt 2 (cm)',{type:'number'}));
+  card.appendChild(two3);
+}
+
+function buildFonctions(card){
+  card.appendChild(el('h2',{},'Alimentation hydrique'));
+  card.appendChild(alimentationTable(ALIMENTATION_ITEMS));
+
+  card.appendChild(el('h2',{},'Fonctions majeures (0 = nulle, 9 = maximale)'));
+  ['Biologique','Hydraulique','Épuratrice'].forEach(f=>{
+    card.appendChild(inputText('fonction_'+slug(f), f, {type:'number', min:0, max:9}));
+  });
+
+  card.appendChild(el('h2',{},'Valeurs majeures'));
+  card.appendChild(ratingList('valmaj', ['Économique','Culturelle / paysagère','Sociale, récréative'], RATING3));
+
+  card.appendChild(el('h2',{},'Bilan fonctionnel'));
+  card.appendChild(el('h3',{},'Fonction hydraulique'));
+  card.appendChild(ratingList('fh', ['Protection érosion, ruissellement','Stockage eau, recharge nappes, soutien étiage','Régule crue'], RATING3));
+  card.appendChild(el('h3',{},'Fonction épuratrice'));
+  card.appendChild(ratingList('fe', ['Interception matières en susp. et toxiques','Régulation nutriments'], RATING3));
+  card.appendChild(el('h3',{},'État hydrique'));
+  card.appendChild(ratingList('eh', ['Équilibre naturel'], RATING4));
+  card.appendChild(el('h3',{},'Fonctions biologiques'));
+  card.appendChild(ratingList('fb', ['Corridor écologique','Accueil faune','Support biodiversité','Stockage CO2','Autre'], RATING3));
+  card.appendChild(el('h3',{},'État habitat'));
+  card.appendChild(ratingList('etat_habitat', ['Conservation'], RATING3));
+
+  card.appendChild(el('h2',{},'Atteintes'));
+  card.appendChild(ratingList('atteinte', ATTEINTES, RATING3));
+
+  card.appendChild(el('h2',{},'Type de menaces'));
+  card.appendChild(ratingList('menace', ['Aggravation atteintes','Projet prévu','Activité à risque à proximité','Autres'], RATINGND));
+}
+
+function buildUsages(card){
+  card.appendChild(el('h2',{},'Activités & usages'));
+  card.appendChild(el('div',{class:'hint'},'Pour chaque activité : indiquer si elle est principale, secondaire ou complémentaire, dans la zone et/ou autour.'));
+  card.appendChild(activityTable('activite', ACTIVITES));
+
+  card.appendChild(el('h2',{},'Valeurs socio-économiques'));
+  card.appendChild(ratingList('valeco', VALEURS_SOCIOECO, RATING3));
+}
+
+function buildEspeces(card){
+  card.appendChild(el('h2',{},'Relevé Corine Biotope'));
+  const grid = el('div',{class:'twocol'});
+  for(let i=1;i<=4;i++){
+    grid.appendChild(inputText('corine_'+i, 'Code Corine Biotope '+i));
+  }
+  card.appendChild(grid);
+
+  card.appendChild(el('h2',{},'Cortège floristique'));
+  card.appendChild(el('div',{class:'hint'},'Cocher les espèces observées. % de recouvrement par groupe hygrophile.'));
+  Object.entries(SP_GROUPS).forEach(([id,g])=>{
+    card.appendChild(speciesBlock(id, g.title, g.species));
+  });
+  card.appendChild(el('h3',{},'Cortège non humide'));
+  card.appendChild(checkGroup('species_non_humide', null, SP_NON_HUMIDE, 2));
+
+  card.appendChild(el('h2',{},'Habitats SAGE / grands types'));
+  card.appendChild(checkGroup('sage_habitats', null, SAGE_HABITATS, 1));
+  card.appendChild(pillRadio('recouvrement_global','Recouvrement global', ['>50%','<50%']));
+}
+
+function buildActions(card){
+  card.appendChild(el('h2',{},'Statuts & zonages'));
+  card.appendChild(checkGroup('zonages', null, ['ZHIEP','ZSGE'],2));
+
+  card.appendChild(el('h2',{},'Préconisations'));
+  card.appendChild(checkGroup('preconisations', null, PRECONISATIONS, 2));
+  card.appendChild(pillRadio('action_bilan','Action — bilan', RATING3));
+  card.appendChild(inputText('faisabilite','Faisabilité'));
+  card.appendChild(inputText('priorite','Priorité'));
+
+  card.appendChild(el('h2',{},'Remarques'));
+  card.appendChild(textarea('remarques','Remarques libres'));
+}
+
+/* ===================== Rendering / navigation ===================== */
+function renderAll(){
+  const tabsEl = document.getElementById('tabs');
+  const secEl = document.getElementById('sections');
+  tabsEl.innerHTML = ''; secEl.innerHTML = '';
+  SECTIONS.forEach((s,i)=>{
+    const btn = el('button',{}, s.title);
+    btn.addEventListener('click', ()=>showSection(s.id));
+    btn.dataset.id = s.id;
+    tabsEl.appendChild(btn);
+
+    const sec = el('div',{class:'section', id:'sec_'+s.id});
+    const card = el('div',{class:'card'});
+    s.build(card);
+    sec.appendChild(card);
+    secEl.appendChild(sec);
+  });
+  showSection(SECTIONS[0].id);
+}
+function showSection(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.toggle('active', s.id==='sec_'+id));
+  document.querySelectorAll('nav.tabs button').forEach(b=>b.classList.toggle('active', b.dataset.id===id));
+  window.scrollTo({top:0, behavior:'instant'});
+}
+
+/* ===================== Save / records / export ===================== */
+function toast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 1800);
+}
+
+function saveRecord(){
+  const list = getRecords();
+  const now = new Date().toISOString();
+  const rec = Object.assign({}, record, {
+    _id: editingId || ('zh_'+Date.now()),
+    _saved_at: now
+  });
+  if(editingId){
+    const idx = list.findIndex(r=>r._id===editingId);
+    if(idx>-1) list[idx] = rec; else list.push(rec);
+  } else {
+    list.push(rec);
+  }
+  setRecords(list);
+  editingId = rec._id;
+  toast('Fiche enregistrée ('+list.length+' au total)');
+}
+
+function newRecord(){
+  record = {}; editingId = null;
+  localStorage.removeItem('zh_draft');
+  renderAll();
+  document.getElementById('gpsChip').classList.remove('live');
+  document.getElementById('gpsText').textContent = 'GPS non localisé';
+  toast('Nouvelle fiche vierge');
+}
+
+function openRecordsModal(){
+  const list = getRecords();
+  const box = document.getElementById('recordsList');
+  box.innerHTML = '';
+  if(list.length===0){ box.appendChild(el('p',{},'Aucune fiche enregistrée pour le moment.')); }
+  list.slice().reverse().forEach(r=>{
+    const row = el('div',{class:'recordrow'});
+    const label = (r.id_fiche || r._id) + ' — ' + (r.conclusion_zh||'?');
+    const meta = (r.lat&&r.lon)? `${r.lat}, ${r.lon}` : 'sans coord.';
+    row.appendChild(el('div',{}, el('div',{},label), el('div',{class:'rmeta'}, meta+' · '+new Date(r._saved_at).toLocaleString('fr-FR'))));
+    const actions = el('div',{style:'display:flex; gap:6px;'});
+    const editBtn = el('button',{class:'btn btn-outline', type:'button'},'Ouvrir');
+    editBtn.addEventListener('click', ()=>{ record = Object.assign({}, r); editingId = r._id; renderAll(); closeModal(); if(r.lat) document.getElementById('gpsText').textContent = r.lat+' / '+r.lon; toast('Fiche chargée'); });
+    const delBtn = el('button',{class:'btn btn-danger', type:'button'},'Suppr.');
+    delBtn.addEventListener('click', ()=>{
+      if(confirm('Supprimer cette fiche ?')){
+        setRecords(getRecords().filter(x=>x._id!==r._id));
+        openRecordsModal();
+      }
+    });
+    actions.appendChild(editBtn); actions.appendChild(delBtn);
+    row.appendChild(actions);
+    box.appendChild(row);
+  });
+  document.getElementById('recordsModal').classList.add('show');
+}
+function closeModal(){ document.getElementById('recordsModal').classList.remove('show'); }
+
+function download(filename, content, mime){
+  const blob = new Blob([content], {type:mime});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = filename;
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+}
+
+function exportGeojson(){
+  const list = getRecords();
+  const features = list.map(r=>({
+    type:'Feature',
+    geometry: (r.lat && r.lon) ? {type:'Point', coordinates:[parseFloat(r.lon), parseFloat(r.lat)]} : null,
+    properties: Object.fromEntries(Object.entries(r).filter(([k])=>k!=='lat'&&k!=='lon').map(([k,v])=>[k, Array.isArray(v)?v.join(' | '):v]))
+  }));
+  const fc = {type:'FeatureCollection', features};
+  download('zones_humides_'+Date.now()+'.geojson', JSON.stringify(fc, null, 2), 'application/geo+json');
+  toast('Export GeoJSON téléchargé');
+}
+
+function exportCsv(){
+  const list = getRecords();
+  if(list.length===0){ toast('Aucune fiche à exporter'); return; }
+  const keys = Array.from(list.reduce((set,r)=>{ Object.keys(r).forEach(k=>set.add(k)); return set; }, new Set()));
+  const rows = [keys.join(';')];
+  list.forEach(r=>{
+    rows.push(keys.map(k=>{
+      let v = r[k];
+      if(Array.isArray(v)) v = v.join(' | ');
+      if(v==null) v = '';
+      v = String(v).replace(/;/g,',').replace(/\n/g,' ');
+      return v;
+    }).join(';'));
+  });
+  download('zones_humides_'+Date.now()+'.csv', rows.join('\n'), 'text/csv');
+  toast('Export CSV téléchargé');
+}
+
+/* ===================== Init ===================== */
+document.getElementById('btnSave').addEventListener('click', saveRecord);
+document.getElementById('btnNew').addEventListener('click', ()=>{ if(confirm('Repartir sur une fiche vierge ? La fiche en cours non enregistrée sera perdue.')) newRecord(); });
+document.getElementById('btnRecords').addEventListener('click', openRecordsModal);
+document.getElementById('btnCloseModal').addEventListener('click', closeModal);
+document.getElementById('btnExportGeojson').addEventListener('click', exportGeojson);
+document.getElementById('btnExportCsv').addEventListener('click', exportCsv);
+
+loadDraft();
+renderAll();
+updateRecCount();
+if(getVal('lat') && getVal('lon')){
+  document.getElementById('gpsChip').classList.add('live');
+  document.getElementById('gpsText').textContent = getVal('lat')+' / '+getVal('lon');
+}
+
+if('serviceWorker' in navigator){
+  window.addEventListener('load', ()=>{
+    navigator.serviceWorker.register('sw.js').catch(()=>{/* offline install needs https hosting */});
+  });
+}
+</script>
+</body>
+</html>
