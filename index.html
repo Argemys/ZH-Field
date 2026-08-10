@@ -303,7 +303,7 @@ function pillRadio(key, label, options, styleClass=''){
     });
   }
   options.forEach(opt=>{
-    const p = el('pill'in{}?{}:{class:'pill '+styleClass}, opt);
+    const p = el('span', {class:'pill '+styleClass}, opt);
     p.dataset.v = opt;
     p.addEventListener('click', ()=>{ setVal(key, getVal(key)===opt?'':opt); refresh(); });
     wrap.appendChild(p);
