@@ -183,6 +183,59 @@ footer.bar .btn{flex:1; justify-content:center;}
 .tag button{background:none; border:none; color:#fff; font-weight:700; cursor:pointer; padding:0;}
 .readonly-box{background:#eef2ec; border:1px dashed var(--line); border-radius:7px; padding:8px 10px; font-family:var(--font-mono); font-size:.85rem;}
 
+/* ===================== Photos ===================== */
+.photo-category{
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:12px;
+  margin:10px 0;
+  background:#fff;
+}
+.photo-category h3{margin:0 0 8px;}
+.photo-actions{display:flex;gap:7px;flex-wrap:wrap;}
+.photo-actions .btn{flex:1 1 180px;}
+.photo-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(125px,1fr));
+  gap:9px;
+  margin:10px 0;
+}
+.photo-item{
+  position:relative;
+  border:1px solid var(--line);
+  border-radius:8px;
+  overflow:hidden;
+  background:#eef2ec;
+  aspect-ratio:4/3;
+}
+.photo-item img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+.photo-delete{
+  position:absolute;
+  top:5px;
+  right:5px;
+  width:30px;
+  height:30px;
+  border:0;
+  border-radius:50%;
+  background:rgba(0,0,0,.68);
+  color:#fff;
+  font-size:18px;
+  line-height:30px;
+  padding:0;
+  cursor:pointer;
+}
+.photo-count{
+  color:var(--ink-soft);
+  font-size:.76rem;
+  margin-top:5px;
+}
+
+
 /* Navigation entre les pages */
 .section-nav{
   display:flex;
@@ -253,13 +306,28 @@ function el(tag, attrs={}, ...kids){
 }
 
 /* ===================== Data model ===================== */
-let record = {}; // current in-progress record (flat key/value)
+let record = {}; // current in-progress record (key/value, including structured photos)
 let editingId = null;
 
 function setVal(key, val){ record[key] = val; saveDraft(); }
 function getVal(key){ return record[key]; }
 
 function saveDraft(){ localStorage.setItem('zh_draft', JSON.stringify(record)); }
+
+function migrateLegacyPhoto(){
+  if(record.photo_data && !record.photos){
+    record.photos = {
+      vue_generale: [{
+        data: record.photo_data,
+        name: 'ancienne photo',
+        taken_at: new Date().toISOString()
+      }]
+    };
+    delete record.photo_data;
+    saveDraft();
+  }
+}
+
 function loadDraft(){
   try{ record = JSON.parse(localStorage.getItem('zh_draft')||'{}'); }catch(e){ record = {}; }
 }
@@ -618,6 +686,159 @@ function refreshPlancheReferenceOptions(){
   refreshIdentifiantDisplay();
 }
 
+
+/* ===================== Photos ===================== */
+const PHOTO_CATEGORIES = [
+  {key:'vue_generale', label:'Vue générale', icon:'📍'},
+  {key:'sondage_pedologique', label:'Sondage pédologique', icon:'🕳️'},
+  {key:'vegetation', label:'Végétation', icon:'🌿'},
+  {key:'autre_detail', label:'Autre détail', icon:'🔎'}
+];
+
+function getPhotos(){
+  const photos = getVal('photos');
+  return (photos && typeof photos === 'object' && !Array.isArray(photos)) ? photos : {};
+}
+
+function setPhotos(photos){
+  setVal('photos', photos);
+}
+
+async function compressPhotoFile(file, maxSize=1600, quality=.78){
+  if(!file || !file.type || !file.type.startsWith('image/')) {
+    throw new Error('Fichier image attendu');
+  }
+  const src = await new Promise((resolve,reject)=>{
+    const reader = new FileReader();
+    reader.onload = ()=>resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+  const img = await new Promise((resolve,reject)=>{
+    const image = new Image();
+    image.onload = ()=>resolve(image);
+    image.onerror = reject;
+    image.src = src;
+  });
+  const scale = Math.min(1, maxSize / Math.max(img.naturalWidth, img.naturalHeight));
+  const canvas = document.createElement('canvas');
+  canvas.width = Math.max(1, Math.round(img.naturalWidth * scale));
+  canvas.height = Math.max(1, Math.round(img.naturalHeight * scale));
+  canvas.getContext('2d').drawImage(img,0,0,canvas.width,canvas.height);
+  return canvas.toDataURL('image/jpeg', quality);
+}
+
+function createPhotoCategory(category){
+  const wrap = el('div',{class:'photo-category'});
+  const title = el('h3',{}, category.icon+' '+category.label);
+  wrap.appendChild(title);
+
+  const grid = el('div',{class:'photo-grid'});
+  const count = el('div',{class:'photo-count'});
+  const actions = el('div',{class:'photo-actions'});
+
+  function render(){
+    grid.innerHTML='';
+    const photos = getPhotos();
+    const list = Array.isArray(photos[category.key]) ? photos[category.key] : [];
+
+    list.forEach((photo, idx)=>{
+      const item = el('div',{class:'photo-item'});
+      const img = el('img',{alt:category.label+' — photo '+(idx+1)});
+      img.src = photo.data;
+      const del = el('button',{class:'photo-delete',type:'button',title:'Supprimer cette photo'},'×');
+      del.addEventListener('click',()=>{
+        const current = getPhotos();
+        const arr = Array.isArray(current[category.key]) ? current[category.key].slice() : [];
+        arr.splice(idx,1);
+        current[category.key]=arr;
+        setPhotos(current);
+        render();
+      });
+      item.appendChild(img);
+      item.appendChild(del);
+      grid.appendChild(item);
+    });
+
+    count.textContent = list.length + (list.length > 1 ? ' photos' : ' photo');
+    if(list.length===0) count.textContent='Aucune photo';
+  }
+
+  // Caméra : une photo à la fois, pour favoriser l'ouverture directe de la caméra
+  const cameraInput = el('input',{
+    type:'file',
+    accept:'image/*',
+    capture:'environment',
+    style:'display:none'
+  });
+  const cameraBtn = el('button',{class:'btn btn-water',type:'button'},'📷 Prendre une photo');
+  cameraBtn.addEventListener('click',()=>cameraInput.click());
+  cameraInput.addEventListener('change',async()=>{
+    const files=Array.from(cameraInput.files||[]);
+    for(const file of files){
+      try{
+        const data=await compressPhotoFile(file);
+        const current=getPhotos();
+        const arr=Array.isArray(current[category.key]) ? current[category.key].slice() : [];
+        arr.push({data, name:file.name||'', taken_at:new Date().toISOString()});
+        current[category.key]=arr;
+        setPhotos(current);
+      }catch(e){
+        toast('Impossible d’ajouter cette image');
+      }
+    }
+    cameraInput.value='';
+    render();
+  });
+
+  // Galerie/fichiers : sélection multiple
+  const galleryInput = el('input',{
+    type:'file',
+    accept:'image/*',
+    multiple:'multiple',
+    style:'display:none'
+  });
+  const galleryBtn = el('button',{class:'btn btn-outline',type:'button'},'🖼️ Choisir des photos');
+  galleryBtn.addEventListener('click',()=>galleryInput.click());
+  galleryInput.addEventListener('change',async()=>{
+    const files=Array.from(galleryInput.files||[]);
+    if(!files.length) return;
+    for(const file of files){
+      try{
+        const data=await compressPhotoFile(file);
+        const current=getPhotos();
+        const arr=Array.isArray(current[category.key]) ? current[category.key].slice() : [];
+        arr.push({data, name:file.name||'', taken_at:new Date().toISOString()});
+        current[category.key]=arr;
+        setPhotos(current);
+      }catch(e){
+        toast('Impossible d’ajouter une image');
+      }
+    }
+    galleryInput.value='';
+    render();
+  });
+
+  actions.appendChild(cameraInput);
+  actions.appendChild(galleryInput);
+  actions.appendChild(cameraBtn);
+  actions.appendChild(galleryBtn);
+
+  wrap.appendChild(grid);
+  wrap.appendChild(actions);
+  wrap.appendChild(count);
+  render();
+  return wrap;
+}
+
+function buildPhotos(card){
+  card.appendChild(el('h2',{},'📷 Photos de la zone'));
+  card.appendChild(el('p',{},'Plusieurs photos possibles dans chaque catégorie. La prise de vue peut être faite directement depuis le téléphone ou la tablette.'));
+  PHOTO_CATEGORIES.forEach(category=>{
+    card.appendChild(createPhotoCategory(category));
+  });
+}
+
 function buildIdent(card){
   card.appendChild(el('h2',{},'Identification'));
 
@@ -675,6 +896,8 @@ function buildIdent(card){
 
   card.appendChild(inputText('date_obs','Date d\'observation', {type:'date'}));
   card.appendChild(pillRadio('type_obs','Type d\'observation', ['in situ','ex situ','inaccessible']));
+
+  buildPhotos(card);
 
   card.appendChild(el('h2',{},'Remarques'));
   card.appendChild(textarea('remarques_ident','Remarques libres (compatible dictée vocale)'));
@@ -982,7 +1205,7 @@ function renderAll(){
     const card = el('div',{class:'card'});
     s.build(card);
 
-    // Navigation en bas de chaque page
+    // Navigation entre les pages
     const nav = el('div',{class:'section-nav'});
     const prev = el('button',{class:'btn btn-outline',type:'button'}, i===0 ? '←' : '← Précédent');
     const next = el('button',{class:'btn btn-primary',type:'button'}, i===SECTIONS.length-1 ? 'Terminer' : 'Suivant →');
