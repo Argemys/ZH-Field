@@ -182,6 +182,24 @@ footer.bar .btn{flex:1; justify-content:center;}
 .tag{background:var(--marsh-light); color:#fff; border-radius:14px; padding:5px 10px; font-size:.75rem; display:flex; align-items:center; gap:6px;}
 .tag button{background:none; border:none; color:#fff; font-weight:700; cursor:pointer; padding:0;}
 .readonly-box{background:#eef2ec; border:1px dashed var(--line); border-radius:7px; padding:8px 10px; font-family:var(--font-mono); font-size:.85rem;}
+.section-nav{display:flex; gap:8px; margin-top:14px; padding-top:12px; border-top:1px solid var(--line);}
+.section-nav .btn{flex:1; justify-content:center;}
+.section-nav .btn:disabled{opacity:.45; cursor:not-allowed; transform:none;}
+.photo-box{border:1px dashed var(--line); border-radius:8px; padding:10px; background:#fff;}
+.photo-preview{display:block; width:100%; max-height:280px; object-fit:contain; margin-top:8px; border-radius:7px; background:#eef2ec;}
+.species-search-results{max-height:330px; overflow-y:auto; border:1px solid var(--line); border-radius:7px; background:#fff; margin-top:6px;}
+.species-result{padding:8px 10px; border-bottom:1px solid var(--line); cursor:pointer; font-size:.82rem;}
+.species-result:last-child{border-bottom:none;}
+.species-result:hover{background:#eef2ec;}
+.species-result .latin{font-style:italic; font-weight:600;}
+.species-result .fr{color:var(--ink-soft); font-size:.75rem;}
+.species-selected{margin-top:10px;}
+.species-selected-row{display:flex; align-items:center; gap:7px; padding:7px 0; border-bottom:1px solid var(--line); flex-wrap:wrap;}
+.species-selected-row .species-name{flex:1 1 220px; font-size:.82rem;}
+.species-selected-row .species-name.abondant{font-weight:700; color:var(--rust); text-decoration:underline;}
+.species-selected-row input[type=number]{width:85px; padding:6px;}
+.species-meta{font-size:.68rem; color:var(--ink-soft);}
+
 </style>
 </head>
 <body>
@@ -322,11 +340,25 @@ function l93ToWgs84(x, y){
   return { lat: phi*180/Math.PI, lon: lambda*180/Math.PI };
 }
 
-/* ===================== Référentiels externes (CORINE Biotopes, catalogue flore) — importables, non inventés ===================== */
-function getCorineReferentiel(){
-  try{ return JSON.parse(localStorage.getItem('zh_corine_ref')||'[]'); }catch(e){ return []; }
+/* ===================== Référentiels externes ===================== */
+let CORINE_REF = [];
+let FLORE_REF = [];
+const REF_VERSION = '1';
+function normaliseTexte(v){ return String(v ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase(); }
+function getCorineReferentiel(){ return Array.isArray(CORINE_REF) ? CORINE_REF : []; }
+function setCorineReferentiel(list){ CORINE_REF = Array.isArray(list) ? list : []; try{ localStorage.setItem('zh_corine_ref', JSON.stringify(CORINE_REF)); }catch(e){} }
+function getFloreReferentiel(){ return Array.isArray(FLORE_REF) ? FLORE_REF : []; }
+function setFloreReferentiel(list){ FLORE_REF = Array.isArray(list) ? list : []; try{ localStorage.setItem('zh_flore_ref', JSON.stringify(FLORE_REF)); }catch(e){} }
+async function loadReferentiels(){
+  const readCache=(k)=>{try{return JSON.parse(localStorage.getItem(k)||'[]')}catch(e){return []}};
+  const cc=readCache('zh_corine_ref'), cf=readCache('zh_flore_ref');
+  if(Array.isArray(cc)) CORINE_REF=cc; if(Array.isArray(cf)) FLORE_REF=cf;
+  const loadOne=async(url,setter,label)=>{try{const r=await fetch(url+'?v='+REF_VERSION);if(!r.ok)throw new Error('HTTP '+r.status);const d=await r.json();if(!Array.isArray(d))throw new Error('Format inattendu');setter(d);return true;}catch(e){console.warn('Référentiel '+label+' non chargé',e);return false;}};
+  await Promise.all([
+    loadOne('./corine_biotopes.json',setCorineReferentiel,'CORINE Biotopes'),
+    loadOne('./catalogue_flore_alslor_floragis_zh.json',setFloreReferentiel,'catalogue flore')
+  ]);
 }
-function setCorineReferentiel(list){ localStorage.setItem('zh_corine_ref', JSON.stringify(list)); }
 
 /* ===================== Generic field renderers ===================== */
 function fieldWrap(label, hint, node){
@@ -606,6 +638,15 @@ function refreshPlancheReferenceOptions(){
   refreshIdentifiantDisplay();
 }
 
+async function compressImage(file, maxSize=1600, quality=.82){
+  if(!file.type.startsWith('image/')) throw new Error('image');
+  const src=await new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(r.result);r.onerror=reject;r.readAsDataURL(file);});
+  const img=await new Promise((resolve,reject)=>{const i=new Image();i.onload=()=>resolve(i);i.onerror=reject;i.src=src;});
+  const scale=Math.min(1,maxSize/Math.max(img.naturalWidth,img.naturalHeight));
+  const c=document.createElement('canvas');c.width=Math.max(1,Math.round(img.naturalWidth*scale));c.height=Math.max(1,Math.round(img.naturalHeight*scale));
+  c.getContext('2d').drawImage(img,0,0,c.width,c.height); return c.toDataURL('image/jpeg',quality);
+}
+
 function buildIdent(card){
   card.appendChild(el('h2',{},'Identification'));
 
@@ -663,6 +704,21 @@ function buildIdent(card){
 
   card.appendChild(inputText('date_obs','Date d\'observation', {type:'date'}));
   card.appendChild(pillRadio('type_obs','Type d\'observation', ['in situ','ex situ','inaccessible']));
+
+  card.appendChild(el('h2',{},'Photo'));
+  const photoBox=el('div',{class:'photo-box'});
+  const photoInput=el('input',{type:'file',accept:'image/*',capture:'environment'});
+  photoBox.appendChild(photoInput);
+  const photoPreview=el('img',{class:'photo-preview',alt:'Photo de la zone humide'});
+  const existingPhoto=getVal('photo_data')||'';
+  photoPreview.style.display=existingPhoto?'block':'none'; if(existingPhoto) photoPreview.src=existingPhoto;
+  photoBox.appendChild(photoPreview);
+  const photoRemove=el('button',{class:'btn btn-outline',type:'button',style:'margin-top:8px;'},'Supprimer la photo');
+  photoRemove.style.display=existingPhoto?'inline-flex':'none';
+  photoRemove.addEventListener('click',()=>{setVal('photo_data','');photoPreview.removeAttribute('src');photoPreview.style.display='none';photoRemove.style.display='none';photoInput.value='';});
+  photoBox.appendChild(photoRemove);
+  photoInput.addEventListener('change',async e=>{const file=e.target.files?.[0];if(!file)return;try{const data=await compressImage(file);setVal('photo_data',data);photoPreview.src=data;photoPreview.style.display='block';photoRemove.style.display='inline-flex';toast('Photo ajoutée');}catch(err){toast('Impossible de charger la photo');}});
+  card.appendChild(fieldWrap('Photo de la zone','Une photo par fiche · prise de vue depuis le téléphone possible.',photoBox));
 
   card.appendChild(el('h2',{},'Remarques'));
   card.appendChild(textarea('remarques_ident','Remarques libres (compatible dictée vocale)'));
@@ -793,35 +849,21 @@ function buildPedologie(card){
 function buildFonctions(card){
   card.appendChild(el('h2',{},'Alimentation hydrique'));
   card.appendChild(alimentationTable(ALIMENTATION_ITEMS));
-
   card.appendChild(el('h2',{},'Fonctions majeures'));
-  card.appendChild(el('div',{class:'hint'},'Cocher les fonctions concernées ; graduation 0 (nulle) à 9 (maximale).'));
-  card.appendChild(numberListSelectable('fonction', ['Biologique','Hydraulique','Épuratrice'], 0, 9));
-
+  card.appendChild(el('div',{class:'hint'},'Cocher les fonctions concernées ; évaluation qualitative : -, +/-, +.'));
+  card.appendChild(ratingListSelectable('fonction',['Biologique','Hydraulique','Épuratrice'],RATING3));
   card.appendChild(el('h2',{},'Valeurs majeures'));
-  card.appendChild(el('div',{class:'hint'},'Cocher les valeurs concernées ; graduation -, +/-, +.'));
-  card.appendChild(ratingListSelectable('valmaj', ['Économique','Culturelle / paysagère','Sociale, récréative'], RATING3));
-
+  card.appendChild(el('div',{class:'hint'},'Cocher les valeurs concernées ; évaluation qualitative : -, +/-, +.'));
+  card.appendChild(ratingListSelectable('valmaj',['Économique','Culturelle / paysagère','Sociale, récréative'],RATING3));
   card.appendChild(el('h2',{},'Bilan fonctionnel'));
-  card.appendChild(el('h3',{},'Fonction hydraulique'));
-  card.appendChild(ratingList('fh', ['Protection érosion, ruissellement','Stockage eau, recharge nappes, soutien étiage','Régule crue'], RATING3));
-  card.appendChild(el('h3',{},'Fonction épuratrice'));
-  card.appendChild(ratingList('fe', ['Interception matières en susp. et toxiques','Régulation nutriments'], RATING3));
-  card.appendChild(el('h3',{},'Fonctions biologiques'));
-  card.appendChild(ratingList('fb', ['Corridor écologique','Accueil faune','Support biodiversité','Stockage CO2','Autre'], RATING3));
-  card.appendChild(el('h3',{},'État hydrique'));
-  card.appendChild(ratingList('eh', ['Équilibre naturel'], RATING4));
-  card.appendChild(el('h3',{},'État habitat'));
-  card.appendChild(ratingList('etat_habitat', ['Conservation'], RATING3));
-
-  card.appendChild(el('h2',{},'Atteintes'));
-  card.appendChild(ratingList('atteinte', ATTEINTES, RATING3));
-
-  card.appendChild(el('h2',{},'Type de menaces'));
-  card.appendChild(ratingList('menace', ['Aggravation atteintes','Projet prévu','Activité à risque à proximité','Autres'], RATINGND));
-
-  card.appendChild(el('h2',{},'Remarques'));
-  card.appendChild(textarea('remarques_fonctions','Remarques libres (compatible dictée vocale)'));
+  card.appendChild(el('h3',{},'Fonction hydraulique')); card.appendChild(ratingList('fh',['Protection érosion, ruissellement','Stockage eau, recharge nappes, soutien étiage','Régule crue'],RATING3));
+  card.appendChild(el('h3',{},'Fonction épuratrice')); card.appendChild(ratingList('fe',['Interception matières en susp. et toxiques','Régulation nutriments'],RATING3));
+  card.appendChild(el('h3',{},'Fonctions biologiques')); card.appendChild(ratingList('fb',['Corridor écologique','Accueil faune','Support biodiversité','Stockage CO2','Autre'],RATING3));
+  card.appendChild(el('h3',{},'État hydrique')); card.appendChild(ratingList('eh',['Équilibre naturel'],RATING4));
+  card.appendChild(el('h3',{},'État habitat')); card.appendChild(ratingList('etat_habitat',['Conservation'],RATING3));
+  card.appendChild(el('h2',{},'Atteintes')); card.appendChild(ratingList('atteinte',ATTEINTES,RATING3));
+  card.appendChild(el('h2',{},'Type de menaces')); card.appendChild(ratingList('menace',['Aggravation atteintes','Projet prévu','Activité à risque à proximité','Autres'],RATINGND));
+  card.appendChild(el('h2',{},'Remarques')); card.appendChild(textarea('remarques_fonctions','Remarques libres (compatible dictée vocale)'));
 }
 
 function buildUsages(card){
@@ -837,109 +879,34 @@ function buildUsages(card){
 }
 
 function renderCorineBlock(container){
-  container.innerHTML = '';
-  const ref = getCorineReferentiel();
-  const habitats = getVal('corine_habitats')||[];
-
-  const importRow = el('div',{class:'hint'}, ref.length
-    ? `Référentiel CORINE chargé : ${ref.length} entrées.`
-    : 'Aucun référentiel CORINE importé — recherche indisponible, saisie manuelle du code/libellé ci-dessous.');
-  container.appendChild(importRow);
-
-  const fileLabel = el('label',{class:'btn btn-outline', style:'cursor:pointer;'}, '📥 Importer un référentiel CORINE (JSON)');
-  const fileInput = el('input',{type:'file', accept:'.json', style:'display:none;'});
-  fileInput.addEventListener('change', (e)=>{
-    const file = e.target.files[0]; if(!file) return;
-    const reader = new FileReader();
-    reader.onload = ()=>{
-      try{
-        const data = JSON.parse(reader.result);
-        if(!Array.isArray(data)) throw new Error('format');
-        setCorineReferentiel(data);
-        toast('Référentiel CORINE importé ('+data.length+' entrées)');
-        renderCorineBlock(container);
-      }catch(err){ toast('Fichier invalide — attendu : [{"code":"...","libelle":"..."}]'); }
-    };
-    reader.readAsText(file);
-  });
-  fileLabel.appendChild(fileInput);
-  container.appendChild(fileLabel);
-
-  const searchInput = el('input',{type:'text', placeholder:'Rechercher par code ou intitulé…'});
-  container.appendChild(fieldWrap('Rechercher dans le référentiel', null, searchInput));
-  const results = el('div',{});
-  container.appendChild(results);
-
-  const searchRow = el('div',{class:'searchrow', style:'margin-top:10px;'});
-  const codeInput = el('input',{type:'text', placeholder:'Code', style:'max-width:100px;'});
-  const libelleInput = el('input',{type:'text', placeholder:'Libellé (auto si trouvé, sinon à saisir)'});
-  searchRow.appendChild(codeInput);
-  searchRow.appendChild(libelleInput);
-  container.appendChild(searchRow);
-
-  searchInput.addEventListener('input', ()=>{
-    results.innerHTML = '';
-    const q = searchInput.value.trim().toLowerCase();
-    if(!q || ref.length===0) return;
-    ref.filter(r=>(r.code||'').toLowerCase().includes(q) || (r.libelle||'').toLowerCase().includes(q)).slice(0,8).forEach(r=>{
-      const item = el('div',{class:'chk', style:'cursor:pointer;'}, r.code+' — '+r.libelle);
-      item.addEventListener('click', ()=>{ codeInput.value = r.code; libelleInput.value = r.libelle; searchInput.value=''; results.innerHTML=''; });
-      results.appendChild(item);
-    });
-  });
-
-  const addBtn = el('button',{class:'btn btn-primary', type:'button', style:'margin-top:6px;'}, '+ Ajouter cet habitat');
-  addBtn.addEventListener('click', ()=>{
-    if(!codeInput.value.trim()){ toast('Renseigner au moins un code'); return; }
-    const list = getVal('corine_habitats')||[];
-    list.push({code:codeInput.value.trim(), libelle:libelleInput.value.trim()});
-    setVal('corine_habitats', list);
-    codeInput.value=''; libelleInput.value='';
-    renderCorineBlock(container);
-  });
-  container.appendChild(addBtn);
-
-  const tags = el('div',{class:'taglist', style:'margin-top:10px;'});
-  habitats.forEach((h,idx)=>{
-    const tag = el('span',{class:'tag'}, h.code+(h.libelle?' — '+h.libelle:''));
-    const rm = el('button',{type:'button'}, '×');
-    rm.addEventListener('click', ()=>{
-      const list = getVal('corine_habitats')||[];
-      list.splice(idx,1);
-      setVal('corine_habitats', list);
-      renderCorineBlock(container);
-    });
-    tag.appendChild(rm);
-    tags.appendChild(tag);
-  });
-  container.appendChild(tags);
+  container.innerHTML=''; const ref=getCorineReferentiel(); const habitats=getVal('corine_habitats')||[];
+  container.appendChild(el('div',{class:'hint'},ref.length?`Référentiel CORINE Biotopes chargé automatiquement : ${ref.length} entrées.`:'Référentiel CORINE indisponible. Vérifier corine_biotopes.json à la racine du dépôt.'));
+  const search=el('input',{type:'text',placeholder:'Rechercher par code ou intitulé…'}); container.appendChild(fieldWrap('Rechercher dans CORINE Biotopes',null,search));
+  const results=el('div',{class:'species-search-results'});container.appendChild(results);
+  const selected=el('div',{class:'taglist',style:'margin-top:10px;'});container.appendChild(selected);
+  function renderSelected(){selected.innerHTML='';habitats.forEach((h,idx)=>{const tag=el('span',{class:'tag'},h.code+(h.libelle?' — '+h.libelle:''));const rm=el('button',{type:'button'},'×');rm.addEventListener('click',()=>{const list=(getVal('corine_habitats')||[]).slice();list.splice(idx,1);setVal('corine_habitats',list);renderCorineBlock(container);});tag.appendChild(rm);selected.appendChild(tag);});}
+  function renderResults(){results.innerHTML='';const q=normaliseTexte(search.value.trim());if(!q||!ref.length)return;ref.filter(r=>normaliseTexte(r.code).includes(q)||normaliseTexte(r.libelle).includes(q)).slice(0,12).forEach(r=>{const item=el('div',{class:'species-result'},el('div',{class:'latin'},r.code),el('div',{class:'fr'},r.libelle));item.addEventListener('click',()=>{const list=(getVal('corine_habitats')||[]).slice();if(!list.some(h=>String(h.code)===String(r.code)))list.push({code:r.code,libelle:r.libelle});setVal('corine_habitats',list);renderCorineBlock(container);});results.appendChild(item);});}
+  search.addEventListener('input',renderResults);renderSelected();
 }
-
+function getSelectedSpecies(){return Array.isArray(getVal('species_observees'))?getVal('species_observees'):[];}
+function setSelectedSpecies(list){setVal('species_observees',list);}
+function renderSpeciesBlock(container){
+  container.innerHTML='';const ref=getFloreReferentiel();const selected=getSelectedSpecies();
+  container.appendChild(el('div',{class:'hint'},ref.length?`Catalogue floristique chargé automatiquement : ${ref.length} taxons.`:'Catalogue floristique indisponible. Vérifier le fichier JSON à la racine du dépôt.'));
+  container.appendChild(el('div',{class:'hint'},'Recherche par nom scientifique ou nom français. Touche ★ pour signaler une espèce particulièrement abondante.'));
+  const search=el('input',{type:'text',placeholder:'Rechercher une espèce…'});container.appendChild(fieldWrap('Recherche dans le catalogue',null,search));
+  const results=el('div',{class:'species-search-results'});container.appendChild(results);
+  const selectedTitle=el('h3',{},'Espèces observées');container.appendChild(selectedTitle);const selectedBox=el('div',{class:'species-selected'});container.appendChild(selectedBox);
+  function renderSelected(){selectedBox.innerHTML='';if(!selected.length){selectedBox.appendChild(el('div',{class:'hint'},'Aucune espèce sélectionnée.'));return;}selected.forEach((sp,idx)=>{const row=el('div',{class:'species-selected-row'});const name=el('div',{class:'species-name'+(sp.abondant?' abondant':'')});name.textContent=(sp.taxon||'')+(sp.nom_francais?' — '+sp.nom_francais:'');row.appendChild(name);if(sp.famille)row.appendChild(el('div',{class:'species-meta'},sp.famille));const cov=el('input',{type:'number',min:0,max:100,placeholder:'%'});cov.value=sp.recouvrement??'';cov.addEventListener('input',()=>{sp.recouvrement=cov.value;setSelectedSpecies(selected);});row.appendChild(cov);const star=el('button',{type:'button',class:'btn '+(sp.abondant?'btn-danger':'btn-outline'),style:'padding:4px 8px;'},sp.abondant?'★ Abondante':'☆ Abondante');star.addEventListener('click',()=>{sp.abondant=!sp.abondant;setSelectedSpecies(selected);renderSelected();});row.appendChild(star);const rm=el('button',{type:'button',class:'btn btn-outline',style:'padding:4px 8px;'},'×');rm.addEventListener('click',()=>{selected.splice(idx,1);setSelectedSpecies(selected);renderSelected();});row.appendChild(rm);selectedBox.appendChild(row);});}
+  function renderResults(){results.innerHTML='';const q=normaliseTexte(search.value.trim());if(!q||!ref.length)return;ref.filter(r=>normaliseTexte(r['Taxon valide court']).includes(q)||normaliseTexte(r['Nom français']).includes(q)).slice(0,15).forEach(r=>{const item=el('div',{class:'species-result'},el('div',{class:'latin'},r['Taxon valide court']||''),el('div',{class:'fr'},r['Nom français']||''));item.appendChild(el('div',{class:'species-meta'},(r['Famille']||'')+(r['Rareté AlsLor']?' · Rareté AlsLor : '+r['Rareté AlsLor']:'')));item.addEventListener('click',()=>{if(!selected.some(sp=>String(sp.cdref16)===String(r.cdref16)))selected.push({cdref16:r.cdref16,taxon:r['Taxon valide court'],taxon_valide:r['Taxon valide'],nom_francais:r['Nom français'],famille:r['Famille'],rarete_alslor:r['Rareté AlsLor'],zh_2008:r['ZH 2008'],abondant:false,recouvrement:''});setSelectedSpecies(selected);search.value='';results.innerHTML='';renderSelected();});results.appendChild(item);});}
+  search.addEventListener('input',renderResults);renderSelected();
+}
 function buildEspeces(card){
-  card.appendChild(el('h2',{},'Relevé Corine Biotope'));
-  const corineBox = el('div',{});
-  card.appendChild(corineBox);
-  renderCorineBlock(corineBox);
-
-  card.appendChild(el('h2',{},'Cortège floristique'));
-  card.appendChild(el('div',{class:'hint'},'Cocher les espèces observées. % de recouvrement par groupe hygrophile.'));
-  Object.entries(SP_GROUPS).forEach(([id,g])=>{
-    card.appendChild(speciesBlock(id, g.title, g.species));
-  });
-  card.appendChild(el('h3',{},'Cortège non humide'));
-  card.appendChild(el('div',{class:'hint'},'Touche ★ pour signaler une espèce particulièrement abondante.'));
-  card.appendChild(speciesCheckGroup('species_non_humide', SP_NON_HUMIDE));
-
-  card.appendChild(el('h2',{},'Type SAGE'));
-  const sageSel = el('select',{});
-  sageSel.appendChild(el('option',{value:''},'— Sélectionner —'));
-  SAGE_HABITATS.forEach(h=>{ const op=el('option',{value:h},h); if(getVal('sage_habitat_type')===h) op.selected=true; sageSel.appendChild(op); });
-  sageSel.addEventListener('change', ()=>setVal('sage_habitat_type', sageSel.value));
-  card.appendChild(fieldWrap('Habitat SAGE / grand type (choix unique)', null, sageSel));
-  card.appendChild(pillRadio('recouvrement_global','Recouvrement global', ['>50%','<50%']));
-
-  card.appendChild(el('h2',{},'Remarques'));
-  card.appendChild(textarea('remarques_especes','Remarques libres (compatible dictée vocale)'));
+  card.appendChild(el('h2',{},'Habitats — CORINE Biotopes'));const corineBox=el('div',{});card.appendChild(corineBox);renderCorineBlock(corineBox);
+  card.appendChild(el('h2',{},'Cortège floristique'));const speciesBox=el('div',{});card.appendChild(speciesBox);renderSpeciesBlock(speciesBox);
+  card.appendChild(el('h2',{},'Recouvrement global'));card.appendChild(pillRadio('recouvrement_global','Recouvrement global',['>50%','<50%']));
+  card.appendChild(el('h2',{},'Type SAGE'));const sageSel=el('select',{});sageSel.appendChild(el('option',{value:''},'— Sélectionner —'));SAGE_HABITATS.forEach(h=>{const op=el('option',{value:h},h);if(getVal('sage_habitat_type')===h)op.selected=true;sageSel.appendChild(op);});sageSel.addEventListener('change',()=>setVal('sage_habitat_type',sageSel.value));card.appendChild(fieldWrap('Habitat SAGE / grand type (choix unique)',null,sageSel));
+  card.appendChild(el('h2',{},'Remarques'));card.appendChild(textarea('remarques_especes','Remarques libres (compatible dictée vocale)'));
 }
 
 function buildActions(card){
@@ -969,7 +936,13 @@ function renderAll(){
     const sec = el('div',{class:'section', id:'sec_'+s.id});
     const card = el('div',{class:'card'});
     s.build(card);
-    sec.appendChild(card);
+    const nav = el('div',{class:'section-nav'});
+    const prev = el('button',{class:'btn btn-outline',type:'button'},'← Précédent');
+    const next = el('button',{class:'btn btn-primary',type:'button'},'Suivant →');
+    prev.disabled=i===0; next.disabled=i===SECTIONS.length-1;
+    prev.addEventListener('click',()=>{if(i>0)showSection(SECTIONS[i-1].id);});
+    next.addEventListener('click',()=>{if(i<SECTIONS.length-1)showSection(SECTIONS[i+1].id);});
+    nav.appendChild(prev);nav.appendChild(next);card.appendChild(nav);sec.appendChild(card);
     secEl.appendChild(sec);
   });
   showSection(SECTIONS[0].id);
@@ -1096,8 +1069,7 @@ document.getElementById('btnExportGeojson').addEventListener('click', exportGeoj
 document.getElementById('btnExportCsv').addEventListener('click', exportCsv);
 
 loadDraft();
-renderAll();
-updateRecCount();
+(async()=>{ await loadReferentiels(); renderAll(); updateRecCount(); })();
 if(getVal('x_l93') && getVal('y_l93')){
   document.getElementById('gpsChip').classList.add('live');
   document.getElementById('gpsText').textContent = 'X '+getVal('x_l93')+' / Y '+getVal('y_l93');
