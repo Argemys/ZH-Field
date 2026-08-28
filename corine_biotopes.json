@@ -1,0 +1,5178 @@
+[
+  {
+    "code": "11.1",
+    "libelle": "EAUX MARINES"
+  },
+  {
+    "code": "11.11",
+    "libelle": "Eaux océaniques"
+  },
+  {
+    "code": "11.12",
+    "libelle": "Eaux du talus et du plateau continental (= eaux néritiques)"
+  },
+  {
+    "code": "11.121",
+    "libelle": "Eaux littorales"
+  },
+  {
+    "code": "11.122",
+    "libelle": "Eaux néritiques lointaines (du large)"
+  },
+  {
+    "code": "11.123",
+    "libelle": "Talus continental"
+  },
+  {
+    "code": "11.124",
+    "libelle": "Upwellings"
+  },
+  {
+    "code": "11.125",
+    "libelle": "Hauts-fonds"
+  },
+  {
+    "code": "11.2",
+    "libelle": "BENTHOS (Fonds marins)"
+  },
+  {
+    "code": "11.21",
+    "libelle": "Fonds sous-marins profonds"
+  },
+  {
+    "code": "11.22",
+    "libelle": "Zones benthiques sublittorales sur sédiments meubles"
+  },
+  {
+    "code": "11.23",
+    "libelle": "Zones benthiques sublittorales sur cailloutis"
+  },
+  {
+    "code": "11.24",
+    "libelle": "Zones benthiques sublittorales sur fonds rocheux"
+  },
+  {
+    "code": "11.25",
+    "libelle": "Formations sublittorales de concrétions organogéniques"
+  },
+  {
+    "code": "11.251",
+    "libelle": "Concrétions coralligènes"
+  },
+  {
+    "code": "11.252",
+    "libelle": "Trottoirs d'algues encroûtantes"
+  },
+  {
+    "code": "11.253",
+    "libelle": "Trottoirs de Gastéropodes et Polychètes"
+  },
+  {
+    "code": "11.254",
+    "libelle": "Trottoirs de moules (moulières)"
+  },
+  {
+    "code": "11.26",
+    "libelle": "Grottes sous-marines"
+  },
+  {
+    "code": "11.3",
+    "libelle": "HERBIERS MARINS A PLANTES VASCULAIRES"
+  },
+  {
+    "code": "11.31",
+    "libelle": "Herbiers atlantiques à Zostères"
+  },
+  {
+    "code": "11.32",
+    "libelle": "Herbiers atlantiques à Zostères naines"
+  },
+  {
+    "code": "11.321",
+    "libelle": "Herbiers à Zostères naines de l'Atlantique continental"
+  },
+  {
+    "code": "11.33",
+    "libelle": "Herbiers méditerranéens à Cymodocea et Zostera"
+  },
+  {
+    "code": "11.331",
+    "libelle": "Herbiers méditerranéens à Cymodocea"
+  },
+  {
+    "code": "11.332",
+    "libelle": "Herbiers méditerranéens à Zostera"
+  },
+  {
+    "code": "11.34",
+    "libelle": "Herbiers de Posidonia"
+  },
+  {
+    "code": "11.4",
+    "libelle": "HERBIERS DES EAUX SAUMATRES"
+  },
+  {
+    "code": "11.41",
+    "libelle": "Groupements marins à Ruppia maritima"
+  },
+  {
+    "code": "13.1",
+    "libelle": "FLEUVES ET RIVIERES SOUMIS A MAREES"
+  },
+  {
+    "code": "13.11",
+    "libelle": "Eau saumâtre des cours d'eau soumis à marées"
+  },
+  {
+    "code": "13.12",
+    "libelle": "Eau douce des cours d'eau soumis à marées"
+  },
+  {
+    "code": "13.2",
+    "libelle": "ESTUAIRES"
+  },
+  {
+    "code": "13.3",
+    "libelle": "HERBIERS MARINS SUBMERGES"
+  },
+  {
+    "code": "13.4",
+    "libelle": "HERBIERS SAUMATRES SUBMERGES"
+  },
+  {
+    "code": "15.1",
+    "libelle": "GAZONS PIONNIERS SALES"
+  },
+  {
+    "code": "15.11",
+    "libelle": "Gazons à Salicorne et Suaeda"
+  },
+  {
+    "code": "15.111",
+    "libelle": "Gazons atlantiques à Salicorne (Slikkes)"
+  },
+  {
+    "code": "15.1111",
+    "libelle": "Gazons à salicorne des côtes basses"
+  },
+  {
+    "code": "15.1112",
+    "libelle": "Groupements à Suaeda et salicorne"
+  },
+  {
+    "code": "15.112",
+    "libelle": "Gazons continentaux à salicorne"
+  },
+  {
+    "code": "15.1121",
+    "libelle": "Suintements continentaux à salicorne"
+  },
+  {
+    "code": "15.1122",
+    "libelle": "Gazons continentaux secs à salicorne"
+  },
+  {
+    "code": "15.113",
+    "libelle": "Gazons méditerranéens à salicorne"
+  },
+  {
+    "code": "15.1131",
+    "libelle": "Gazons à salicorne des basses côtes méditerranéennes"
+  },
+  {
+    "code": "15.1133",
+    "libelle": "Gazons à salicorne des hautes côtes méditerranéennes"
+  },
+  {
+    "code": "15.12",
+    "libelle": "Groupements halonitrophiles à Frankenia"
+  },
+  {
+    "code": "15.13",
+    "libelle": "Groupements à Sagina et Cochlearia"
+  },
+  {
+    "code": "15.2",
+    "libelle": "PRAIRIES à SPARTINE"
+  },
+  {
+    "code": "15.21",
+    "libelle": "Prairies à Spartine à feuilles plates"
+  },
+  {
+    "code": "15.3",
+    "libelle": "PRES SALES ATLANTIQUES"
+  },
+  {
+    "code": "15.31",
+    "libelle": "Prés salés avec Puccinellia maritima"
+  },
+  {
+    "code": "15.32",
+    "libelle": "Groupements à Puccinellia maritima des prés salés"
+  },
+  {
+    "code": "15.321",
+    "libelle": "Prés salés avec graminées et Pourpier marin"
+  },
+  {
+    "code": "15.322",
+    "libelle": "Prés salés avec graminées et Aster marin"
+  },
+  {
+    "code": "15.323",
+    "libelle": "Prés salés avec graminées et Salicorne"
+  },
+  {
+    "code": "15.324",
+    "libelle": "Végétations à Halimione pedunculata"
+  },
+  {
+    "code": "15.33",
+    "libelle": "Communautés du schorre supérieur"
+  },
+  {
+    "code": "15.331",
+    "libelle": "Formations dominées par, ou riches en, Juncus gerardii"
+  },
+  {
+    "code": "15.332",
+    "libelle": "Formations dominées par Plantago maritima"
+  },
+  {
+    "code": "15.333",
+    "libelle": "Gazons à Festuca rubra ou Agrostis stolonifera"
+  },
+  {
+    "code": "15.334",
+    "libelle": "Gazons à Statice (Armeria maritima)"
+  },
+  {
+    "code": "15.335",
+    "libelle": "Zones à Carex distans"
+  },
+  {
+    "code": "15.336",
+    "libelle": "Formations riches en Carex extensa"
+  },
+  {
+    "code": "15.337",
+    "libelle": "Prairies à lavandes de mer (Limonium vulgare)"
+  },
+  {
+    "code": "15.338",
+    "libelle": "Formations riches en Blysmus rufus"
+  },
+  {
+    "code": "15.339",
+    "libelle": "Zones à Eleocharis uniglumis ou E. palustris"
+  },
+  {
+    "code": "15.34",
+    "libelle": "Prés salés à          Puccinellia et Spergularia marina"
+  },
+  {
+    "code": "15.35",
+    "libelle": "Végétation à Elymus pycnanthus"
+  },
+  {
+    "code": "15.36",
+    "libelle": "Laisses de mer des prés salés atlantiques"
+  },
+  {
+    "code": "15.4",
+    "libelle": "PRES SALES CONTINENTAUX"
+  },
+  {
+    "code": "15.41",
+    "libelle": "Prés salés continentaux avec Puccinellia distans"
+  },
+  {
+    "code": "15.42",
+    "libelle": "Prés salés continentaux à jonc et Elymus"
+  },
+  {
+    "code": "15.5",
+    "libelle": "PRES SALES MEDITERRANEENS"
+  },
+  {
+    "code": "15.51",
+    "libelle": "Prés salés méditerranéens à Juncus maritimus et J. acutus"
+  },
+  {
+    "code": "15.52",
+    "libelle": "Prés salés à Juncus gerardii et Carex divisa"
+  },
+  {
+    "code": "15.53",
+    "libelle": "Prés méditerranéens halo-psammophiles"
+  },
+  {
+    "code": "15.55",
+    "libelle": "Prés salés méditerranéens à Puccinellia"
+  },
+  {
+    "code": "15.56",
+    "libelle": "Formations à annuelles sur laisses"
+  },
+  {
+    "code": "15.57",
+    "libelle": "Prés salés à chiendent et armoise"
+  },
+  {
+    "code": "15.58",
+    "libelle": "Formations à Juncus subulatus"
+  },
+  {
+    "code": "15.6",
+    "libelle": "FOURRES DES PRES SALES (hygro-halophiles)"
+  },
+  {
+    "code": "15.61",
+    "libelle": "Fourrés des marais salés méditerranéens"
+  },
+  {
+    "code": "15.611",
+    "libelle": "Tapis d'Arthrocnemum perennis"
+  },
+  {
+    "code": "15.612",
+    "libelle": "Bosquets d'arbrisseaux à Arthrocnemum (enganes)"
+  },
+  {
+    "code": "15.613",
+    "libelle": "Bosquets à Arthrocnemum glaucum (enganes)"
+  },
+  {
+    "code": "15.614",
+    "libelle": "Bosquets d'arbrisseaux à Suaeda"
+  },
+  {
+    "code": "15.616",
+    "libelle": "Fourrés méditerranéens à pourpier marin et Arthrocnemum fruticosi"
+  },
+  {
+    "code": "15.62",
+    "libelle": "Fourrés des marais salés atlantiques"
+  },
+  {
+    "code": "15.621",
+    "libelle": "Fourrés argentés à Halimione portulacoides"
+  },
+  {
+    "code": "15.622",
+    "libelle": "Fruticées atlantiques d'Arthrocnemum perennis"
+  },
+  {
+    "code": "15.623",
+    "libelle": "Fourrés atlantiques d'arbrisseaux à Suaeda"
+  },
+  {
+    "code": "15.624",
+    "libelle": "Fourrés atlantiques d'arbustes à Arthrocnemum"
+  },
+  {
+    "code": "15.63",
+    "libelle": "Fourrés à Limoniastrum"
+  },
+  {
+    "code": "15.8",
+    "libelle": "STEPPES SALEES MEDITERANEENNES"
+  },
+  {
+    "code": "15.81",
+    "libelle": "Steppes à Lavande de mer"
+  },
+  {
+    "code": "15.811",
+    "libelle": "Steppes à Lavande de mer ibériques"
+  },
+  {
+    "code": "15.8114",
+    "libelle": "Steppes à Lavande de mer catalano-provençales"
+  },
+  {
+    "code": "16.1",
+    "libelle": "PLAGES DE SABLE"
+  },
+  {
+    "code": "16.11",
+    "libelle": "Plages de sable sans végétation"
+  },
+  {
+    "code": "16.12",
+    "libelle": "Groupements annuels des plages de sable"
+  },
+  {
+    "code": "16.13",
+    "libelle": "Groupements vivaces des plages de sable"
+  },
+  {
+    "code": "16.2",
+    "libelle": "DUNES"
+  },
+  {
+    "code": "16.21",
+    "libelle": "Dunes mobiles"
+  },
+  {
+    "code": "16.211",
+    "libelle": "Dunes embryonnaires"
+  },
+  {
+    "code": "16.2111",
+    "libelle": "Dunes embryonnaires atlantiques"
+  },
+  {
+    "code": "16.2112",
+    "libelle": "Dunes embryonnaires méditerranéennes"
+  },
+  {
+    "code": "16.212",
+    "libelle": "Dunes blanches"
+  },
+  {
+    "code": "16.2121",
+    "libelle": "Dunes blanches de l'Atlantique"
+  },
+  {
+    "code": "16.2122",
+    "libelle": "Dunes blanches de la Méditerranée"
+  },
+  {
+    "code": "16.22",
+    "libelle": "Dunes grises"
+  },
+  {
+    "code": "16.221",
+    "libelle": "Dunes grises septentrionales"
+  },
+  {
+    "code": "16.2211",
+    "libelle": "Groupements dunaires à Tortula"
+  },
+  {
+    "code": "16.2212",
+    "libelle": "Groupements dunaires à Corynephorus canescens"
+  },
+  {
+    "code": "16.2213",
+    "libelle": "Groupements dunaires à Myosoton"
+  },
+  {
+    "code": "16.222",
+    "libelle": "Dunes grises de Gascogne"
+  },
+  {
+    "code": "16.225",
+    "libelle": "Pelouses dunaires du Mesobromion"
+  },
+  {
+    "code": "16.226",
+    "libelle": "Lisières des dunes thermophiles"
+  },
+  {
+    "code": "16.227",
+    "libelle": "Groupements dunaires à plantes annuelles"
+  },
+  {
+    "code": "16.228",
+    "libelle": "Groupements dunaires à Malcolmia"
+  },
+  {
+    "code": "16.229",
+    "libelle": "Pelouses dunaires méditerranéennes xériques"
+  },
+  {
+    "code": "16.24",
+    "libelle": "Dunes brunes à bruyère"
+  },
+  {
+    "code": "16.242",
+    "libelle": "Dunes françaises à bruyère"
+  },
+  {
+    "code": "16.244",
+    "libelle": "Dunes françaises à bruyère cendrée"
+  },
+  {
+    "code": "16.245",
+    "libelle": "Dunes françaises à bruyère ciliée"
+  },
+  {
+    "code": "16.25",
+    "libelle": "Dunes avec fourrés, bosquets"
+  },
+  {
+    "code": "16.251",
+    "libelle": "Fourrés dunaires à Argousier"
+  },
+  {
+    "code": "16.252",
+    "libelle": "Fourrés dunaires mixtes"
+  },
+  {
+    "code": "16.26",
+    "libelle": "Dunes à Salix arenaria"
+  },
+  {
+    "code": "16.27",
+    "libelle": "Dunes à genèvrier"
+  },
+  {
+    "code": "16.271",
+    "libelle": "Fourrés dunaires à genévrier oxycèdre"
+  },
+  {
+    "code": "16.272",
+    "libelle": "Bois à Juniperetum lyciae"
+  },
+  {
+    "code": "16.28",
+    "libelle": "Fourrés dunaires à sclérophylles"
+  },
+  {
+    "code": "16.29",
+    "libelle": "Dunes boisées"
+  },
+  {
+    "code": "16.3",
+    "libelle": "LETTES DUNAIRES HUMIDES (= Pannes humides, = dépressions humides intradunales)"
+  },
+  {
+    "code": "16.31",
+    "libelle": "Mares des lettes dunaires"
+  },
+  {
+    "code": "16.32",
+    "libelle": "Gazons pionniers des lettes ou pannes humides"
+  },
+  {
+    "code": "16.33",
+    "libelle": "Bas-marais des pannes humides"
+  },
+  {
+    "code": "16.34",
+    "libelle": "Prairies des lettes ou pannes humides"
+  },
+  {
+    "code": "16.35",
+    "libelle": "Roselières et cariçaies des lettes dunaires"
+  },
+  {
+    "code": "17.1",
+    "libelle": "PLAGES DE GALETS SANS VEGETATION"
+  },
+  {
+    "code": "17.2",
+    "libelle": "VEGETATION ANNUELLE DES LAISSES DE MER SUR PLAGES DE GALETS"
+  },
+  {
+    "code": "17.3",
+    "libelle": "VEGETATION VIVACE DES BANCS DE GALETS à CRAMBE"
+  },
+  {
+    "code": "17.32",
+    "libelle": "Groupements à Crambe de la Manche"
+  },
+  {
+    "code": "17.33",
+    "libelle": "Groupements à Crambe de l'Atlantique"
+  },
+  {
+    "code": "17.4",
+    "libelle": "PRAIRIES ET LANDES DES BANCS DE GALETS"
+  },
+  {
+    "code": "17.41",
+    "libelle": "Pelouses à Avoine élevée sur bancs de galets"
+  },
+  {
+    "code": "17.42",
+    "libelle": "Landes à Genêt à balais sur bancs de galets"
+  },
+  {
+    "code": "18.1",
+    "libelle": "FALAISES MARITIMES NUES"
+  },
+  {
+    "code": "18.11",
+    "libelle": "Rochers et falaises de la frange médiolittorale"
+  },
+  {
+    "code": "18.12",
+    "libelle": "Rochers de l'étage médiolittoral inférieur"
+  },
+  {
+    "code": "18.13",
+    "libelle": "Rochers de l'étage médiolittoral supérieur"
+  },
+  {
+    "code": "18.14",
+    "libelle": "Surplombs, crevasses et grottes de l'étage médiolittoral"
+  },
+  {
+    "code": "18.15",
+    "libelle": "Mares permanentes des rochers de l'étage médiolittoral"
+  },
+  {
+    "code": "18.16",
+    "libelle": "Rochers de l'étage supralittoral"
+  },
+  {
+    "code": "18.17",
+    "libelle": "Flaques des rochers de l'étage supralittoral"
+  },
+  {
+    "code": "18.2",
+    "libelle": "CôTES ROCHEUSES ET FALAISES AVEC VEGETATION"
+  },
+  {
+    "code": "18.21",
+    "libelle": "Groupements des falaises atlantiques"
+  },
+  {
+    "code": "18.22",
+    "libelle": "Groupements des falaises méditerranéennes"
+  },
+  {
+    "code": "22.1",
+    "libelle": "EAUX DOUCES"
+  },
+  {
+    "code": "22.11",
+    "libelle": "Eaux oligotrophes pauvres en calcaire"
+  },
+  {
+    "code": "22.12",
+    "libelle": "Eaux mésotrophes"
+  },
+  {
+    "code": "22.13",
+    "libelle": "Eaux eutrophes"
+  },
+  {
+    "code": "22.14",
+    "libelle": "Eaux dystrophes"
+  },
+  {
+    "code": "22.15",
+    "libelle": "Eaux oligo-mésotrophes riches en calcaire"
+  },
+  {
+    "code": "22.2",
+    "libelle": "GALETS OU VASIERES NON VEGETALISES"
+  },
+  {
+    "code": "22.3",
+    "libelle": "COMMUNAUTES AMPHIBIES"
+  },
+  {
+    "code": "22.31",
+    "libelle": "Communautés amphibies pérennes septentrionales"
+  },
+  {
+    "code": "22.311",
+    "libelle": "Gazons de Littorelles, étangs à Lobélies, gazons d'Isoètes"
+  },
+  {
+    "code": "22.3111",
+    "libelle": "Gazons de Littorelles"
+  },
+  {
+    "code": "22.3112",
+    "libelle": "Etangs à Lobélies"
+  },
+  {
+    "code": "22.3113",
+    "libelle": "Gazons d'Isoètes euro-sibériens"
+  },
+  {
+    "code": "22.3114",
+    "libelle": "Communautés flottantes de Sparganium"
+  },
+  {
+    "code": "22.312",
+    "libelle": "Gazons à Eleocharis en eaux peu profondes"
+  },
+  {
+    "code": "22.313",
+    "libelle": "Gazons des bordures d'étangs acides en eaux peu profondes"
+  },
+  {
+    "code": "22.314",
+    "libelle": "Gazons des berges tourbeuses en eaux peu profondes"
+  },
+  {
+    "code": "22.32",
+    "libelle": "Gazons amphibies annuels septentrionaux"
+  },
+  {
+    "code": "22.321",
+    "libelle": "Communautés à Eleocharis"
+  },
+  {
+    "code": "22.322",
+    "libelle": "Gazons de plantes pionnières des lettes dunaires"
+  },
+  {
+    "code": "22.323",
+    "libelle": "Communautés naines à Juncus bufonius"
+  },
+  {
+    "code": "22.3231",
+    "libelle": "Gazons à Juncus bufonius"
+  },
+  {
+    "code": "22.3232",
+    "libelle": "Gazons à petits Souchets"
+  },
+  {
+    "code": "22.3233",
+    "libelle": "Communautés d'herbes naines des substrats humides"
+  },
+  {
+    "code": "22.33",
+    "libelle": "Groupements à Bidens tripartitus"
+  },
+  {
+    "code": "22.34",
+    "libelle": "Groupements amphibies méridionaux"
+  },
+  {
+    "code": "22.341",
+    "libelle": "Petits gazons amphibies méditerranéens"
+  },
+  {
+    "code": "22.3411",
+    "libelle": "Groupements terrestres à Isoètes"
+  },
+  {
+    "code": "22.3412",
+    "libelle": "Gazons méditerranéens aquatiques à Isoètes"
+  },
+  {
+    "code": "22.3414",
+    "libelle": "Gazons méditerranéens à Cyperus"
+  },
+  {
+    "code": "22.3415",
+    "libelle": "Gazons méditerranéens à Fimbristylis"
+  },
+  {
+    "code": "22.3417",
+    "libelle": "Groupements à Spiranthes et Anagallis"
+  },
+  {
+    "code": "22.3418",
+    "libelle": "Groupements méditerranéens amphibies à plantes de taille réduite"
+  },
+  {
+    "code": "22.342",
+    "libelle": "Grands gazons méditerranéens amphibies"
+  },
+  {
+    "code": "22.343",
+    "libelle": "Gazons méditerranéens amphibies halo-nitrophiles"
+  },
+  {
+    "code": "22.344",
+    "libelle": "Prairies à Serapias"
+  },
+  {
+    "code": "22.4",
+    "libelle": "VEGETATIONS AQUATIQUES"
+  },
+  {
+    "code": "22.41",
+    "libelle": "Végétations flottant librement"
+  },
+  {
+    "code": "22.411",
+    "libelle": "Couvertures de Lemnacées"
+  },
+  {
+    "code": "22.412",
+    "libelle": "Radeaux d'Hydrocharis"
+  },
+  {
+    "code": "22.413",
+    "libelle": "Radeaux de Stratiotes"
+  },
+  {
+    "code": "22.414",
+    "libelle": "Colonies d'Utriculaires"
+  },
+  {
+    "code": "22.415",
+    "libelle": "Couvertures de Salvinia"
+  },
+  {
+    "code": "22.416",
+    "libelle": "Groupements à Aldrovanda"
+  },
+  {
+    "code": "22.42",
+    "libelle": "Végétations enracinées immergées"
+  },
+  {
+    "code": "22.421",
+    "libelle": "Groupements de grands Potamots"
+  },
+  {
+    "code": "22.422",
+    "libelle": "Groupements de petits Potamots"
+  },
+  {
+    "code": "22.43",
+    "libelle": "Végétations enracinées flottantes"
+  },
+  {
+    "code": "22.431",
+    "libelle": "Tapis flottant de végétaux à grandes feuilles"
+  },
+  {
+    "code": "22.4311",
+    "libelle": "Tapis de Nénuphars"
+  },
+  {
+    "code": "22.4312",
+    "libelle": "Tapis de chataîgnes d'eau"
+  },
+  {
+    "code": "22.4313",
+    "libelle": "Tapis de Nymphoides"
+  },
+  {
+    "code": "22.4314",
+    "libelle": "Tapis de Potamot flottant"
+  },
+  {
+    "code": "22.4315",
+    "libelle": "Tapis de Renouées"
+  },
+  {
+    "code": "22.432",
+    "libelle": "Communautés flottantes des eaux peu profondes"
+  },
+  {
+    "code": "22.433",
+    "libelle": "Groupements oligotrophes de Potamots"
+  },
+  {
+    "code": "22.44",
+    "libelle": "Tapis immergés de Characées"
+  },
+  {
+    "code": "22.441",
+    "libelle": "Tapis de Chara"
+  },
+  {
+    "code": "22.442",
+    "libelle": "Tapis de Nitella"
+  },
+  {
+    "code": "22.45",
+    "libelle": "Mares de tourbières à Sphaignes et Utriculaires"
+  },
+  {
+    "code": "22.5",
+    "libelle": "MASSES D'EAU TEMPORAIRES"
+  },
+  {
+    "code": "23.1",
+    "libelle": "EAUX SAUMATRES OU SALEES SANS VEGETATION"
+  },
+  {
+    "code": "23.11",
+    "libelle": "Eau libre sans tapis de Charophytes"
+  },
+  {
+    "code": "23.12",
+    "libelle": "Tapis algual de Charophyte"
+  },
+  {
+    "code": "23.2",
+    "libelle": "EAUX SAUMATRES OU SALEES VEGETALISEES"
+  },
+  {
+    "code": "23.21",
+    "libelle": "Formations immergées des eaux saumâtres ou salées"
+  },
+  {
+    "code": "23.211",
+    "libelle": "Groupements à Ruppia"
+  },
+  {
+    "code": "23.212",
+    "libelle": "Communautés lagunaires de végétation marine"
+  },
+  {
+    "code": "23.22",
+    "libelle": "Scirpaies naines lagunaires"
+  },
+  {
+    "code": "24.1",
+    "libelle": "LITS DES RIVIERES"
+  },
+  {
+    "code": "24.11",
+    "libelle": "Ruisselets"
+  },
+  {
+    "code": "24.12",
+    "libelle": "Zone à Truites"
+  },
+  {
+    "code": "24.13",
+    "libelle": "Zone à Ombres"
+  },
+  {
+    "code": "24.14",
+    "libelle": "Zone à Barbeaux"
+  },
+  {
+    "code": "24.15",
+    "libelle": "Zone à Brèmes"
+  },
+  {
+    "code": "24.16",
+    "libelle": "Cours d'eau intermittents"
+  },
+  {
+    "code": "24.2",
+    "libelle": "BANCS DE GRAVIERS DES COURS D'EAU"
+  },
+  {
+    "code": "24.21",
+    "libelle": "Bancs de graviers sans végétation"
+  },
+  {
+    "code": "24.22",
+    "libelle": "Bancs de graviers végétalisés"
+  },
+  {
+    "code": "24.221",
+    "libelle": "Groupements d'Epilobes des rivières subalpines"
+  },
+  {
+    "code": "24.222",
+    "libelle": "Groupements alpins des bancs de graviers"
+  },
+  {
+    "code": "24.223",
+    "libelle": "Broussailles de Saules et de Myricaire germanique"
+  },
+  {
+    "code": "24.224",
+    "libelle": "Fourrés et bois des bancs de graviers"
+  },
+  {
+    "code": "24.225",
+    "libelle": "Lits de graviers méditerranéens"
+  },
+  {
+    "code": "24.226",
+    "libelle": "Graviers des rivières de plaine"
+  },
+  {
+    "code": "24.3",
+    "libelle": "BANCS DE SABLE DES RIVIERES"
+  },
+  {
+    "code": "24.31",
+    "libelle": "Bancs de sable des rivières sans végétation"
+  },
+  {
+    "code": "24.32",
+    "libelle": "Bancs de sable riverains pourvus de végétation"
+  },
+  {
+    "code": "24.4",
+    "libelle": "VEGETATION IMMERGEE DES RIVIERES"
+  },
+  {
+    "code": "24.41",
+    "libelle": "Végétation des rivières oligotrophes acidiphiles"
+  },
+  {
+    "code": "24.42",
+    "libelle": "Végétation des rivières oligotrophes riches en calcaire"
+  },
+  {
+    "code": "24.43",
+    "libelle": "Végétation des rivières mésotrophes"
+  },
+  {
+    "code": "24.44",
+    "libelle": "Végétation des rivières eutrophes"
+  },
+  {
+    "code": "24.5",
+    "libelle": "DEPOTS D'ALLUVIONS FLUVIATILES LIMONEUSES"
+  },
+  {
+    "code": "24.51",
+    "libelle": "Dépôts nus d'alluvions fluviatiles limoneuses"
+  },
+  {
+    "code": "24.52",
+    "libelle": "Groupements euro-sibériens annuels des vases fluviatiles"
+  },
+  {
+    "code": "24.53",
+    "libelle": "Groupements méditerranéens des limons riverains"
+  },
+  {
+    "code": "31.1",
+    "libelle": "LANDES HUMIDES"
+  },
+  {
+    "code": "31.11",
+    "libelle": "Landes humides septentrionales"
+  },
+  {
+    "code": "31.12",
+    "libelle": "Landes humides méridionales"
+  },
+  {
+    "code": "31.13",
+    "libelle": "Landes humides à Molinia caerulea"
+  },
+  {
+    "code": "31.2",
+    "libelle": "LANDES SECHES"
+  },
+  {
+    "code": "31.21",
+    "libelle": "Landes submontagnardes à Vaccinium"
+  },
+  {
+    "code": "31.213",
+    "libelle": "Landes hercyniennes à Vaccinium"
+  },
+  {
+    "code": "31.214",
+    "libelle": "Landes submontagnardes alpiennes à Vaccinium"
+  },
+  {
+    "code": "31.215",
+    "libelle": "Landes sub-montagnardes pyrénéo-cantabriques à Vaccinium"
+  },
+  {
+    "code": "31.22",
+    "libelle": "Landes sub-atlantiques à Genêt et Callune"
+  },
+  {
+    "code": "31.223",
+    "libelle": "Landes campino-flandriennes à Callune et Genêt"
+  },
+  {
+    "code": "31.224",
+    "libelle": "Landes campino-flandriennes à Erica cinerea"
+  },
+  {
+    "code": "31.226",
+    "libelle": "Landes montagnardes à Calluna et Genista"
+  },
+  {
+    "code": "31.227",
+    "libelle": "Landes à Empetrum nigrum"
+  },
+  {
+    "code": "31.23",
+    "libelle": "Landes atlantiques à Erica et Ulex"
+  },
+  {
+    "code": "31.231",
+    "libelle": "Landes à Ulex maritimus"
+  },
+  {
+    "code": "31.234",
+    "libelle": "Landes septentrionales à Erica vagans"
+  },
+  {
+    "code": "31.2341",
+    "libelle": "Landes armoricaines à Erica vagans"
+  },
+  {
+    "code": "31.235",
+    "libelle": "Landes anglo-armoricaines occidentales à Ajoncs"
+  },
+  {
+    "code": "31.2351",
+    "libelle": "Landes anglo-armoricaines à Ulex gallii et Erica cinerea"
+  },
+  {
+    "code": "31.2352",
+    "libelle": "Landes anglo-armoricaines à Ulex gallii et Erica ciliaris"
+  },
+  {
+    "code": "31.2353",
+    "libelle": "Landes anglo-armoricaines à Ulex gallii et Calluna"
+  },
+  {
+    "code": "31.236",
+    "libelle": "Landes pyrénéo-cantabriques à Erica mackaiana et E. ciliaris"
+  },
+  {
+    "code": "31.237",
+    "libelle": "Landes pyrénéo-cantabriques à Erica vagans et Erica cinerea"
+  },
+  {
+    "code": "31.238",
+    "libelle": "Landes anglo-normandes à Ajoncs nains."
+  },
+  {
+    "code": "31.2381",
+    "libelle": "Landes anglo-normandes à Ulex minor et Erica cinerea"
+  },
+  {
+    "code": "31.2382",
+    "libelle": "Landes anglo-normandes à Ulex minor et Erica ciliaris"
+  },
+  {
+    "code": "31.2383",
+    "libelle": "Landes anglo-normandes à Ulex minor et Calluna"
+  },
+  {
+    "code": "31.239",
+    "libelle": "Landes aquitano-ligériennes à Ajoncs nains"
+  },
+  {
+    "code": "31.2391",
+    "libelle": "Landes aquitano-ligériennes à Ulex minor et Erica cinerea"
+  },
+  {
+    "code": "31.2392",
+    "libelle": "Landes aquitano-ligériennes à Ulex minor et Erica ciliaris"
+  },
+  {
+    "code": "31.2393",
+    "libelle": "Landes aquitano-ligériennes à Ulex minor et Erica scoparia"
+  },
+  {
+    "code": "31.24",
+    "libelle": "Landes ibéro-atlantiques à Erica, Ulex et Cistus"
+  },
+  {
+    "code": "31.2411",
+    "libelle": "Landes aquitaniennes à Erica et Cistus"
+  },
+  {
+    "code": "31.2412",
+    "libelle": "Landes arides de Gascogne et de Sologne"
+  },
+  {
+    "code": "31.4",
+    "libelle": "LANDES ALPINES ET BOREALES"
+  },
+  {
+    "code": "31.41",
+    "libelle": "Landes naines à Azalée et à Vaccinium"
+  },
+  {
+    "code": "31.411",
+    "libelle": "Landes à Loiseleuria"
+  },
+  {
+    "code": "31.412",
+    "libelle": "Landes alpines à Vaccinium"
+  },
+  {
+    "code": "31.42",
+    "libelle": "Landes à Rhododendron"
+  },
+  {
+    "code": "31.43",
+    "libelle": "Fourrés à Genévriers nains"
+  },
+  {
+    "code": "31.431",
+    "libelle": "Fourrés à Juniperus communis subsp. nana"
+  },
+  {
+    "code": "31.432",
+    "libelle": "Fourrés à Juniperus sabina"
+  },
+  {
+    "code": "31.433",
+    "libelle": "Fourrés à Juniperus communis subsp. hemisphaerica"
+  },
+  {
+    "code": "31.44",
+    "libelle": "Landes à Empetrum et Vaccinium"
+  },
+  {
+    "code": "31.47",
+    "libelle": "Landes à Arctostaphylos uva-ursi"
+  },
+  {
+    "code": "31.48",
+    "libelle": "Landes à Rhododendron hirsutum"
+  },
+  {
+    "code": "31.49",
+    "libelle": "Ilots montagnards à Dryade"
+  },
+  {
+    "code": "31.491",
+    "libelle": "Ilots de haute montagne à Dryas"
+  },
+  {
+    "code": "31.5",
+    "libelle": "FOURRE BAS DE PINS DE MONTAGNE"
+  },
+  {
+    "code": "31.52",
+    "libelle": "Fourrés bas de Pins de montagne des Alpes externes"
+  },
+  {
+    "code": "31.53",
+    "libelle": "Fourrés bas de Pins de montagne des Alpes sud-occidentales"
+  },
+  {
+    "code": "31.6",
+    "libelle": "FOURRES SUBALPINS ET COMMUNAUTES DE HAUTES HERBES"
+  },
+  {
+    "code": "31.61",
+    "libelle": "Broussailles d'Aulnes verts"
+  },
+  {
+    "code": "31.611",
+    "libelle": "Fourrés d'Aulnes verts alpiens"
+  },
+  {
+    "code": "31.612",
+    "libelle": "Broussailles corses d'Alnus viridis subsp. suaveolens"
+  },
+  {
+    "code": "31.62",
+    "libelle": "Fourrés de Saules"
+  },
+  {
+    "code": "31.621",
+    "libelle": "Fourrés de Saules pyrénéo-alpiens"
+  },
+  {
+    "code": "31.6211",
+    "libelle": "Brousses alpiennes à Saules bas"
+  },
+  {
+    "code": "31.6212",
+    "libelle": "Brousses alpiennes à Saules prostrés"
+  },
+  {
+    "code": "31.6213",
+    "libelle": "Brousses alpiennes de Saules élevés"
+  },
+  {
+    "code": "31.6214",
+    "libelle": "Broussailles de Saules pyrénéens"
+  },
+  {
+    "code": "31.63",
+    "libelle": "Hautes herbes subalpines avec buissons"
+  },
+  {
+    "code": "31.7",
+    "libelle": "LANDES EPINEUSES"
+  },
+  {
+    "code": "31.71",
+    "libelle": "Landes épineuses pyrénéennes"
+  },
+  {
+    "code": "31.74",
+    "libelle": "Landes épineuses franco-ibériques"
+  },
+  {
+    "code": "31.741",
+    "libelle": "Landes épineuses à Erinacea"
+  },
+  {
+    "code": "31.745",
+    "libelle": "Landes en coussinets de Genista"
+  },
+  {
+    "code": "31.7451",
+    "libelle": "Landes en coussinets pyrénéo-cantabriennes"
+  },
+  {
+    "code": "31.7456",
+    "libelle": "Landes en coussinets à Genista lobelii et G. pulchella"
+  },
+  {
+    "code": "31.75",
+    "libelle": "Landes épineuses cyrno-sardes"
+  },
+  {
+    "code": "31.751",
+    "libelle": "Landes épineuses à Astragalus gennargenteus"
+  },
+  {
+    "code": "31.752",
+    "libelle": "Landes épineuses cyrno-sardes à Euphorbia"
+  },
+  {
+    "code": "31.753",
+    "libelle": "Landes en coussinets cyrno-sardes à Thymus"
+  },
+  {
+    "code": "31.754",
+    "libelle": "Landes épineuses cyrno-sardes à Genista"
+  },
+  {
+    "code": "31.755",
+    "libelle": "Landes épineuses cyrno-sardes à Berberis"
+  },
+  {
+    "code": "31.756",
+    "libelle": "Landes épineuses cyrno-sardes à Anthyllis"
+  },
+  {
+    "code": "31.8",
+    "libelle": "FOURRES"
+  },
+  {
+    "code": "31.81",
+    "libelle": "Fourrés médio-européens sur sol fertile"
+  },
+  {
+    "code": "31.811",
+    "libelle": "Fruticées à Prunus spinosa et Rubus fruticosus"
+  },
+  {
+    "code": "31.8111",
+    "libelle": "Fruticées subatlantiques Prunus spinosa et Rubus fruticosus"
+  },
+  {
+    "code": "31.8112",
+    "libelle": "Fruticées atlantiques Prunus spinosa et Rubus fruticosus"
+  },
+  {
+    "code": "31.812",
+    "libelle": "Fruticées à Prunelliers et Troènes"
+  },
+  {
+    "code": "31.8121",
+    "libelle": "Fruticées atlantiques et médio-européennes à Prunelliers et Troènes"
+  },
+  {
+    "code": "31.81211",
+    "libelle": "Fruticées médio-européennes à Prunelliers et Troènes"
+  },
+  {
+    "code": "31.81212",
+    "libelle": "Fruticées atlantiques à Crataegus et Hedera"
+  },
+  {
+    "code": "31.812121",
+    "libelle": "Fruticées atlantiques calciclines"
+  },
+  {
+    "code": "31.812122",
+    "libelle": "Fruticées calcicoles de bord de route"
+  },
+  {
+    "code": "31.8122",
+    "libelle": "Fruticées subméditerranéennes de Prunelliers et de Troènes"
+  },
+  {
+    "code": "31.8123",
+    "libelle": "Fruticées rocailleuses"
+  },
+  {
+    "code": "31.8124",
+    "libelle": "Fruticées d'Argousiers"
+  },
+  {
+    "code": "31.8125",
+    "libelle": "Fruticées intra-alpines d'Epine vinette"
+  },
+  {
+    "code": "31.81251",
+    "libelle": "Fruticées à Prunus brigantiaca"
+  },
+  {
+    "code": "31.81252",
+    "libelle": "Autres fruticées intra-alpines à Epine vinette."
+  },
+  {
+    "code": "31.82",
+    "libelle": "Fruticées à Buis"
+  },
+  {
+    "code": "31.83",
+    "libelle": "Fruticées des sols pauvres atlantiques"
+  },
+  {
+    "code": "31.831",
+    "libelle": "Ronciers"
+  },
+  {
+    "code": "31.832",
+    "libelle": "Fourrés de Nerprun, Sorbiers, Chèvrefeuilles"
+  },
+  {
+    "code": "31.84",
+    "libelle": "Landes à Genêts"
+  },
+  {
+    "code": "31.841",
+    "libelle": "Landes médio-européennes à Cytisus scoparius"
+  },
+  {
+    "code": "31.8411",
+    "libelle": "Landes à Genêts des plaines et des collines"
+  },
+  {
+    "code": "31.8412",
+    "libelle": "Landes alpiennes à Genêts"
+  },
+  {
+    "code": "31.8413",
+    "libelle": "Landes du Massif Central à Cytisus scoparius"
+  },
+  {
+    "code": "31.8414",
+    "libelle": "Landes à Cytisus scoparius des Pyrénées"
+  },
+  {
+    "code": "31.842",
+    "libelle": "Landes à Cytisus purgans"
+  },
+  {
+    "code": "31.8421",
+    "libelle": "Landes à Cytisus purgans des Cévennes"
+  },
+  {
+    "code": "31.8422",
+    "libelle": "Landes à Cytisus purgans pyrénéennes"
+  },
+  {
+    "code": "31.85",
+    "libelle": "Landes à Ajoncs"
+  },
+  {
+    "code": "31.86",
+    "libelle": "Landes à Fougères"
+  },
+  {
+    "code": "31.861",
+    "libelle": "Landes subatlantiques à Fougères"
+  },
+  {
+    "code": "31.863",
+    "libelle": "Landes supra-méditerranéennes à Fougères"
+  },
+  {
+    "code": "31.87",
+    "libelle": "Clairières forestières"
+  },
+  {
+    "code": "31.871",
+    "libelle": "Clairières herbacées"
+  },
+  {
+    "code": "31.8711",
+    "libelle": "Clairières à Epilobes et Digitales"
+  },
+  {
+    "code": "31.8712",
+    "libelle": "Clairières à Arctium et Belladonne"
+  },
+  {
+    "code": "31.872",
+    "libelle": "Clairières à couvert arbustif"
+  },
+  {
+    "code": "31.88",
+    "libelle": "Fruticées à Genévriers communs"
+  },
+  {
+    "code": "31.881",
+    "libelle": "Landes à Genévriers"
+  },
+  {
+    "code": "31.882",
+    "libelle": "Landes à Genévriers"
+  },
+  {
+    "code": "31.89",
+    "libelle": "Fourrés décidus sub-méditerranéens sud-occidentaux"
+  },
+  {
+    "code": "31.891",
+    "libelle": "Fourrés décidus sub-méditerranéens franco-ibériques"
+  },
+  {
+    "code": "32.1",
+    "libelle": "MATORRAL ARBORESCENT"
+  },
+  {
+    "code": "32.11",
+    "libelle": "Matorral de Chênes sempervirents"
+  },
+  {
+    "code": "32.111",
+    "libelle": "Matorral de Quercus suber"
+  },
+  {
+    "code": "32.112",
+    "libelle": "Matorral acidiphile de Quercus ilex"
+  },
+  {
+    "code": "32.113",
+    "libelle": "Matorral calciphile de Quercus ilex, Q. coccifera"
+  },
+  {
+    "code": "32.12",
+    "libelle": "Matorral à Oliviers et Lentisques"
+  },
+  {
+    "code": "32.121",
+    "libelle": "Matorral arborescent à Oliviers"
+  },
+  {
+    "code": "32.122",
+    "libelle": "Matorral arborescent à Caroubiers"
+  },
+  {
+    "code": "32.123",
+    "libelle": "Matorral arborescent à Lentisques"
+  },
+  {
+    "code": "32.124",
+    "libelle": "Matorral arborescent à Myrtes"
+  },
+  {
+    "code": "32.13",
+    "libelle": "Matorral à Genévriers"
+  },
+  {
+    "code": "32.131",
+    "libelle": "Matorral arborescent à Juniperus oxycedrus"
+  },
+  {
+    "code": "32.1311",
+    "libelle": "Matorral arborescent interne à Juniperus oxycedrus"
+  },
+  {
+    "code": "32.1312",
+    "libelle": "Matorral arborescent à Juniperus macrocarpa"
+  },
+  {
+    "code": "32.132",
+    "libelle": "Matorral arborescent à Juniperus phoenicea"
+  },
+  {
+    "code": "32.1321",
+    "libelle": "Matorral arborescent interne à Juniperus phoenicea"
+  },
+  {
+    "code": "32.1322",
+    "libelle": "Matorral arborescent à Juniperus lycia"
+  },
+  {
+    "code": "32.134",
+    "libelle": "Matorral arborescent à Juniperus communis"
+  },
+  {
+    "code": "32.136",
+    "libelle": "Matorral arborescent à Juniperus thurifera"
+  },
+  {
+    "code": "32.14",
+    "libelle": "Matorral à Pins"
+  },
+  {
+    "code": "32.141",
+    "libelle": "Matorral arborescent à Pinus pinaster"
+  },
+  {
+    "code": "32.142",
+    "libelle": "Matorral arborescent à Pinus pinea"
+  },
+  {
+    "code": "32.143",
+    "libelle": "Matorral arborescent à Pinus halepensis"
+  },
+  {
+    "code": "32.162",
+    "libelle": "Matorral occidental à Chênes décidus"
+  },
+  {
+    "code": "32.18",
+    "libelle": "Matorral à Lauriers"
+  },
+  {
+    "code": "32.2",
+    "libelle": "FORMATIONS D'ARBUSTES THERMO-MEDITERRANEENS"
+  },
+  {
+    "code": "32.21",
+    "libelle": "Fruticées, fourrés et landes à garrigues thermo-méditerranéennes"
+  },
+  {
+    "code": "32.211",
+    "libelle": "Fruticées à Oliviers et Lentisques"
+  },
+  {
+    "code": "32.212",
+    "libelle": "Landes à garrigues thermo-méditerranéennes"
+  },
+  {
+    "code": "32.2121",
+    "libelle": "Landes à garrigues occidentales à Erica multiflora"
+  },
+  {
+    "code": "32.214",
+    "libelle": "Fruticée à Lentisques"
+  },
+  {
+    "code": "32.215",
+    "libelle": "Fruticée à Calicotome"
+  },
+  {
+    "code": "32.216",
+    "libelle": "Fourrés à Lauriers"
+  },
+  {
+    "code": "32.217",
+    "libelle": "Garrigues côtières à Helichrysum"
+  },
+  {
+    "code": "32.218",
+    "libelle": "Fourrés à Myrtes"
+  },
+  {
+    "code": "32.219",
+    "libelle": "Buissons thermo-méditerranéens à Chênes Kermès"
+  },
+  {
+    "code": "32.22",
+    "libelle": "Formations à Euphorbes"
+  },
+  {
+    "code": "32.274",
+    "libelle": "Landes à Ulex parviflorus franco-ibériennes"
+  },
+  {
+    "code": "32.3",
+    "libelle": "MAQUIS SILISICOLES MESO-MEDITERRANEENS"
+  },
+  {
+    "code": "32.31",
+    "libelle": "Maquis hauts"
+  },
+  {
+    "code": "32.311",
+    "libelle": "Maquis hauts occidentaux-méditerranéens"
+  },
+  {
+    "code": "32.32",
+    "libelle": "Maquis bas à Ericacées"
+  },
+  {
+    "code": "32.33",
+    "libelle": "Maquis hauts à Cistus"
+  },
+  {
+    "code": "32.332",
+    "libelle": "Maquis ibérien central à grand Ciste"
+  },
+  {
+    "code": "32.334",
+    "libelle": "Maquis tyrrhénéens hauts à Cistus"
+  },
+  {
+    "code": "32.34",
+    "libelle": "Maquis bas à Cistus"
+  },
+  {
+    "code": "32.341",
+    "libelle": "Maquis à Cistus monspeliensis"
+  },
+  {
+    "code": "32.342",
+    "libelle": "Maquis à Cistus salviifolius"
+  },
+  {
+    "code": "32.343",
+    "libelle": "Maquis à Cistus populifolius"
+  },
+  {
+    "code": "32.344",
+    "libelle": "Maquis à Cistus laurifolius"
+  },
+  {
+    "code": "32.346",
+    "libelle": "Maquis à Cistus crispus"
+  },
+  {
+    "code": "32.347",
+    "libelle": "Maquis à Cistus creticus"
+  },
+  {
+    "code": "32.348",
+    "libelle": "Maquis à Cistus albidus"
+  },
+  {
+    "code": "32.35",
+    "libelle": "Maquis bas à Cistus-Lavandula stoechas"
+  },
+  {
+    "code": "32.351",
+    "libelle": "Maquis centraux méditerranéens à lavande"
+  },
+  {
+    "code": "32.37",
+    "libelle": "Maquis dominés par des genêts"
+  },
+  {
+    "code": "32.4",
+    "libelle": "GARRIGUES CALCICOLES DE L'OUEST MESO-MEDITERRANEEN"
+  },
+  {
+    "code": "32.41",
+    "libelle": "Garrigues à chênes kermès"
+  },
+  {
+    "code": "32.42",
+    "libelle": "Garrigues à romarin"
+  },
+  {
+    "code": "32.43",
+    "libelle": "Garrigues à cistes"
+  },
+  {
+    "code": "32.431",
+    "libelle": "Garrigues à Cistus albidus"
+  },
+  {
+    "code": "32.433",
+    "libelle": "Garrigues à C. monspeliensis, C. salviifolius, C. incanus"
+  },
+  {
+    "code": "32.44",
+    "libelle": "Garrigues à euphorbes"
+  },
+  {
+    "code": "32.441",
+    "libelle": "Garrigues à euphorbe épineuse"
+  },
+  {
+    "code": "32.45",
+    "libelle": "Garrigues à genévrier oxycèdre"
+  },
+  {
+    "code": "32.46",
+    "libelle": "Garrigues à lavande"
+  },
+  {
+    "code": "32.461",
+    "libelle": "Stations à lavande"
+  },
+  {
+    "code": "32.462",
+    "libelle": "Garrigues mixtes à lavande"
+  },
+  {
+    "code": "32.47",
+    "libelle": "Garrigues à thym, sauge, germandrée et autres labiées"
+  },
+  {
+    "code": "32.48",
+    "libelle": "Garrigues à Genista"
+  },
+  {
+    "code": "32.481",
+    "libelle": "Garrigues à Genista scorpius, G. hispanica"
+  },
+  {
+    "code": "32.482",
+    "libelle": "Garrigues à Genista corsica"
+  },
+  {
+    "code": "32.49",
+    "libelle": "Garrigues à Calicotome"
+  },
+  {
+    "code": "32.6",
+    "libelle": "GARRIGUES SUPRA-MEDITERRANEENNES"
+  },
+  {
+    "code": "32.61",
+    "libelle": "Garrigues à Lavande vraie"
+  },
+  {
+    "code": "32.62",
+    "libelle": "Garrigues à Genista cinerea"
+  },
+  {
+    "code": "32.63",
+    "libelle": "Garrigues montagnardes à Thyms"
+  },
+  {
+    "code": "32.64",
+    "libelle": "Broussailles supra-méditerranéennes à Buis"
+  },
+  {
+    "code": "33.1",
+    "libelle": "PHRYGANES OUEST MEDITERRANEENS DES SOMMETS DE FALAISES"
+  },
+  {
+    "code": "33.11",
+    "libelle": "Phryganes de la Provence calcaire"
+  },
+  {
+    "code": "33.12",
+    "libelle": "Phryganes de la Provence cristalline"
+  },
+  {
+    "code": "33.13",
+    "libelle": "Phryganes du Cap Corse"
+  },
+  {
+    "code": "33.14",
+    "libelle": "Phryganes du détroit de Bonifacio"
+  },
+  {
+    "code": "34.1",
+    "libelle": "PELOUSES PIONNIERES MEDIO-EUROPEENNES"
+  },
+  {
+    "code": "34.11",
+    "libelle": "Pelouses médio-européennes sur débris rocheux"
+  },
+  {
+    "code": "34.111",
+    "libelle": "Gazons à orpins"
+  },
+  {
+    "code": "34.112",
+    "libelle": "Formations à Joubarbes"
+  },
+  {
+    "code": "34.1121",
+    "libelle": "Groupements à Sempervivum tectorum"
+  },
+  {
+    "code": "34.113",
+    "libelle": "Formations herbeuses sur débris rocheux"
+  },
+  {
+    "code": "34.114",
+    "libelle": "Groupements thérophytiques médio-européens sur débris rocheux"
+  },
+  {
+    "code": "34.12",
+    "libelle": "Pelouses des sables calcaires"
+  },
+  {
+    "code": "34.2",
+    "libelle": "PRAIRIES DE PLAINES à METAUX LOURDS"
+  },
+  {
+    "code": "34.3",
+    "libelle": "PRAIRIES PERENNES DENSES ET STEPPES MEDIO-EUROPEENNES"
+  },
+  {
+    "code": "34.31",
+    "libelle": "Prairies steppiques sub-continentales"
+  },
+  {
+    "code": "34.312",
+    "libelle": "Prairies steppiques de l'Europe centrale"
+  },
+  {
+    "code": "34.3121",
+    "libelle": "Prairies steppiques xérophiles de l'Europe centrale"
+  },
+  {
+    "code": "34.3122",
+    "libelle": "Prairies steppiques mésophiles de l'Europe centrale"
+  },
+  {
+    "code": "34.3123",
+    "libelle": "Prairies steppiques à brachypode penné de l'Europe centrale"
+  },
+  {
+    "code": "34.314",
+    "libelle": "Prairies arides des Alpes occidentales internes"
+  },
+  {
+    "code": "34.32",
+    "libelle": "Pelouses calcaires sub-atlantiques semi-arides"
+  },
+  {
+    "code": "34.322",
+    "libelle": "Pelouses semi-arides médio-européennes à Bromus erectus"
+  },
+  {
+    "code": "34.3221",
+    "libelle": "Mesobromion mosan"
+  },
+  {
+    "code": "34.3225",
+    "libelle": "Mesobromion crétacé du bassin parisien"
+  },
+  {
+    "code": "34.3226",
+    "libelle": "Mesobromion parisien tertiaire"
+  },
+  {
+    "code": "34.3227",
+    "libelle": "Mesobromion jurassique du bassin parisien"
+  },
+  {
+    "code": "34.3228",
+    "libelle": "Mesobromion du Rhin moyen"
+  },
+  {
+    "code": "34.3229",
+    "libelle": "Mesobromion du Rhin supérieur"
+  },
+  {
+    "code": "34.323",
+    "libelle": "Pelouses semi-arides médio-européennes dominées par Brachypodium"
+  },
+  {
+    "code": "34.324",
+    "libelle": "Pelouses Mesobromion alluviales et humides"
+  },
+  {
+    "code": "34.325",
+    "libelle": "Pelouses semi-arides médio-européennes dominées par Sesleria"
+  },
+  {
+    "code": "34.326",
+    "libelle": "Mesobromion subméditerranéens"
+  },
+  {
+    "code": "34.3261",
+    "libelle": "Mesobromion pyrénéo-catalan"
+  },
+  {
+    "code": "34.3262",
+    "libelle": "Mesobromion des Corbières"
+  },
+  {
+    "code": "34.3263",
+    "libelle": "Mesobromion des Causses"
+  },
+  {
+    "code": "34.3264",
+    "libelle": "Mesobromion provençal"
+  },
+  {
+    "code": "34.3265",
+    "libelle": "Mesobromion des Alpes sud-occidentales"
+  },
+  {
+    "code": "34.33",
+    "libelle": "Prairies calcaires subatlantiques très sèches"
+  },
+  {
+    "code": "34.332",
+    "libelle": "Pelouses médio-européennes du Xerobromion"
+  },
+  {
+    "code": "34.3321",
+    "libelle": "Xerobromion mosan"
+  },
+  {
+    "code": "34.3323",
+    "libelle": "Xerobromion crétacé du bassin parisien"
+  },
+  {
+    "code": "34.3324",
+    "libelle": "Xerobromion tertiaire parisien"
+  },
+  {
+    "code": "34.3325",
+    "libelle": "Xerobromion jurassique du bassin parisien"
+  },
+  {
+    "code": "34.3326",
+    "libelle": "Xerobromion du Rhin moyen"
+  },
+  {
+    "code": "34.3327",
+    "libelle": "Xerobromion du Rhin supérieur"
+  },
+  {
+    "code": "34.3328",
+    "libelle": "Xerobromion du Jura français"
+  },
+  {
+    "code": "34.34",
+    "libelle": "Pelouses calcaréo-siliceuses de l'Europe centrale"
+  },
+  {
+    "code": "34.341",
+    "libelle": "Pelouses sur rochers calcaréo-siliceux"
+  },
+  {
+    "code": "34.342",
+    "libelle": "Pelouses sur sables légèrement calcaires"
+  },
+  {
+    "code": "34.35",
+    "libelle": "Pelouses à fétuque"
+  },
+  {
+    "code": "34.36",
+    "libelle": "gazons à Brachypode de Phénicie"
+  },
+  {
+    "code": "34.4",
+    "libelle": "LISIERES FORESTIERES THERMOPHILES"
+  },
+  {
+    "code": "34.41",
+    "libelle": "Lisières xéro-thermophiles"
+  },
+  {
+    "code": "34.42",
+    "libelle": "Lisières mésophiles"
+  },
+  {
+    "code": "34.5",
+    "libelle": "PELOUSES MEDITERRANEENNES XERIQUES"
+  },
+  {
+    "code": "34.51",
+    "libelle": "Pelouses méditerranéennes occidentales xériques"
+  },
+  {
+    "code": "34.511",
+    "libelle": "Gazons du Brachypodietum retusi"
+  },
+  {
+    "code": "34.512",
+    "libelle": "Steppe de la Crau"
+  },
+  {
+    "code": "34.513",
+    "libelle": "Groupements méditerranéens annuels des sols superficiels"
+  },
+  {
+    "code": "34.5131",
+    "libelle": "Groupements annuels calciphiles de l'ouest méditerranéen"
+  },
+  {
+    "code": "34.514",
+    "libelle": "Arènes dolomitiques des Causses"
+  },
+  {
+    "code": "34.52",
+    "libelle": "Pâtures pérennes du sud-ouest méditerranéen"
+  },
+  {
+    "code": "34.6",
+    "libelle": "STEPPES MEDITERRANEENNES A PETITES GRAMINEES"
+  },
+  {
+    "code": "34.63",
+    "libelle": "Steppes à Stipa , Ampeloddesmos ,                       Andropogon,          fétuque"
+  },
+  {
+    "code": "34.632",
+    "libelle": "Steppes méditerranéennes à Stipa"
+  },
+  {
+    "code": "34.634",
+    "libelle": "Steppes à Andropogon"
+  },
+  {
+    "code": "34.7",
+    "libelle": "PELOUSES MEDITERRANEO-MONTAGNARDES"
+  },
+  {
+    "code": "34.71",
+    "libelle": "Steppes méditerranéo-montagnardes"
+  },
+  {
+    "code": "34.711",
+    "libelle": "Steppes méditerranéo-montagnardes à Stipa"
+  },
+  {
+    "code": "34.7111",
+    "libelle": "Steppes à Stipa des Causses"
+  },
+  {
+    "code": "34.7112",
+    "libelle": "Steppes à Stipa de haute-Provence"
+  },
+  {
+    "code": "34.712",
+    "libelle": "Steppes méditerranéo-montagnardes à Sesleria"
+  },
+  {
+    "code": "34.713",
+    "libelle": "Steppes méditerranéo-montagnardes à Festuca-Koeleria"
+  },
+  {
+    "code": "34.7131",
+    "libelle": "Petits gazons des Causses à Festuca"
+  },
+  {
+    "code": "34.7132",
+    "libelle": "Gazons des Causses à Carex-Anthyllis"
+  },
+  {
+    "code": "34.7133",
+    "libelle": "Steppes méditerranéo-montagnardes franco-ibériennes"
+  },
+  {
+    "code": "34.714",
+    "libelle": "Steppes méditerranéo-montagnardes à Artemisia"
+  },
+  {
+    "code": "34.72",
+    "libelle": "Steppes supra-méditerranéennes et prairies à Aphyllanthes"
+  },
+  {
+    "code": "34.721",
+    "libelle": "Pelouses à Aphyllanthes"
+  },
+  {
+    "code": "34.8",
+    "libelle": "PRAIRIES MEDITERRANEENNES SUBNITROPHILES"
+  },
+  {
+    "code": "34.81",
+    "libelle": "Groupements méditerranéens subnitrophiles de graminées"
+  },
+  {
+    "code": "35.1",
+    "libelle": "GAZONS ATLANTIQUES A NARD RAIDE ET GROUPEMENTS APPARENTES"
+  },
+  {
+    "code": "35.11",
+    "libelle": "Gazons à Nard raide"
+  },
+  {
+    "code": "35.12",
+    "libelle": "Prairies à Agrostis-Festuca"
+  },
+  {
+    "code": "35.13",
+    "libelle": "Pelouses à canche flexueuse"
+  },
+  {
+    "code": "35.14",
+    "libelle": "Pelouses intraforestières à Calamagrostis epigejos"
+  },
+  {
+    "code": "35.15",
+    "libelle": "Pelouses à laîche des sables"
+  },
+  {
+    "code": "35.2",
+    "libelle": "PELOUSES SILICEUSES OUVERTES MEDIO-EUROPEENNES"
+  },
+  {
+    "code": "35.21",
+    "libelle": "Prairies siliceuses à annuelles naines"
+  },
+  {
+    "code": "35.22",
+    "libelle": "Pelouses siliceuses ouvertes permanentes"
+  },
+  {
+    "code": "35.23",
+    "libelle": "Pelouses à Corynephorus"
+  },
+  {
+    "code": "35.3",
+    "libelle": "PELOUSES MEDITERRANENNES SILICEUSES"
+  },
+  {
+    "code": "35.4",
+    "libelle": "GROUPEMENTS MEDITERRANEENS ANNUELS DES SABLES PROFONDS"
+  },
+  {
+    "code": "35.7",
+    "libelle": "PELOUSES MEDITERRANEO-MONTAGNARDES"
+  },
+  {
+    "code": "36.1",
+    "libelle": "GROUPEMENTS DES COMBES A NEIGE"
+  },
+  {
+    "code": "36.11",
+    "libelle": "Groupements des combes à neige acides"
+  },
+  {
+    "code": "36.111",
+    "libelle": "Groupements des combes à neige alpines acides"
+  },
+  {
+    "code": "36.1111",
+    "libelle": "Groupements acidiphiles des combes à neige alpines à mousses"
+  },
+  {
+    "code": "36.1112",
+    "libelle": "Groupements des combes à neige alpines acidiphiles à Saule nain"
+  },
+  {
+    "code": "36.1113",
+    "libelle": "Groupements de combes à neige alpines acidiphiles à Carex-Gnaphalium"
+  },
+  {
+    "code": "36.12",
+    "libelle": "Groupements de combes à neige sur substrats calcaires"
+  },
+  {
+    "code": "36.121",
+    "libelle": "Groupements des combes à neige sur calcaires à Arabis-Gnaphalietum"
+  },
+  {
+    "code": "36.122",
+    "libelle": "Groupements des combes à neige sur calcaires, à Saules en espaliers"
+  },
+  {
+    "code": "36.2",
+    "libelle": "GROUPEMENTS DES AFFLEUREMENTS ET ROCHERS ERODES ALPINS"
+  },
+  {
+    "code": "36.3",
+    "libelle": "PELOUSES ALPINES ET SUBALPINES ACIDIPHILES"
+  },
+  {
+    "code": "36.31",
+    "libelle": "Gazons à Nard raide et groupements apparentés"
+  },
+  {
+    "code": "36.311",
+    "libelle": "Tapis prairiaux mésophiles pyrénéo-alpins"
+  },
+  {
+    "code": "36.312",
+    "libelle": "Pelouses pyrénéo-alpines hygrophiles à Nard raide"
+  },
+  {
+    "code": "36.313",
+    "libelle": "Pelouses pyrénéo-alpines hygrophiles à Vulpins"
+  },
+  {
+    "code": "36.314",
+    "libelle": "Pelouses pyrénéennes fermées à Festuca eskia"
+  },
+  {
+    "code": "36.315",
+    "libelle": "Pelouses pyrénéennes à Poa violacea"
+  },
+  {
+    "code": "36.316",
+    "libelle": "Pelouses sommitales hercyniennes à Nard raide"
+  },
+  {
+    "code": "36.3161",
+    "libelle": "Pelouses sommitales des Hautes-Chaumes à Nard raide"
+  },
+  {
+    "code": "36.33",
+    "libelle": "Pelouses siliceuses thermophiles subalpines"
+  },
+  {
+    "code": "36.331",
+    "libelle": "Pelouses à Festuca paniculata"
+  },
+  {
+    "code": "36.3311",
+    "libelle": "Pelouses xérophiles des versants rocailleux à Festuca paniculata"
+  },
+  {
+    "code": "36.3312",
+    "libelle": "Pelouses mésophiles des sols profonds à Festuca paniculata"
+  },
+  {
+    "code": "36.332",
+    "libelle": "Pelouses en gradins à Festuca eskia"
+  },
+  {
+    "code": "36.333",
+    "libelle": "Prairies en gradins à Festuca varia"
+  },
+  {
+    "code": "36.34",
+    "libelle": "Pelouses à laîche incurvée et groupements apparentés"
+  },
+  {
+    "code": "36.341",
+    "libelle": "Pelouses à Carex curvula"
+  },
+  {
+    "code": "36.342",
+    "libelle": "Pelouses à Festuca halleri"
+  },
+  {
+    "code": "36.343",
+    "libelle": "Pelouses à Festuca airoides"
+  },
+  {
+    "code": "36.344",
+    "libelle": "Pelouses à Festuca borderei"
+  },
+  {
+    "code": "36.345",
+    "libelle": "Pelouses à Oreochloa disticha de l' Allgau."
+  },
+  {
+    "code": "36.37",
+    "libelle": "Pelouses des hautes montagnes corses"
+  },
+  {
+    "code": "36.371",
+    "libelle": "Prairies en gradins oro-méditerranéennes corses"
+  },
+  {
+    "code": "36.372",
+    "libelle": "Tapis prairiaux corses des pozzines"
+  },
+  {
+    "code": "36.373",
+    "libelle": "Pelouses corses des adrets alpins"
+  },
+  {
+    "code": "36.374",
+    "libelle": "Pelouses corses des ubacs alpins"
+  },
+  {
+    "code": "36.4",
+    "libelle": "PELOUSES CALCICOLES ALPINES ET SUBALPINES"
+  },
+  {
+    "code": "36.41",
+    "libelle": "Pelouses à laîche ferrugineuse et groupements apparentés"
+  },
+  {
+    "code": "36.411",
+    "libelle": "Pelouses mésophiles à laîche sempervirente"
+  },
+  {
+    "code": "36.4111",
+    "libelle": "Pelouses alpines à laîche sempervirente"
+  },
+  {
+    "code": "36.4112",
+    "libelle": "Pelouses pyrénéennes à laîche sempervirente"
+  },
+  {
+    "code": "36.412",
+    "libelle": "Pelouses nordiques à laîche ferrugineuse"
+  },
+  {
+    "code": "36.414",
+    "libelle": "Pelouses à fétuque violette et groupements apparentés"
+  },
+  {
+    "code": "36.4141",
+    "libelle": "Pelouses alpines à fétuque violette"
+  },
+  {
+    "code": "36.4142",
+    "libelle": "Pelouses pyrénéennes à fétuque noircissante"
+  },
+  {
+    "code": "36.416",
+    "libelle": "Pelouses sommitales du Jura"
+  },
+  {
+    "code": "36.42",
+    "libelle": "Pelouses des crêtes à Elyna"
+  },
+  {
+    "code": "36.421",
+    "libelle": "Pelouses alpines à Elyna"
+  },
+  {
+    "code": "36.422",
+    "libelle": "Pelouses pyrénéennes à Elyna"
+  },
+  {
+    "code": "36.43",
+    "libelle": "Pelouses en gradins et en guirlandes"
+  },
+  {
+    "code": "36.431",
+    "libelle": "Versants à Seslérie et Laîches sempervirentes"
+  },
+  {
+    "code": "36.4311",
+    "libelle": "Pelouses alpines à Seslérie et Laîche sempervirente"
+  },
+  {
+    "code": "36.4312",
+    "libelle": "Pelouses à Seslérie et Laîche sempervirente du Jura"
+  },
+  {
+    "code": "36.432",
+    "libelle": "Pelouses à Avoine et Seslérie des Alpes méridionales"
+  },
+  {
+    "code": "36.433",
+    "libelle": "Tapis de laîches en coussinets"
+  },
+  {
+    "code": "36.434",
+    "libelle": "Pelouses pyrénéennes à Festuca gautieri"
+  },
+  {
+    "code": "36.5",
+    "libelle": "PRAIRIES ALPINES ET SUBALPINES FERTILISEES"
+  },
+  {
+    "code": "36.51",
+    "libelle": "Prairies subalpines à Trisetum flavescens"
+  },
+  {
+    "code": "36.52",
+    "libelle": "Pâturages à Liondent hispide"
+  },
+  {
+    "code": "37.1",
+    "libelle": "Communautés à Reine des prés et communautés associées"
+  },
+  {
+    "code": "37.2",
+    "libelle": "PRAIRIES HUMIDES EUTROPHES"
+  },
+  {
+    "code": "37.21",
+    "libelle": "Prairies humides atlantiques et subatlantiques"
+  },
+  {
+    "code": "37.211",
+    "libelle": "Prairies humides à cirse des maraîchers"
+  },
+  {
+    "code": "37.212",
+    "libelle": "Prairies humides à Trolle et Chardon des ruisseaux"
+  },
+  {
+    "code": "37.213",
+    "libelle": "Prairies à Canche cespiteuse"
+  },
+  {
+    "code": "37.214",
+    "libelle": "Prairies à Séneçon aquatique"
+  },
+  {
+    "code": "37.215",
+    "libelle": "Prairies à Renouée bistorte"
+  },
+  {
+    "code": "37.216",
+    "libelle": "Prairies à Jonc filiforme"
+  },
+  {
+    "code": "37.217",
+    "libelle": "Prairies à Jonc diffus"
+  },
+  {
+    "code": "37.218",
+    "libelle": "Prairies à Jonc subnoduleux"
+  },
+  {
+    "code": "37.219",
+    "libelle": "Prairies à Scirpe des bois"
+  },
+  {
+    "code": "37.22",
+    "libelle": "Prairies à Jonc acutiflore"
+  },
+  {
+    "code": "37.23",
+    "libelle": "Prairies subcontinentales à Cnidium"
+  },
+  {
+    "code": "37.24",
+    "libelle": "Prairies à Agropyre et Rumex"
+  },
+  {
+    "code": "37.241",
+    "libelle": "Pâtures à grand jonc"
+  },
+  {
+    "code": "37.242",
+    "libelle": "Pelouses à Agrostide stolonifère et Fétuque faux roseau"
+  },
+  {
+    "code": "37.25",
+    "libelle": "Prairies humides de transition à hautes herbes"
+  },
+  {
+    "code": "37.3",
+    "libelle": "PRAIRIES HUMIDES OLIGOTROPHES"
+  },
+  {
+    "code": "37.31",
+    "libelle": "Prairies à Molinie et communautés associées"
+  },
+  {
+    "code": "37.311",
+    "libelle": "Prairies calcaires à Molinie"
+  },
+  {
+    "code": "37.312",
+    "libelle": "Prairies acides à Molinie"
+  },
+  {
+    "code": "37.32",
+    "libelle": "Prairies à Jonc rude et pelouses humides à Nard"
+  },
+  {
+    "code": "37.4",
+    "libelle": "PRAIRIES HUMIDES MEDITERRANEENNES HAUTES"
+  },
+  {
+    "code": "37.5",
+    "libelle": "PRAIRIES HUMIDES MEDITERRANEENNES BASSES"
+  },
+  {
+    "code": "37.7",
+    "libelle": "LISIERES HUMIDES A GRANDES HERBES"
+  },
+  {
+    "code": "37.71",
+    "libelle": "Ourlets des cours d'eau"
+  },
+  {
+    "code": "37.711",
+    "libelle": "Communautés fluviales à Angelica archangelica"
+  },
+  {
+    "code": "37.712",
+    "libelle": "Communautés fluviales à Angelica heterocarpa"
+  },
+  {
+    "code": "37.713",
+    "libelle": "Ourlets à Althaea officinalis"
+  },
+  {
+    "code": "37.714",
+    "libelle": "Communautés riveraines à Pétasites"
+  },
+  {
+    "code": "37.715",
+    "libelle": "Ourlets riverains mixtes"
+  },
+  {
+    "code": "37.72",
+    "libelle": "Franges des bords boisés ombragés"
+  },
+  {
+    "code": "37.8",
+    "libelle": "MEGAPHORBIAIES ALPINES ET SUBALPINES"
+  },
+  {
+    "code": "37.81",
+    "libelle": "Mégaphorbiaies des montagnes hercyniennes, du Jura et des Alpes"
+  },
+  {
+    "code": "37.82",
+    "libelle": "Prairies subalpines à Calamagrostis arundinacea"
+  },
+  {
+    "code": "37.83",
+    "libelle": "Mégaphorbiaies pyrénéo-ibériques"
+  },
+  {
+    "code": "37.85",
+    "libelle": "Mégaphorbiaies corses à Cymbalaria"
+  },
+  {
+    "code": "37.86",
+    "libelle": "Mégaphorbiaies corses à Doronicum"
+  },
+  {
+    "code": "37.88",
+    "libelle": "Communautés alpines à Patience"
+  },
+  {
+    "code": "38.1",
+    "libelle": "PATURES MESOPHILES"
+  },
+  {
+    "code": "38.11",
+    "libelle": "Pâturages continus"
+  },
+  {
+    "code": "38.111",
+    "libelle": "Pâturages à Ray-grass"
+  },
+  {
+    "code": "38.112",
+    "libelle": "Pâturages à Cynosurus-Centaurea"
+  },
+  {
+    "code": "38.12",
+    "libelle": "Pâturages interrompus par des fossés"
+  },
+  {
+    "code": "38.13",
+    "libelle": "Pâturages densément enherbés"
+  },
+  {
+    "code": "38.2",
+    "libelle": "PRAIRIES A FOURRAGE DES PLAINES"
+  },
+  {
+    "code": "38.21",
+    "libelle": "Prairies atlantiques à fourrages"
+  },
+  {
+    "code": "38.22",
+    "libelle": "Prairies des plaines médio-européennes à fourrage"
+  },
+  {
+    "code": "38.23",
+    "libelle": "Prairies submontagnardes médio-européennes à fourrage"
+  },
+  {
+    "code": "38.3",
+    "libelle": "PRAIRIES A FOURRAGE DES MONTAGNES"
+  },
+  {
+    "code": "41.1",
+    "libelle": "HETRAIES"
+  },
+  {
+    "code": "41.11",
+    "libelle": "Hêtraies acidiphiles médio-européennes à Luzule blanchâtre du Luzulo-Fagenion"
+  },
+  {
+    "code": "41.111",
+    "libelle": "Hêtraies collinéennes à Luzule"
+  },
+  {
+    "code": "41.112",
+    "libelle": "Hêtraies montagnardes à Luzule"
+  },
+  {
+    "code": "41.1122",
+    "libelle": "Hêtraies montagnardes semi-naturelles à Luzule françaises"
+  },
+  {
+    "code": "41.12",
+    "libelle": "Hêtraies atlantiques acidiphiles"
+  },
+  {
+    "code": "41.121",
+    "libelle": "Hêtraies acidiphiles de la Mer du Nord"
+  },
+  {
+    "code": "41.122",
+    "libelle": "Hêtraies acidiphiles sub-atlantiques"
+  },
+  {
+    "code": "41.123",
+    "libelle": "Hêtraies acidiphiles armoricaines"
+  },
+  {
+    "code": "41.124",
+    "libelle": "Hêtraies acidiphiles pyrénéo-cantabriques"
+  },
+  {
+    "code": "41.127",
+    "libelle": "Hêtraies acidiphiles ibériques humides"
+  },
+  {
+    "code": "41.128",
+    "libelle": "Hêtraies acidiphiles ibériques hyper-humides"
+  },
+  {
+    "code": "41.13",
+    "libelle": "Hêtraies neutrophiles"
+  },
+  {
+    "code": "41.131",
+    "libelle": "Hêtraies à Mélique"
+  },
+  {
+    "code": "41.1311",
+    "libelle": "Hêtraies calciclines à Mélique"
+  },
+  {
+    "code": "41.1312",
+    "libelle": "Hêtraies neutroclines à Mélique"
+  },
+  {
+    "code": "41.132",
+    "libelle": "Hêtraies à Jacinthe des bois"
+  },
+  {
+    "code": "41.1321",
+    "libelle": "Hêtraies calciclines à Jacinthe des bois"
+  },
+  {
+    "code": "41.1322",
+    "libelle": "Hêtraies neutroclines à Jacinthe des bois"
+  },
+  {
+    "code": "41.133",
+    "libelle": "Hêtraies à Dentaires"
+  },
+  {
+    "code": "41.14",
+    "libelle": "Hêtraies neutrophiles pyrénéo-cantabriques"
+  },
+  {
+    "code": "41.141",
+    "libelle": "Hêtraies pyrénéennes hygrophiles"
+  },
+  {
+    "code": "41.142",
+    "libelle": "Hêtraies pyrénéennes mésophiles"
+  },
+  {
+    "code": "41.143",
+    "libelle": "Hêtraies oro-cantabriques sub-humides"
+  },
+  {
+    "code": "41.144",
+    "libelle": "Hêtraies-sapinières humides du Massif Central"
+  },
+  {
+    "code": "41.15",
+    "libelle": "Hêtraies subalpines"
+  },
+  {
+    "code": "41.16",
+    "libelle": "Hêtraies sur calcaire"
+  },
+  {
+    "code": "41.161",
+    "libelle": "Hêtraie à laîches"
+  },
+  {
+    "code": "41.162",
+    "libelle": "Hêtraies xérophiles Nord-Ouest ibériques"
+  },
+  {
+    "code": "41.17",
+    "libelle": "Hêtraies médio-européennes méridionales"
+  },
+  {
+    "code": "41.171",
+    "libelle": "Hêtraies acidiphiles des Alpes méridionales et des Apennins"
+  },
+  {
+    "code": "41.172",
+    "libelle": "Hêtraies acidiphiles des Pyrénées orientales et des Cévennes"
+  },
+  {
+    "code": "41.173",
+    "libelle": "Hêtraies corses"
+  },
+  {
+    "code": "41.174",
+    "libelle": "Hêtraies neutrophiles des Alpes méridionales et des Apennins"
+  },
+  {
+    "code": "41.1741",
+    "libelle": "Hêtraies neutrophiles des Alpes sud-occidentales"
+  },
+  {
+    "code": "41.1742",
+    "libelle": "Hêtraies neutrophiles des Alpes maritimes"
+  },
+  {
+    "code": "41.175",
+    "libelle": "Hêtraies calcicoles sub-méditerranéennes"
+  },
+  {
+    "code": "41.1751",
+    "libelle": "Hêtraies à Buis"
+  },
+  {
+    "code": "41.1752",
+    "libelle": "Hêtraies à Androsace"
+  },
+  {
+    "code": "41.1753",
+    "libelle": "Hêtraies à Lavande"
+  },
+  {
+    "code": "41.1754",
+    "libelle": "Hêtraies de la Sainte-Baume"
+  },
+  {
+    "code": "41.2",
+    "libelle": "CHENAIES-CHARMAIES"
+  },
+  {
+    "code": "41.21",
+    "libelle": "Chênaies atlantiques mixtes à Jacinthes des bois"
+  },
+  {
+    "code": "41.22",
+    "libelle": "Frênaies-chênaies et chênaies-charmaies aquitaniennes"
+  },
+  {
+    "code": "41.23",
+    "libelle": "Frênaies-chênaies sub-atlantiques à primevère"
+  },
+  {
+    "code": "41.231",
+    "libelle": "Frênaies-chênaies à Arum"
+  },
+  {
+    "code": "41.232",
+    "libelle": "Frênaies-chênaies à Corydale"
+  },
+  {
+    "code": "41.233",
+    "libelle": "Frênaies-chênaies à Ail"
+  },
+  {
+    "code": "41.24",
+    "libelle": "Chênaies-charmaies à Stellaire sub-atlantiques"
+  },
+  {
+    "code": "41.241",
+    "libelle": "Chênaies-charmaies du Nord-Ouest"
+  },
+  {
+    "code": "41.242",
+    "libelle": "Chênaies-charmaies de Lorraine sur marnes"
+  },
+  {
+    "code": "41.243",
+    "libelle": "Chênaies-charmaies collinéennes du Bourgogne"
+  },
+  {
+    "code": "41.244",
+    "libelle": "Chênaies-charmaies des plaines du Bourgogne"
+  },
+  {
+    "code": "41.26",
+    "libelle": "Chênaies-charmaies orientales"
+  },
+  {
+    "code": "41.261",
+    "libelle": "Chênaies-charmaies à Gaillet des bois"
+  },
+  {
+    "code": "41.262",
+    "libelle": "Forêts mixtes de Tilleuls de Chênes et de Charmes"
+  },
+  {
+    "code": "41.27",
+    "libelle": "Chênaies-charmaies et frênaies-charmaies calciphiles"
+  },
+  {
+    "code": "41.271",
+    "libelle": "Chênaies-charmaies xérophile sur calcaire"
+  },
+  {
+    "code": "41.272",
+    "libelle": "Chênaies-charmaies xérophile sur schistes"
+  },
+  {
+    "code": "41.273",
+    "libelle": "Chênaies-charmaies calciphiles"
+  },
+  {
+    "code": "41.28",
+    "libelle": "Chênaies-charmaies sud-alpines"
+  },
+  {
+    "code": "41.29",
+    "libelle": "Chênaies-frênaies pyrénéo-cantabriques"
+  },
+  {
+    "code": "41.3",
+    "libelle": "FRENAIES"
+  },
+  {
+    "code": "41.33",
+    "libelle": "Forêt de frênes pyrénéo-cantabriques"
+  },
+  {
+    "code": "41.35",
+    "libelle": "Frênaies mixtes atlantiques à jacinthe"
+  },
+  {
+    "code": "41.36",
+    "libelle": "Frênaies d'Aquitaine"
+  },
+  {
+    "code": "41.37",
+    "libelle": "Frênaies sub-atlantiques"
+  },
+  {
+    "code": "41.38",
+    "libelle": "Frênaies calciphiles lutétiennes"
+  },
+  {
+    "code": "41.39",
+    "libelle": "Bois de frênes post-culturaux"
+  },
+  {
+    "code": "41.4",
+    "libelle": "FORETS MIXTES DE PENTES ET RAVINS"
+  },
+  {
+    "code": "41.41",
+    "libelle": "Forêts de ravin à Frêne et Sycomore"
+  },
+  {
+    "code": "41.42",
+    "libelle": "Forêts de pente hercyniennes"
+  },
+  {
+    "code": "41.43",
+    "libelle": "Forêts de pente alpiennes et péri-alpiennes"
+  },
+  {
+    "code": "41.44",
+    "libelle": "Forêts mixtes pyrénéo-cantabrique de Chênes et d'Ormes"
+  },
+  {
+    "code": "41.45",
+    "libelle": "Forêts thermophiles alpiennes et péri-alpiennes mixtes de Tilleuls"
+  },
+  {
+    "code": "41.5",
+    "libelle": "CHENAIES ACIDIPHILES"
+  },
+  {
+    "code": "41.51",
+    "libelle": "Bois de Chênes pédonculés et de Bouleaux"
+  },
+  {
+    "code": "41.52",
+    "libelle": "Chênaies acidiphiles atlantiques à Hêtres"
+  },
+  {
+    "code": "41.521",
+    "libelle": "Forêts de Chênes sessiles du nord-ouest"
+  },
+  {
+    "code": "41.522",
+    "libelle": "Forêts armoricaine de Chênes sessiles"
+  },
+  {
+    "code": "41.523",
+    "libelle": "Forêts sur dune"
+  },
+  {
+    "code": "41.54",
+    "libelle": "Chênaies aquitano-ligériennes sur podzols"
+  },
+  {
+    "code": "41.55",
+    "libelle": "Chênaies aquitano-ligériennes sur sols lessivés ou acides"
+  },
+  {
+    "code": "41.56",
+    "libelle": "Chênaies acidiphiles ibero-atlantiques"
+  },
+  {
+    "code": "41.561",
+    "libelle": "Chênaies acidiphiles pyrénéennes"
+  },
+  {
+    "code": "41.5611",
+    "libelle": "Chênaies acidiphiles pyrénéennes mésophiles"
+  },
+  {
+    "code": "41.5612",
+    "libelle": "Chênaies acidiphiles pyrénéennes hygrophiles"
+  },
+  {
+    "code": "41.57",
+    "libelle": "Chênaies acidiphiles médio-européennes"
+  },
+  {
+    "code": "41.571",
+    "libelle": "Chênaies à Luzule des bois"
+  },
+  {
+    "code": "41.572",
+    "libelle": "Chênaies acidiphiles xéro-thermophiles"
+  },
+  {
+    "code": "41.6",
+    "libelle": "Forets de Chene Tauzin"
+  },
+  {
+    "code": "41.65",
+    "libelle": "Forêts françaises de Quercus pyrenaica"
+  },
+  {
+    "code": "41.7",
+    "libelle": "CHENAIES THERMOPHILES ET SUPRA-MEDITERRANEENNES"
+  },
+  {
+    "code": "41.71",
+    "libelle": "Chênaies blanches occidentales et communautés apparentées"
+  },
+  {
+    "code": "41.711",
+    "libelle": "Bois occidentaux de Quercus pubescens"
+  },
+  {
+    "code": "41.712",
+    "libelle": "Bois sub-méditerranéens de Quercus petraea-Q. robur"
+  },
+  {
+    "code": "41.713",
+    "libelle": "Bois de Quercus palensis"
+  },
+  {
+    "code": "41.714",
+    "libelle": "Bois de Chênes blancs eu-méditerranéens"
+  },
+  {
+    "code": "41.72",
+    "libelle": "Chênaies pubescentes cyrno-sardes"
+  },
+  {
+    "code": "41.8",
+    "libelle": "forets de CHARMES houblon, de CHARMES ORIENTAux ET THERMOPHILES MIXTES"
+  },
+  {
+    "code": "41.81",
+    "libelle": "Bois de Charmes houblon"
+  },
+  {
+    "code": "41.811",
+    "libelle": "Bois de Charmes houblon méso-méditerranéens"
+  },
+  {
+    "code": "41.812",
+    "libelle": "Bois de Charmes houblon supra-méditerranéens"
+  },
+  {
+    "code": "41.813",
+    "libelle": "Bois de Charmes houblon montagnards"
+  },
+  {
+    "code": "41.84",
+    "libelle": "Bois de Tilleuls méditerranéens"
+  },
+  {
+    "code": "41.85",
+    "libelle": "Micocoulaies"
+  },
+  {
+    "code": "41.86",
+    "libelle": "Bois de Frênes thermophiles"
+  },
+  {
+    "code": "41.9",
+    "libelle": "BOIS DE CHATAIGNIERS"
+  },
+  {
+    "code": "42.1",
+    "libelle": "SapinIEREs"
+  },
+  {
+    "code": "42.11",
+    "libelle": "Sapinières neutrophiles"
+  },
+  {
+    "code": "42.111",
+    "libelle": "Sapinières neutrophiles intra-alpines"
+  },
+  {
+    "code": "42.1111",
+    "libelle": "Sapinières à Oxalis"
+  },
+  {
+    "code": "42.1112",
+    "libelle": "Sapinières à hautes herbes"
+  },
+  {
+    "code": "42.1113",
+    "libelle": "Sapinières à Trochiscanthes"
+  },
+  {
+    "code": "42.112",
+    "libelle": "Sapinières neutrophiles de la zone du Hêtre"
+  },
+  {
+    "code": "42.113",
+    "libelle": "Sapinières intra-pyrénéennes"
+  },
+  {
+    "code": "42.12",
+    "libelle": "Sapinières calciphiles"
+  },
+  {
+    "code": "42.121",
+    "libelle": "Sapinières calcicoles intra-alpines"
+  },
+  {
+    "code": "42.122",
+    "libelle": "Sapinières calcicoles de la zone du Hêtre"
+  },
+  {
+    "code": "42.13",
+    "libelle": "Sapinières acidiphiles"
+  },
+  {
+    "code": "42.131",
+    "libelle": "Sapinières acidiphiles intra-alpines"
+  },
+  {
+    "code": "42.132",
+    "libelle": "Sapinières acidiphiles de la zone du Hêtre"
+  },
+  {
+    "code": "42.133",
+    "libelle": "Sapinières à Rhododendron"
+  },
+  {
+    "code": "42.1331",
+    "libelle": "Sapinières pyrénéennes à Rhododendron"
+  },
+  {
+    "code": "42.1332",
+    "libelle": "Sapinières alpiennes à Rhododendron"
+  },
+  {
+    "code": "42.1333",
+    "libelle": "Sapinières à Rhododendron sur rocailles"
+  },
+  {
+    "code": "42.14",
+    "libelle": "Sapinières corses"
+  },
+  {
+    "code": "42.2",
+    "libelle": "PESSIERES"
+  },
+  {
+    "code": "42.21",
+    "libelle": "Pessières sub-alpines des Alpes"
+  },
+  {
+    "code": "42.211",
+    "libelle": "Pessières à Airelle"
+  },
+  {
+    "code": "42.212",
+    "libelle": "Pessières subalpines à hautes herbes"
+  },
+  {
+    "code": "42.2121",
+    "libelle": "Pessières subalpines calcicoles à hautes herbes"
+  },
+  {
+    "code": "42.2122",
+    "libelle": "Pessières subalpines silicicoles à hautes herbes"
+  },
+  {
+    "code": "42.213",
+    "libelle": "Pessières subalpines à sphaignes"
+  },
+  {
+    "code": "42.214",
+    "libelle": "Pessières subalpines xérophiles"
+  },
+  {
+    "code": "42.215",
+    "libelle": "Pessières de stations froides"
+  },
+  {
+    "code": "42.22",
+    "libelle": "Pessières montagnardes des Alpes internes"
+  },
+  {
+    "code": "42.221",
+    "libelle": "Pessières montagnardes intra-alpines acidiphiles"
+  },
+  {
+    "code": "42.222",
+    "libelle": "Pessières montagnardes intra-alpines calciphiles"
+  },
+  {
+    "code": "42.223",
+    "libelle": "Pessières montagnardes intra-alpines xérophiles"
+  },
+  {
+    "code": "42.224",
+    "libelle": "Pessières montagnardes intra-alpines à hautes herbes"
+  },
+  {
+    "code": "42.225",
+    "libelle": "Pessières montagnardes intra-alpines à Sphaignes"
+  },
+  {
+    "code": "42.23",
+    "libelle": "Forêts subalpines hercyniennes"
+  },
+  {
+    "code": "42.232",
+    "libelle": "Pessières subalpines du Harz et de l'Erzgebirge"
+  },
+  {
+    "code": "42.25",
+    "libelle": "Pessières extrazonales"
+  },
+  {
+    "code": "42.251",
+    "libelle": "Pessières subalpines du Jura"
+  },
+  {
+    "code": "42.253",
+    "libelle": "Pessières montagnardes à déterminisme édaphique"
+  },
+  {
+    "code": "42.254",
+    "libelle": "Pessières de la zone montagnarde du Hêtre"
+  },
+  {
+    "code": "42.26",
+    "libelle": "Reboisement d'Epicéas"
+  },
+  {
+    "code": "42.3",
+    "libelle": "FORETS DE MELEZES ET D'AROLLES"
+  },
+  {
+    "code": "42.31",
+    "libelle": "Forêts siliceuses orientales à Mélèze et Arolle"
+  },
+  {
+    "code": "42.311",
+    "libelle": "Forêts d'Arolles à Myrtille"
+  },
+  {
+    "code": "42.312",
+    "libelle": "Forêts d'Arolles à Luzules"
+  },
+  {
+    "code": "42.313",
+    "libelle": "Forêts de Mélèzes et d'Arolles à Rhododendron ferrugineux"
+  },
+  {
+    "code": "42.314",
+    "libelle": "Forêts de Mélèzes et d'Arolles à Calamagrostis"
+  },
+  {
+    "code": "42.315",
+    "libelle": "Forêts de Mélèze et d'Arolles à Pin mugo"
+  },
+  {
+    "code": "42.316",
+    "libelle": "Forêts de Mélèzes et d'Arolles avec Genévriers nains"
+  },
+  {
+    "code": "42.317",
+    "libelle": "Forêts de Mélèzes et d'Arolles à Aulnes verts et hautes herbes"
+  },
+  {
+    "code": "42.318",
+    "libelle": "Forêts de Mélèzes et d'Arolles à Lichens"
+  },
+  {
+    "code": "42.319",
+    "libelle": "Forêts d'Arolles à Sphaignes"
+  },
+  {
+    "code": "42.32",
+    "libelle": "Forêts orientales, calcicoles de Mélèzes et d'Arolles"
+  },
+  {
+    "code": "42.321",
+    "libelle": "Forêts d'Arolles et de Mélèzes et d'Arolles à Rhododendron cilié"
+  },
+  {
+    "code": "42.3211",
+    "libelle": "Forêts de Mélèzes et d'Arolles à Rhododendron cilié"
+  },
+  {
+    "code": "42.32111",
+    "libelle": "Forêts de Mélèzes et d'Arolles à Pin mugo et Rhododendron cilié"
+  },
+  {
+    "code": "42.32112",
+    "libelle": "Forêts de Mélèzes et d'Arolles à Aulne vert et Rhododendron cilié"
+  },
+  {
+    "code": "42.32113",
+    "libelle": "Autres forêts de Mélèzes et d'Arolles à Rhododendron cilié"
+  },
+  {
+    "code": "42.3212",
+    "libelle": "Forêts d'Arolles à Rhododendron cilié"
+  },
+  {
+    "code": "42.322",
+    "libelle": "Forêts de Mélèzes sur calcaires"
+  },
+  {
+    "code": "42.3221",
+    "libelle": "Forêts calcicoles de Mélèzes à Rhododendron"
+  },
+  {
+    "code": "42.3222",
+    "libelle": "Forêts de Mélèzes calcicoles sur prairies"
+  },
+  {
+    "code": "42.3223",
+    "libelle": "Forêts de Mélèzes calcicoles sur éboulis"
+  },
+  {
+    "code": "42.3224",
+    "libelle": "Forêts calcicoles de Mélèzes et d'Epicéas sur pente abrupte"
+  },
+  {
+    "code": "42.33",
+    "libelle": "Forêts occidentales de Mélèzes, de Pins de montagne et d'Arolles"
+  },
+  {
+    "code": "42.331",
+    "libelle": "Forêts occidentales de Mélèzes et de Mélèzes et de Pins de montagne"
+  },
+  {
+    "code": "42.3311",
+    "libelle": "Forêts occidentales de Mélèzes et de Mélèzes et de Pins de montagne sur landes"
+  },
+  {
+    "code": "42.3312",
+    "libelle": "Forêts occidentales de Mélèzes et de Mélèzes et de Pins de montagne sur prairies"
+  },
+  {
+    "code": "42.3313",
+    "libelle": "Forêts occidentales de Mélèzes et de Mélèzes et de Pins de montagne sur hautes herbes"
+  },
+  {
+    "code": "42.332",
+    "libelle": "Forêts occidentales d'Arolles"
+  },
+  {
+    "code": "42.3321",
+    "libelle": "Forêts occidentales d'Arolles sur silice"
+  },
+  {
+    "code": "42.3322",
+    "libelle": "Forêts occidentales d'Arolles à Genévriers nains"
+  },
+  {
+    "code": "42.3323",
+    "libelle": "Forêts occidentales calcicoles d'Arolles"
+  },
+  {
+    "code": "42.34",
+    "libelle": "Formations secondaire de Mélèzes"
+  },
+  {
+    "code": "42.4",
+    "libelle": "FORETS DE PINS DE MONTAGNE"
+  },
+  {
+    "code": "42.41",
+    "libelle": "Forêts de Pins de montagne à Rhododendron ferrugineux"
+  },
+  {
+    "code": "42.411",
+    "libelle": "Forêts de Pins de montagne à Rhododendron des Alpes externes"
+  },
+  {
+    "code": "42.412",
+    "libelle": "Forêts de Pins de montagne à Rhododendron du Jura"
+  },
+  {
+    "code": "42.413",
+    "libelle": "Forêts pyrénéennes de Pins de montagne à Rhododendron"
+  },
+  {
+    "code": "42.42",
+    "libelle": "Forêts de Pins de montagne xéroclines"
+  },
+  {
+    "code": "42.421",
+    "libelle": "Forêts de Pins de montagne des Alpes internes"
+  },
+  {
+    "code": "42.4211",
+    "libelle": "Forêts de Pins de montagne à Laiche humble"
+  },
+  {
+    "code": "42.4212",
+    "libelle": "Forêts de Pins de montagne à Erica herbacea"
+  },
+  {
+    "code": "42.4213",
+    "libelle": "Forêts de Pins de montagne à Silène rupestre"
+  },
+  {
+    "code": "42.4214",
+    "libelle": "Forêts de Pins de montagne sur amphilobites"
+  },
+  {
+    "code": "42.4215",
+    "libelle": "Forêts de Pins de montagne à Ononis"
+  },
+  {
+    "code": "42.42151",
+    "libelle": "Forêts de Pins de montagne à Ononis d'adret"
+  },
+  {
+    "code": "42.42152",
+    "libelle": "Forêts de Pins de montagne à Ononis d'ubac"
+  },
+  {
+    "code": "42.422",
+    "libelle": "Forêts externes de Pins de montagne à Raisin d'Ours et Genévriers"
+  },
+  {
+    "code": "42.4221",
+    "libelle": "Forêts externes xérophiles de Pins de montagne"
+  },
+  {
+    "code": "42.4222",
+    "libelle": "Forêts de Pins de montagne à Vaccinium"
+  },
+  {
+    "code": "42.4223",
+    "libelle": "Forêts abyssales de Pins de montagne"
+  },
+  {
+    "code": "42.423",
+    "libelle": "Forêts de Pins de montagne du Ventoux"
+  },
+  {
+    "code": "42.424",
+    "libelle": "Forêts de Pins de montagne des soulanes pyrénéennes"
+  },
+  {
+    "code": "42.4241",
+    "libelle": "Forêts de Pins de montagne à Véronique"
+  },
+  {
+    "code": "42.4242",
+    "libelle": "Forêts pyrénéennes de Pins de montagne à Raisin d'Ours"
+  },
+  {
+    "code": "42.425",
+    "libelle": "Forêts de Pins de montagne à Pulsatille"
+  },
+  {
+    "code": "42.5",
+    "libelle": "FORETS DE PINS SYLVESTRES"
+  },
+  {
+    "code": "42.52",
+    "libelle": "Forêts de Pins sylvestres médio-européennes"
+  },
+  {
+    "code": "42.521",
+    "libelle": "Forêts subcontinentales de Pins sylvestres"
+  },
+  {
+    "code": "42.5212",
+    "libelle": "Forêts de Pins sylvestres des plaines occidentales"
+  },
+  {
+    "code": "42.522",
+    "libelle": "Forêts hercyniennes de Pins sylvestres"
+  },
+  {
+    "code": "42.5223",
+    "libelle": "Forêts de Pins sylvestres des Vosges"
+  },
+  {
+    "code": "42.5224",
+    "libelle": "Pinèdes de pin sylvestre des grès de Luxembourg"
+  },
+  {
+    "code": "42.53",
+    "libelle": "Forêts steppiques intra-alpines à Ononis"
+  },
+  {
+    "code": "42.54",
+    "libelle": "Forêts de Pins sylvestre à Erica herbacea"
+  },
+  {
+    "code": "42.55",
+    "libelle": "Forêts steppiques intra-alpines à Minuartia"
+  },
+  {
+    "code": "42.56",
+    "libelle": "Forêts mésophiles pyrénéennes de Pins sylvestres"
+  },
+  {
+    "code": "42.561",
+    "libelle": "Forêts mésophiles calcicoles pyrénéennes de Pins sylvestres"
+  },
+  {
+    "code": "42.562",
+    "libelle": "Forêts mésophiles acidiphiles pyrénéennes de Pins sylvestres"
+  },
+  {
+    "code": "42.57",
+    "libelle": "Forêts de Pins sylvestres du Massif Central"
+  },
+  {
+    "code": "42.58",
+    "libelle": "Forêts mésophiles de Pins sylvestres des Alpes sud-occidentales"
+  },
+  {
+    "code": "42.59",
+    "libelle": "Forêts supra-méditerranéennes de Pins sylvestres"
+  },
+  {
+    "code": "42.591",
+    "libelle": "Forêts péri-alpines à Buis de Pins sylvestres"
+  },
+  {
+    "code": "42.592",
+    "libelle": "Forêts pré-pyrénéennes à Buis de Pins sylvestres"
+  },
+  {
+    "code": "42.6",
+    "libelle": "Forets de pins noirs"
+  },
+  {
+    "code": "42.63",
+    "libelle": "Forêts de Pins de Salzmann"
+  },
+  {
+    "code": "42.631",
+    "libelle": "Forêts de Pins de Salzmann des Causses"
+  },
+  {
+    "code": "42.632",
+    "libelle": "Forêts pré-pyrénéennes de Pins de Salzmann"
+  },
+  {
+    "code": "42.64",
+    "libelle": "Forêts corses de Pins laricio"
+  },
+  {
+    "code": "42.641",
+    "libelle": "Forêts denses montagnardes de Pin laricio"
+  },
+  {
+    "code": "42.642",
+    "libelle": "Forêts ouvertes montagnardes de Pins laricio"
+  },
+  {
+    "code": "42.643",
+    "libelle": "Forêts de Pins laricio supra-méditerranéennes"
+  },
+  {
+    "code": "42.8",
+    "libelle": "BOIS DE PINS MEDITERRANEENS"
+  },
+  {
+    "code": "42.81",
+    "libelle": "Forêts de Pins maritimes"
+  },
+  {
+    "code": "42.811",
+    "libelle": "Forêts de Pins et de Chênes verts des Charentes"
+  },
+  {
+    "code": "42.812",
+    "libelle": "Forêts de Pins et de Chênes lièges aquitaniennes"
+  },
+  {
+    "code": "42.813",
+    "libelle": "Plantations de Pins maritimes des Landes"
+  },
+  {
+    "code": "42.82",
+    "libelle": "Forêts de Pins mésogéens"
+  },
+  {
+    "code": "42.823",
+    "libelle": "Forêts de Pins mésogéens franco-italiennes"
+  },
+  {
+    "code": "42.824",
+    "libelle": "Forêts corses de Pins mésogéens"
+  },
+  {
+    "code": "42.83",
+    "libelle": "Forêts de Pins parasols"
+  },
+  {
+    "code": "42.833",
+    "libelle": "Bois provençaux de Pins parasols"
+  },
+  {
+    "code": "42.8331",
+    "libelle": "Forêts provençales côtières de Pins parasols"
+  },
+  {
+    "code": "42.8332",
+    "libelle": "Forêts provençales permiennes de Pins parasols"
+  },
+  {
+    "code": "42.834",
+    "libelle": "Bois de Pins parasol corses"
+  },
+  {
+    "code": "42.84",
+    "libelle": "Forêts de Pins d'Alep"
+  },
+  {
+    "code": "42.843",
+    "libelle": "Forêts de Pins d'Alep provenço-liguriennes"
+  },
+  {
+    "code": "42.844",
+    "libelle": "Bois de Pins d'Alep corses"
+  },
+  {
+    "code": "44.1",
+    "libelle": "Formations riveraines de saules"
+  },
+  {
+    "code": "44.11",
+    "libelle": "Saussaies pré-alpines"
+  },
+  {
+    "code": "44.111",
+    "libelle": "Saussaies à Myricaria"
+  },
+  {
+    "code": "44.112",
+    "libelle": "Saussaies à Argousier"
+  },
+  {
+    "code": "44.12",
+    "libelle": "Saussaies de plaine, collinéennes et méditerranéo-montagnardes"
+  },
+  {
+    "code": "44.121",
+    "libelle": "Saussaies à Osier et Salix triandra"
+  },
+  {
+    "code": "44.122",
+    "libelle": "Saussaies à Saule pourpre méditerranéennes"
+  },
+  {
+    "code": "44.13",
+    "libelle": "Forêts galeries de Saules blancs"
+  },
+  {
+    "code": "44.14",
+    "libelle": "Galeries méditerranéennes de grands Saules"
+  },
+  {
+    "code": "44.141",
+    "libelle": "Galeries méditerranéennes de Saules blancs"
+  },
+  {
+    "code": "44.1411",
+    "libelle": "Galeries ibériques de grands Saules"
+  },
+  {
+    "code": "44.1412",
+    "libelle": "Galeries de Salix alba méditerranéennes"
+  },
+  {
+    "code": "44.142",
+    "libelle": "Bois riverains de Saules à feuilles d'Olivier et de Saules cendrés"
+  },
+  {
+    "code": "44.2",
+    "libelle": "GALERIES D'AULNES BLANCS"
+  },
+  {
+    "code": "44.21",
+    "libelle": "Galeries montagnardes d'Aulnes blancs"
+  },
+  {
+    "code": "44.22",
+    "libelle": "Galeries sub-montagnardes d'Aulnes blancs"
+  },
+  {
+    "code": "44.3",
+    "libelle": "FORET DE FRENES ET D'AULNES DES FLEUVES MEDIO-EUROPEENS"
+  },
+  {
+    "code": "44.31",
+    "libelle": "Forêts de Frênes et d'Aulnes des ruisselets et des sources (rivulaires)"
+  },
+  {
+    "code": "44.311",
+    "libelle": "Forêts de Frênes et d'Aulnes à Laîches"
+  },
+  {
+    "code": "44.312",
+    "libelle": "Forêts de Frênes et d'Aulnes fontinales"
+  },
+  {
+    "code": "44.313",
+    "libelle": "Forêts de Frênes et d'Aulnes à Cirse des maraîchers"
+  },
+  {
+    "code": "44.314",
+    "libelle": "Forêts de Frênes et d'Aulnes des bords de sources à groseillers"
+  },
+  {
+    "code": "44.315",
+    "libelle": "Forêts de Frênes et d'Aulnes à grande Prêle"
+  },
+  {
+    "code": "44.32",
+    "libelle": "Bois de Frênes et d'Aulne des rivières à débit rapide"
+  },
+  {
+    "code": "44.33",
+    "libelle": "Bois de Frênes et d'Aulnes des rivières à eaux lentes"
+  },
+  {
+    "code": "44.331",
+    "libelle": "Bois de Frênes et d'Aulnes des rivières médio-européennes à eaux lentes à cerisiers à grappes"
+  },
+  {
+    "code": "44.332",
+    "libelle": "Bois de Frênes et d'Aulnes à hautes herbes"
+  },
+  {
+    "code": "44.34",
+    "libelle": "Galeries d'Aulnes nord-ibériques"
+  },
+  {
+    "code": "44.342",
+    "libelle": "Galeries d'Aulnes pyrénéo-cantabriques"
+  },
+  {
+    "code": "44.343",
+    "libelle": "Galeries d'Aulnes pyrénéo-catalanes"
+  },
+  {
+    "code": "44.4",
+    "libelle": "FORETS MIXTES DE CHENES, D'ORMES ET DE FRENES DES GRANDS FLEUVES"
+  },
+  {
+    "code": "44.41",
+    "libelle": "Grandes forêts fluviales médio-européennes"
+  },
+  {
+    "code": "44.42",
+    "libelle": "Forêts fluviales médio-européennes résiduelles"
+  },
+  {
+    "code": "44.5",
+    "libelle": "GALERIES MERIDIONALES D'AULNES ET DE BOULEAUX"
+  },
+  {
+    "code": "44.51",
+    "libelle": "Galeries méridionales d'Aulnes glutineux"
+  },
+  {
+    "code": "44.513",
+    "libelle": "Galeries d'Aulnes méditerranéennes occidentales"
+  },
+  {
+    "code": "44.53",
+    "libelle": "Galeries corses d'Aulnes glutineux et d'Aulnes à feuilles cordées"
+  },
+  {
+    "code": "44.531",
+    "libelle": "Galeries d'Aulnes collinéennes corses"
+  },
+  {
+    "code": "44.532",
+    "libelle": "Galeries d'Aulnes montagnardes corses"
+  },
+  {
+    "code": "44.6",
+    "libelle": "FORETS MEDITERRANEENNES DE PEUPLIERS, D'ORMES ET DE FRENES"
+  },
+  {
+    "code": "44.61",
+    "libelle": "Forêts de Peupliers riveraines et méditerranéennes"
+  },
+  {
+    "code": "44.612",
+    "libelle": "Galeries de Peupliers provenço-languedociennes"
+  },
+  {
+    "code": "44.62",
+    "libelle": "Forêts d'Ormes riveraines et méditerranéennes"
+  },
+  {
+    "code": "44.63",
+    "libelle": "Bois de Frênes riverains et méditerranéens"
+  },
+  {
+    "code": "44.64",
+    "libelle": "Galeries de Charmes Houblon"
+  },
+  {
+    "code": "44.8",
+    "libelle": "GALERIES ET FOURRES RIVERAINS MERIDIONAUX"
+  },
+  {
+    "code": "44.81",
+    "libelle": "Galeries de Laurier-roses, de Gattiliers et de Tamaris"
+  },
+  {
+    "code": "44.811",
+    "libelle": "Galeries de Laurier-rose"
+  },
+  {
+    "code": "44.812",
+    "libelle": "Fourrés de Gattiliers"
+  },
+  {
+    "code": "44.813",
+    "libelle": "Fourrés de Tamaris"
+  },
+  {
+    "code": "44.8131",
+    "libelle": "Fourrés de Tamaris ouest-méditerranéens"
+  },
+  {
+    "code": "44.9",
+    "libelle": "BOIS MARECAGEUX D'AULNE , DE SAULE ET DE MYRTE DES MARAIS"
+  },
+  {
+    "code": "44.91",
+    "libelle": "Bois marécageux d'Aulnes"
+  },
+  {
+    "code": "44.911",
+    "libelle": "Bois d'Aulnes marécageux méso-eutrophes"
+  },
+  {
+    "code": "44.9111",
+    "libelle": "Bois d'Aulnes marécageux atlantiques à grandes touffes de laîches"
+  },
+  {
+    "code": "44.9112",
+    "libelle": "Bois d'Aulnes marécageux à laîche allongée"
+  },
+  {
+    "code": "44.912",
+    "libelle": "Bois d'Aulnes marécageux oligotrophes"
+  },
+  {
+    "code": "44.92",
+    "libelle": "Saussaies marécageuses"
+  },
+  {
+    "code": "44.921",
+    "libelle": "Saussaies marécageuses à Saule cendré"
+  },
+  {
+    "code": "44.922",
+    "libelle": "Saussaies à sphaigne"
+  },
+  {
+    "code": "44.923",
+    "libelle": "Saussaies marécageuses à Saule laurier"
+  },
+  {
+    "code": "44.924",
+    "libelle": "Saussaies naines marécageuses"
+  },
+  {
+    "code": "44.93",
+    "libelle": "Bois marécageux de Bouleaux et de piment royal"
+  },
+  {
+    "code": "45.1",
+    "libelle": "FORETS D'OLIVIERS ET DE CAROUBIERS"
+  },
+  {
+    "code": "45.11",
+    "libelle": "Bois d'Oliviers sauvages (oléastres)"
+  },
+  {
+    "code": "45.12",
+    "libelle": "Bois de Caroubiers"
+  },
+  {
+    "code": "45.2",
+    "libelle": "FORETS DE CHENES LIEGES (SUBERAIES)"
+  },
+  {
+    "code": "45.21",
+    "libelle": "Forêts thyrrhéniennes de Chênes lièges"
+  },
+  {
+    "code": "45.211",
+    "libelle": "Forêts provençales de Chênes lièges"
+  },
+  {
+    "code": "45.212",
+    "libelle": "Forêts corses de Chênes lièges"
+  },
+  {
+    "code": "45.216",
+    "libelle": "Suberaies catalano-pyrénéennes"
+  },
+  {
+    "code": "45.24",
+    "libelle": "Forêts aquitaniennes de Chênes lièges"
+  },
+  {
+    "code": "45.3",
+    "libelle": "FORETS DE CHENES VERTS MESO- ET SUPRA MEDITERRANEENNES"
+  },
+  {
+    "code": "45.31",
+    "libelle": "Forêts de Chêne verts"
+  },
+  {
+    "code": "45.311",
+    "libelle": "Forêts de Chênes verts de ibériques nord-occidentales"
+  },
+  {
+    "code": "45.312",
+    "libelle": "Forêts de Chênes verts de la plaine catalo-provençale"
+  },
+  {
+    "code": "45.313",
+    "libelle": "Forêts de Chênes vert des collines catalo-provençales"
+  },
+  {
+    "code": "45.315",
+    "libelle": "Yeuseraies des plaines corses"
+  },
+  {
+    "code": "45.316",
+    "libelle": "Forêts de Chênes verts des collines corses"
+  },
+  {
+    "code": "45.319",
+    "libelle": "Forêts de Chênes verts Illyriennes"
+  },
+  {
+    "code": "45.32",
+    "libelle": "Forêts de Chênes verts supra-méditerranéennes"
+  },
+  {
+    "code": "45.321",
+    "libelle": "Forêts de Chênes verts supra-méditerranéennes françaises"
+  },
+  {
+    "code": "45.322",
+    "libelle": "Forêts supra-méditerranéennes corses de Chênes verts"
+  },
+  {
+    "code": "45.33",
+    "libelle": "Forêts aquitaniennes de Chênes verts"
+  },
+  {
+    "code": "45.5",
+    "libelle": "FORETS DE CHENES ET LAURIERS"
+  },
+  {
+    "code": "45.8",
+    "libelle": "BOIS DE HOUX"
+  },
+  {
+    "code": "51.1",
+    "libelle": "TOURBIERES HAUTES A PEU PRES NATURELLES"
+  },
+  {
+    "code": "51.11",
+    "libelle": "Buttes, bourrelets et pelouses tourbeuses"
+  },
+  {
+    "code": "51.111",
+    "libelle": "Buttes de Sphaignes colorées (bulten)"
+  },
+  {
+    "code": "51.1111",
+    "libelle": "Buttes de Sphagnum magellanicum"
+  },
+  {
+    "code": "51.1112",
+    "libelle": "Buttes de Sphagnum fuscum"
+  },
+  {
+    "code": "51.1113",
+    "libelle": "Couronnes de buttes à Sphagnum rubellum"
+  },
+  {
+    "code": "51.1114",
+    "libelle": "Buttes de Sphagnum rubellum"
+  },
+  {
+    "code": "51.1115",
+    "libelle": "Buttes de Sphagnum imbricatum"
+  },
+  {
+    "code": "51.1116",
+    "libelle": "Buttes de Sphagnum papillosum"
+  },
+  {
+    "code": "51.1117",
+    "libelle": "Buttes de Sphagnum capillifolium"
+  },
+  {
+    "code": "51.112",
+    "libelle": "Bases des buttes et pelouses de Sphaignes vertes"
+  },
+  {
+    "code": "51.113",
+    "libelle": "Buttes à buissons nains"
+  },
+  {
+    "code": "51.1131",
+    "libelle": "Buttes à buissons de Callune prostrée"
+  },
+  {
+    "code": "51.1132",
+    "libelle": "Buttes à buissons de Bruyère tétragone"
+  },
+  {
+    "code": "51.1133",
+    "libelle": "Buttes à buissons de Camarine"
+  },
+  {
+    "code": "51.1134",
+    "libelle": "Buttes à buissons de Vaccinium"
+  },
+  {
+    "code": "51.1136",
+    "libelle": "Buttes à buissons de Myrte des marais (ou piment royal)"
+  },
+  {
+    "code": "51.114",
+    "libelle": "Communautés de tourbières bombées à Trichophorum cespitosum"
+  },
+  {
+    "code": "51.115",
+    "libelle": "Tourbières bombées à Erica et Sphagnum"
+  },
+  {
+    "code": "51.12",
+    "libelle": "Tourbières basses (Schlenken)"
+  },
+  {
+    "code": "51.121",
+    "libelle": "Chenaux, cuvettes profondes"
+  },
+  {
+    "code": "51.122",
+    "libelle": "Chenaux superficiels, cuvettes peu profondes"
+  },
+  {
+    "code": "51.13",
+    "libelle": "Mares de tourbières"
+  },
+  {
+    "code": "51.131",
+    "libelle": "Dépressions tourbeuses (Kolk)"
+  },
+  {
+    "code": "51.132",
+    "libelle": "Autres mares de tourbières"
+  },
+  {
+    "code": "51.14",
+    "libelle": "Suintements et rigoles de tourbières"
+  },
+  {
+    "code": "51.141",
+    "libelle": "Tourbières à Narthecium"
+  },
+  {
+    "code": "51.142",
+    "libelle": "Rigoles à Myrte des marais"
+  },
+  {
+    "code": "51.143",
+    "libelle": "Autres communautés des rigoles et chenaux de tourbières"
+  },
+  {
+    "code": "51.15",
+    "libelle": "Garnitures de bordure (lagg)"
+  },
+  {
+    "code": "51.16",
+    "libelle": "Pré-bois tourbeux"
+  },
+  {
+    "code": "51.2",
+    "libelle": "TOURBIERES A MOLINIE BLEUE"
+  },
+  {
+    "code": "53.1",
+    "libelle": "ROSELIERES"
+  },
+  {
+    "code": "53.11",
+    "libelle": "Phragmitaies"
+  },
+  {
+    "code": "53.111",
+    "libelle": "Phragmitaies inondées"
+  },
+  {
+    "code": "53.112",
+    "libelle": "Phragmitaies sèches"
+  },
+  {
+    "code": "53.113",
+    "libelle": "Phagmitaies géantes"
+  },
+  {
+    "code": "53.12",
+    "libelle": "Scirpaies lacustres"
+  },
+  {
+    "code": "53.13",
+    "libelle": "Typhaies"
+  },
+  {
+    "code": "53.14",
+    "libelle": "Roselières basses"
+  },
+  {
+    "code": "53.141",
+    "libelle": "Communautés de Sagittaires"
+  },
+  {
+    "code": "53.142",
+    "libelle": "Communautés à Rubanier négligé"
+  },
+  {
+    "code": "53.143",
+    "libelle": "Communautés à Rubanier rameux"
+  },
+  {
+    "code": "53.144",
+    "libelle": "Communautés avec Acore vrai"
+  },
+  {
+    "code": "53.145",
+    "libelle": "Communautés à Jonc fleuri"
+  },
+  {
+    "code": "53.146",
+    "libelle": "Communautés d'Oenanthe aquatica et de Rorippa amphibia"
+  },
+  {
+    "code": "53.147",
+    "libelle": "Communautés de Prêles d'eau"
+  },
+  {
+    "code": "53.148",
+    "libelle": "Communautés de Grande Berle"
+  },
+  {
+    "code": "53.149",
+    "libelle": "Végétation à Hippuris vulgaris"
+  },
+  {
+    "code": "53.15",
+    "libelle": "Végétation à Glycera maxima"
+  },
+  {
+    "code": "53.16",
+    "libelle": "Végétation à Phalaris arundinacea"
+  },
+  {
+    "code": "53.17",
+    "libelle": "Végétation à Scirpes halophiles"
+  },
+  {
+    "code": "53.2",
+    "libelle": "COMMUNAUTES A GRANDES LAICHES"
+  },
+  {
+    "code": "53.21",
+    "libelle": "Peuplements de grandes Laîches (Magnocariçaies)"
+  },
+  {
+    "code": "53.211",
+    "libelle": "Cariçaies à laîche distique"
+  },
+  {
+    "code": "53.212",
+    "libelle": "Cariçaies à laîche aigüe et communautés s'y rapportant"
+  },
+  {
+    "code": "53.2121",
+    "libelle": "Cariçaies à laîche aigüe"
+  },
+  {
+    "code": "53.2122",
+    "libelle": "Cariçaies à laîche des marais"
+  },
+  {
+    "code": "53.213",
+    "libelle": "Cariçaies à Carex riparia"
+  },
+  {
+    "code": "53.214",
+    "libelle": "Cariçaies à Carex rostrata et à Carex vesicaria"
+  },
+  {
+    "code": "53.2141",
+    "libelle": "Cariçaies à Carex rostrata"
+  },
+  {
+    "code": "53.2142",
+    "libelle": "Cariçaies à Carex vesicaria"
+  },
+  {
+    "code": "53.215",
+    "libelle": "Cariçaies à Carex elata et de Carex cespitosa"
+  },
+  {
+    "code": "53.2151",
+    "libelle": "Cariçaies à Carex elata"
+  },
+  {
+    "code": "53.2152",
+    "libelle": "Cariçaies à Carex cespitosa"
+  },
+  {
+    "code": "53.216",
+    "libelle": "Cariçaies à Carex paniculata"
+  },
+  {
+    "code": "53.217",
+    "libelle": "Cariçaies à Carex appropinquata"
+  },
+  {
+    "code": "53.218",
+    "libelle": "Cariçaies à Carex pseudocyperus"
+  },
+  {
+    "code": "53.219",
+    "libelle": "Cariçaies à Carex vulpina"
+  },
+  {
+    "code": "53.2191",
+    "libelle": "Cariçaies à Carex vulpina"
+  },
+  {
+    "code": "53.2192",
+    "libelle": "Cariçaies à Carex cuprina"
+  },
+  {
+    "code": "53.3",
+    "libelle": "VEGETATION A CLADIUM MARISCUS"
+  },
+  {
+    "code": "53.33",
+    "libelle": "Cladiaies riveraines"
+  },
+  {
+    "code": "53.4",
+    "libelle": "BORDURES A CALAMAGROSTIS DES EAUX COURANTES"
+  },
+  {
+    "code": "53.5",
+    "libelle": "JONCHAIES HAUTES"
+  },
+  {
+    "code": "53.6",
+    "libelle": "FORMATIONS RIVERAINES DE CANNES"
+  },
+  {
+    "code": "53.61",
+    "libelle": "Communautés avec les Cannes de Ravenne"
+  },
+  {
+    "code": "53.62",
+    "libelle": "Peuplements de Cannes de Provence"
+  },
+  {
+    "code": "54.1",
+    "libelle": "SOURCES"
+  },
+  {
+    "code": "54.11",
+    "libelle": "Sources d'eaux douces pauvres en bases"
+  },
+  {
+    "code": "54.111",
+    "libelle": "Sources d'eaux douces à Bryophytes"
+  },
+  {
+    "code": "54.112",
+    "libelle": "Sources à Cardamines"
+  },
+  {
+    "code": "54.12",
+    "libelle": "Sources d'eaux dures"
+  },
+  {
+    "code": "54.121",
+    "libelle": "Cones de tufs"
+  },
+  {
+    "code": "54.122",
+    "libelle": "Sources calcaires"
+  },
+  {
+    "code": "54.2",
+    "libelle": "BAS-MARAIS ALCALINS (tourbières basses alcalines)"
+  },
+  {
+    "code": "54.21",
+    "libelle": "Bas-marais à Schoenus nigricans (choin noir)"
+  },
+  {
+    "code": "54.22",
+    "libelle": "Bas-marais à Schoenus ferrugineus"
+  },
+  {
+    "code": "54.221",
+    "libelle": "Bas-marais péri-alpins à Schoenus ferrugineus (choin ferrugineux)"
+  },
+  {
+    "code": "54.23",
+    "libelle": "Tourbières basses à Carex davalliana"
+  },
+  {
+    "code": "54.231",
+    "libelle": "Bas-marais à Carex davalliana floristiquement riches"
+  },
+  {
+    "code": "54.232",
+    "libelle": "Bas-marais à Carex davalliana et Trichophorum cespitosum"
+  },
+  {
+    "code": "54.24",
+    "libelle": "Bas-marais alcalins pyrénéens"
+  },
+  {
+    "code": "54.25",
+    "libelle": "Bas-marais à Carex dioica, C. pulicaris, C. flava"
+  },
+  {
+    "code": "54.253",
+    "libelle": "Bas-marais à Carex flava médio-européens"
+  },
+  {
+    "code": "54.26",
+    "libelle": "Bas-marais à Carex nigra"
+  },
+  {
+    "code": "54.28",
+    "libelle": "Bas-marais à Carex frigida"
+  },
+  {
+    "code": "54.3",
+    "libelle": "GAZONS RIVERAINS ARCTICO-ALPINS"
+  },
+  {
+    "code": "54.31",
+    "libelle": "Gazons riverains arctico-alpins à élyne fausse Laiche"
+  },
+  {
+    "code": "54.32",
+    "libelle": "Gazons riverains arctico-alpins à Carex maritima"
+  },
+  {
+    "code": "54.33",
+    "libelle": "Gazons riverains arctico-alpins à Typha"
+  },
+  {
+    "code": "54.4",
+    "libelle": "BAS-MARAIS ACIDES"
+  },
+  {
+    "code": "54.41",
+    "libelle": "Ceintures lacustres à Eriophorum scheuchzeri"
+  },
+  {
+    "code": "54.42",
+    "libelle": "Tourbières basses à Carex nigra, C. canescens et C. echinata"
+  },
+  {
+    "code": "54.421",
+    "libelle": "Bas-marais alpins à Carex fusca"
+  },
+  {
+    "code": "54.422",
+    "libelle": "Bas-marais sub-atlantiques à Carex nigra, C. canescens et C. echinata"
+  },
+  {
+    "code": "54.4221",
+    "libelle": "Bas-marais acides sub-atlantiques à Carex"
+  },
+  {
+    "code": "54.4222",
+    "libelle": "Bas-marais acides subatlantiques à Carex et Juncus"
+  },
+  {
+    "code": "54.4223",
+    "libelle": "Bas-marais sub-atlantiques à Carex et Sphagnum"
+  },
+  {
+    "code": "54.4224",
+    "libelle": "Bas-marais sub-atlantiques à Carex, Juncus et Sphagnum"
+  },
+  {
+    "code": "54.424",
+    "libelle": "Bas-marais acides pyrénéens à Laiche noire"
+  },
+  {
+    "code": "54.44",
+    "libelle": "Pozzines complexes à Carex intricata"
+  },
+  {
+    "code": "54.442",
+    "libelle": "Pozzines complexes corses à Carex intricata"
+  },
+  {
+    "code": "54.45",
+    "libelle": "Bas-marais acides à Trichophorum cespitosum"
+  },
+  {
+    "code": "54.451",
+    "libelle": "Bas-marais acides alpiens à Trichophorum cespitosum"
+  },
+  {
+    "code": "54.452",
+    "libelle": "Bas-marais acides pyrénéens à Trichophorum cespitosum"
+  },
+  {
+    "code": "54.454",
+    "libelle": "Bas-marais acides sub-atlantiques à Trichophorum cespitosum"
+  },
+  {
+    "code": "54.455",
+    "libelle": "Bas-marais acides corses à Trichophorum cespitosum"
+  },
+  {
+    "code": "54.46",
+    "libelle": "Bas-marais à Eriophorum angustifolium"
+  },
+  {
+    "code": "54.5",
+    "libelle": "TOURBIERES DE TRANSITION"
+  },
+  {
+    "code": "54.51",
+    "libelle": "Pelouses à Carex lasiocarpa"
+  },
+  {
+    "code": "54.511",
+    "libelle": "Pelouses de Carex lasiocarpa et Mousses brunes"
+  },
+  {
+    "code": "54.512",
+    "libelle": "Pelouses à Carex lasiocarpa et Sphaignes"
+  },
+  {
+    "code": "54.52",
+    "libelle": "Tourbières tremblantes à Carex diandra"
+  },
+  {
+    "code": "54.53",
+    "libelle": "Tourbières tremblantes à Carex rostrata"
+  },
+  {
+    "code": "54.531",
+    "libelle": "Tourbières tremblantes acidiclines à Carex rostrata"
+  },
+  {
+    "code": "54.532",
+    "libelle": "Tourbières tremblantes basiclines à Carex rostrata"
+  },
+  {
+    "code": "54.5321",
+    "libelle": "Tourbières tremblantes basiclines à Carex rostrata et Sphaignes"
+  },
+  {
+    "code": "54.5322",
+    "libelle": "Tourbières tremblantes basiclines à Carex rostrata et Mousses brunes"
+  },
+  {
+    "code": "54.54",
+    "libelle": "Pelouses à Carex limosa"
+  },
+  {
+    "code": "54.541",
+    "libelle": "Pelouses à Carex limosa des bourbiers et Mousses brunes"
+  },
+  {
+    "code": "54.542",
+    "libelle": "Pelouses à Carex limosa et Sphaignes"
+  },
+  {
+    "code": "54.55",
+    "libelle": "Pelouses à Carex chordorrhiza"
+  },
+  {
+    "code": "54.56",
+    "libelle": "Pelouses à Carex heleonastes"
+  },
+  {
+    "code": "54.57",
+    "libelle": "Tourbières tremblantes à Rhynchospora"
+  },
+  {
+    "code": "54.58",
+    "libelle": "Radeaux de Sphaignes et de Linaigrettes"
+  },
+  {
+    "code": "54.59",
+    "libelle": "Radeaux à Menyanthes trifoliata et Potentilla palustris"
+  },
+  {
+    "code": "54.6",
+    "libelle": "COMMUNAUTES A RHYNCHOSPORA ALBA"
+  },
+  {
+    "code": "61.1",
+    "libelle": "EBOULIS SILICEUX ALPINS ET NORDIQUES"
+  },
+  {
+    "code": "61.11",
+    "libelle": "Eboulis siliceux alpins"
+  },
+  {
+    "code": "61.111",
+    "libelle": "Eboulis à Oxyria digyna"
+  },
+  {
+    "code": "61.1111",
+    "libelle": "Eboulis à Oxyria digyna des Alpes"
+  },
+  {
+    "code": "61.1112",
+    "libelle": "Eboulis du sud-ouest des Alpes à Oxyria digyna"
+  },
+  {
+    "code": "61.1113",
+    "libelle": "Eboulis pyrénéens à Oxyria"
+  },
+  {
+    "code": "61.112",
+    "libelle": "Eboulis à Androsace alpina"
+  },
+  {
+    "code": "61.113",
+    "libelle": "Eboulis à Luzule alpine"
+  },
+  {
+    "code": "61.114",
+    "libelle": "Eboulis siliceux et froids de blocailles"
+  },
+  {
+    "code": "61.12",
+    "libelle": "Eboulis siliceux des montagnes nordiques"
+  },
+  {
+    "code": "61.2",
+    "libelle": "EBOULIS CALCAIRES ALPIENS"
+  },
+  {
+    "code": "61.21",
+    "libelle": "Eboulis alpiens sur calcoschistes"
+  },
+  {
+    "code": "61.22",
+    "libelle": "Eboulis alpiens à Tabouret à feuilles rondes"
+  },
+  {
+    "code": "61.23",
+    "libelle": "Eboulis calcaires fins"
+  },
+  {
+    "code": "61.231",
+    "libelle": "Eboulis à Petasites"
+  },
+  {
+    "code": "61.232",
+    "libelle": "Eboulis à Liondent des montagnes"
+  },
+  {
+    "code": "61.2321",
+    "libelle": "Eboulis à Liondent des montagnes des Alpes centrales"
+  },
+  {
+    "code": "61.2322",
+    "libelle": "Eboulis à Berardia"
+  },
+  {
+    "code": "61.3",
+    "libelle": "EBOULIS OUEST-MEDITERRANEENS ET EBOULIS THERMOPHILES"
+  },
+  {
+    "code": "61.31",
+    "libelle": "Eboulis thermophiles péri-alpins"
+  },
+  {
+    "code": "61.311",
+    "libelle": "Eboulis à Stipa calamagrostis"
+  },
+  {
+    "code": "61.312",
+    "libelle": "Eboulis calcaires sub-montagnards"
+  },
+  {
+    "code": "61.3121",
+    "libelle": "Eboulis à Galeopsis angustifolia"
+  },
+  {
+    "code": "61.3122",
+    "libelle": "Eboulis à Rumex scutatus"
+  },
+  {
+    "code": "61.3123",
+    "libelle": "Eboulis calcaires à Fougères"
+  },
+  {
+    "code": "61.313",
+    "libelle": "Eboulis à Leontodon hyoseroides"
+  },
+  {
+    "code": "61.32",
+    "libelle": "Eboulis provençaux"
+  },
+  {
+    "code": "61.33",
+    "libelle": "Eboulis pyrénéo-alpiens siliceux thermophiles"
+  },
+  {
+    "code": "61.34",
+    "libelle": "Eboulis calcaires pyrénéens"
+  },
+  {
+    "code": "61.341",
+    "libelle": "Eboulis calcaires fins pyrénéens"
+  },
+  {
+    "code": "61.342",
+    "libelle": "Eboulis calcaires grossiers pyrénéens"
+  },
+  {
+    "code": "61.343",
+    "libelle": "Eboulis calcaires des Pyrénées de haute altitude"
+  },
+  {
+    "code": "61.344",
+    "libelle": "Eboulis calcaires humides pyrénéens"
+  },
+  {
+    "code": "61.345",
+    "libelle": "Eboulis calcaires subalpins pyrénéens"
+  },
+  {
+    "code": "62.1",
+    "libelle": "VEGETATION DES FALAISES CONTINENTALES CALCAIRES"
+  },
+  {
+    "code": "62.11",
+    "libelle": "Falaises calcaires eu-méditerranéennes occidentales et oro-ibériques"
+  },
+  {
+    "code": "62.111",
+    "libelle": "Falaises calcaires eu-méditerranéennes occidentales"
+  },
+  {
+    "code": "62.1111",
+    "libelle": "Falaises calcaires ibéro-méditerranéennes"
+  },
+  {
+    "code": "62.1115",
+    "libelle": "Falaises méditerranéennes à Fougères"
+  },
+  {
+    "code": "62.12",
+    "libelle": "Falaises calcaires des Pyrénées centrales"
+  },
+  {
+    "code": "62.13",
+    "libelle": "Falaises calcaires des Alpes ligures et des Apennins"
+  },
+  {
+    "code": "62.15",
+    "libelle": "Falaises calcaires alpiennes et sub-méditerranéennes"
+  },
+  {
+    "code": "62.151",
+    "libelle": "Falaises calcaires ensoleillées des Alpes"
+  },
+  {
+    "code": "62.152",
+    "libelle": "Falaises calcaires médio-européennes à Fougères"
+  },
+  {
+    "code": "62.2",
+    "libelle": "VEGETATION DES FALAISES CONTINENTALES SILICEUSES"
+  },
+  {
+    "code": "62.21",
+    "libelle": "Falaises siliceuses des montagnes médio-européennes"
+  },
+  {
+    "code": "62.211",
+    "libelle": "Falaises siliceuses pyrénéo-alpiennes"
+  },
+  {
+    "code": "62.212",
+    "libelle": "Falaises siliceuses hercyniennes"
+  },
+  {
+    "code": "62.213",
+    "libelle": "Falaises de serpentines hercyniennes"
+  },
+  {
+    "code": "62.23",
+    "libelle": "Falaises siliceuses des Alpes sud-occidentales"
+  },
+  {
+    "code": "62.26",
+    "libelle": "Falaises siliceuses catalano-languedociennes"
+  },
+  {
+    "code": "62.3",
+    "libelle": "DALLES ROCHEUSES"
+  },
+  {
+    "code": "62.4",
+    "libelle": "FALAISES CONTINENTALES DENUDEES"
+  },
+  {
+    "code": "62.41",
+    "libelle": "Falaises continentales calcaires nues"
+  },
+  {
+    "code": "62.42",
+    "libelle": "Falaises continentales siliceuses nues"
+  },
+  {
+    "code": "62.5",
+    "libelle": "FALAISES CONTINENTALES HUMIDES"
+  },
+  {
+    "code": "62.51",
+    "libelle": "Falaises continentales humides méditerranéennes"
+  },
+  {
+    "code": "62.52",
+    "libelle": "Falaises continentales humides septentrionales"
+  },
+  {
+    "code": "63.1",
+    "libelle": "NEVES"
+  },
+  {
+    "code": "63.2",
+    "libelle": "GLACIERS ROCHEUX"
+  },
+  {
+    "code": "63.3",
+    "libelle": "GLACIERS"
+  },
+  {
+    "code": "64.1",
+    "libelle": "DUNES FLUVIO-GLACIAIRES"
+  },
+  {
+    "code": "64.11",
+    "libelle": "Pelouses pionnières des dunes continentales"
+  },
+  {
+    "code": "64.12",
+    "libelle": "Pelouses siliceuses des dunes intérieures"
+  },
+  {
+    "code": "64.13",
+    "libelle": "Landes sur dunes continentales"
+  },
+  {
+    "code": "64.132",
+    "libelle": "Autres landes sur dunes continentales"
+  },
+  {
+    "code": "64.14",
+    "libelle": "Fourrés sur dunes continentales"
+  },
+  {
+    "code": "64.141",
+    "libelle": "Peuplements de Juniperus communis sur dunes continentales"
+  },
+  {
+    "code": "64.142",
+    "libelle": "Autres fourrés sur dunes continentales"
+  },
+  {
+    "code": "64.3",
+    "libelle": "DUNES PALEO-COTIERES"
+  },
+  {
+    "code": "64.4",
+    "libelle": "DUNES FLUVIATILES"
+  },
+  {
+    "code": "64.5",
+    "libelle": "DUNES D'ORIGINE LACUSTRE"
+  },
+  {
+    "code": "64.6",
+    "libelle": "DUNES CONTINENTALES MEDITERRANEENNES"
+  },
+  {
+    "code": "64.61",
+    "libelle": "Dunes riveraines du Rhône"
+  },
+  {
+    "code": "64.611",
+    "libelle": "Prairies dunaires du Rhône"
+  },
+  {
+    "code": "64.6111",
+    "libelle": "Végétation de cannes sur dunes du Rhône"
+  },
+  {
+    "code": "64.6112",
+    "libelle": "Autres pelouses des dunes du Rhône"
+  },
+  {
+    "code": "64.612",
+    "libelle": "Fourrés dunaires du Rhône"
+  },
+  {
+    "code": "64.613",
+    "libelle": "Bois de Genévriers des dunes du Rhône"
+  },
+  {
+    "code": "65.2",
+    "libelle": "GROTTES DE L'ITALIE SEPTENTRIONALE ET DU SUD-EST DE LA FRANCE AVEC HYDROMANTES"
+  },
+  {
+    "code": "65.4",
+    "libelle": "AUTRES GROTTES"
+  },
+  {
+    "code": "81.1",
+    "libelle": "PRAIRIES SECHES AMELIOREES"
+  },
+  {
+    "code": "81.2",
+    "libelle": "PRAIRIES HUMIDES AMELIOREES"
+  },
+  {
+    "code": "82.1",
+    "libelle": "CHAMPS D'UN SEUL TENANT INTENSEMENT CULTIVES"
+  },
+  {
+    "code": "82.11",
+    "libelle": "Grandes cultures"
+  },
+  {
+    "code": "82.12",
+    "libelle": "Cultures et maraichage"
+  },
+  {
+    "code": "82.2",
+    "libelle": "CULTURES AVEC MARGES DE VEGETATION SPONTANEE"
+  },
+  {
+    "code": "82.3",
+    "libelle": "CULTURE EXTENSIVE"
+  },
+  {
+    "code": "82.4",
+    "libelle": "CULTURES INONDEES"
+  },
+  {
+    "code": "82.41",
+    "libelle": "Rizières"
+  },
+  {
+    "code": "82.42",
+    "libelle": "Cressonnières"
+  },
+  {
+    "code": "83.1",
+    "libelle": "VERGERS DE HAUTES TIGES"
+  },
+  {
+    "code": "83.11",
+    "libelle": "Oliveraies"
+  },
+  {
+    "code": "83.111",
+    "libelle": "Oliveraies traditionnelles"
+  },
+  {
+    "code": "83.112",
+    "libelle": "Oliveraies intensives"
+  },
+  {
+    "code": "83.12",
+    "libelle": "Châtaigneraies"
+  },
+  {
+    "code": "83.13",
+    "libelle": "Vergers à Noyers"
+  },
+  {
+    "code": "83.14",
+    "libelle": "Vergers à Amandiers"
+  },
+  {
+    "code": "83.15",
+    "libelle": "Vergers"
+  },
+  {
+    "code": "83.151",
+    "libelle": "Vergers septentrionaux"
+  },
+  {
+    "code": "83.152",
+    "libelle": "Vergers méridionaux"
+  },
+  {
+    "code": "83.16",
+    "libelle": "Vergers à agrumes"
+  },
+  {
+    "code": "83.18",
+    "libelle": "Autres vergers à hautes tiges"
+  },
+  {
+    "code": "83.2",
+    "libelle": "VERGERS A ARBUSTES"
+  },
+  {
+    "code": "83.21",
+    "libelle": "Vignobles"
+  },
+  {
+    "code": "83.211",
+    "libelle": "Vignobles traditionnels"
+  },
+  {
+    "code": "83.212",
+    "libelle": "Vignobles intensifs"
+  },
+  {
+    "code": "83.22",
+    "libelle": "Vergers de basses tiges"
+  },
+  {
+    "code": "83.3",
+    "libelle": "PLANTATIONS"
+  },
+  {
+    "code": "83.31",
+    "libelle": "Plantations de conifères"
+  },
+  {
+    "code": "83.311",
+    "libelle": "Plantations de conifères indigènes"
+  },
+  {
+    "code": "83.3111",
+    "libelle": "Plantations de Sapins, d'Epicéas et de Mélèzes européens."
+  },
+  {
+    "code": "83.3112",
+    "libelle": "Plantations de Pins européens."
+  },
+  {
+    "code": "83.3113",
+    "libelle": "Plantations de Cyprès et de Genévriers européens"
+  },
+  {
+    "code": "83.312",
+    "libelle": "Plantations de conifères exotiques"
+  },
+  {
+    "code": "83.3121",
+    "libelle": "Plantations d'Epicéas, de Sapins exotiques, de Sapin de Douglas et de Cèdres."
+  },
+  {
+    "code": "83.3122",
+    "libelle": "Plantations de Pins exotiques."
+  },
+  {
+    "code": "83.3123",
+    "libelle": "Autres plantations de conifères exotiques"
+  },
+  {
+    "code": "83.32",
+    "libelle": "Plantations d'arbres feuillus"
+  },
+  {
+    "code": "83.321",
+    "libelle": "Plantations de Peupliers"
+  },
+  {
+    "code": "83.3211",
+    "libelle": "Plantations de Peupliers avec une strate herbacée élevée (Mégaphorbiaies)."
+  },
+  {
+    "code": "83.3212",
+    "libelle": "Autres plantations de Peupliers"
+  },
+  {
+    "code": "83.322",
+    "libelle": "Plantations d'Eucalyptus"
+  },
+  {
+    "code": "83.323",
+    "libelle": "Plantations de Chênes exotiques"
+  },
+  {
+    "code": "83.324",
+    "libelle": "Plantations de Robiniers"
+  },
+  {
+    "code": "83.325",
+    "libelle": "Autres plantations d'arbres feuillus"
+  },
+  {
+    "code": "84.1",
+    "libelle": "ALIGNEMENTS D'ARBRES"
+  },
+  {
+    "code": "84.2",
+    "libelle": "BORDURES DE HAIES"
+  },
+  {
+    "code": "84.3",
+    "libelle": "PETITS BOIS, BOSQUETS"
+  },
+  {
+    "code": "84.4",
+    "libelle": "BOCAGES"
+  },
+  {
+    "code": "84.411",
+    "libelle": "Carrières de sable, d'argile et de kaolin"
+  },
+  {
+    "code": "84.412",
+    "libelle": "Carrières de graviers"
+  },
+  {
+    "code": "84.413",
+    "libelle": "Carrières de pierres"
+  },
+  {
+    "code": "84.42",
+    "libelle": "Terrils crassiers et autres tas de détritus"
+  },
+  {
+    "code": "84.43",
+    "libelle": "Voies de chemins de fer, gares de triage et autres espaces ouverts"
+  },
+  {
+    "code": "84.5",
+    "libelle": "SERRES ET CONSTRUCTIONS AGRICOLES"
+  },
+  {
+    "code": "84.6",
+    "libelle": "SITES ARCHEOLOGIQUES"
+  },
+  {
+    "code": "85.1",
+    "libelle": "GRANDS PARCS"
+  },
+  {
+    "code": "85.11",
+    "libelle": "Parcelles boisées de parcs"
+  },
+  {
+    "code": "85.12",
+    "libelle": "Pelouses de parcs"
+  },
+  {
+    "code": "85.13",
+    "libelle": "Bassins de parcs"
+  },
+  {
+    "code": "85.14",
+    "libelle": "Parterre de fleurs, avec arbres et avec bosquets en parc"
+  },
+  {
+    "code": "85.15",
+    "libelle": "Communautés sub-naturelles des parcs"
+  },
+  {
+    "code": "85.2",
+    "libelle": "PETITS PARCS ET SQUARES CITADINS"
+  },
+  {
+    "code": "85.3",
+    "libelle": "JARDINS"
+  },
+  {
+    "code": "85.31",
+    "libelle": "Jardins ornementaux"
+  },
+  {
+    "code": "85.32",
+    "libelle": "Jardins potagers de subsistance"
+  },
+  {
+    "code": "85.4",
+    "libelle": "ESPACES INTERNES AU CENTRE-VILLE"
+  },
+  {
+    "code": "86.1",
+    "libelle": "VILLES"
+  },
+  {
+    "code": "86.2",
+    "libelle": "VILLAGES"
+  },
+  {
+    "code": "86.3",
+    "libelle": "SITES INDUSTRIELS EN ACTIVITES"
+  },
+  {
+    "code": "86.4",
+    "libelle": "SITES INDUSTRIELS ANCIENS"
+  },
+  {
+    "code": "86.41",
+    "libelle": "Carrières"
+  },
+  {
+    "code": "87.1",
+    "libelle": "TERRAINS EN FRICHE"
+  },
+  {
+    "code": "87.2",
+    "libelle": "ZONES RUDERALES"
+  },
+  {
+    "code": "89.1",
+    "libelle": "LAGUNES INDUSTRIELLES ET CANAUX SALINS"
+  },
+  {
+    "code": "89.11",
+    "libelle": "Ports maritimes"
+  },
+  {
+    "code": "89.12",
+    "libelle": "Salines"
+  },
+  {
+    "code": "89.13",
+    "libelle": "Autres lagunes industrielles et canaux salins"
+  },
+  {
+    "code": "89.2",
+    "libelle": "LAGUNES INDUSTRIELLES ET CANAUX D'EAU DOUCE"
+  },
+  {
+    "code": "89.21",
+    "libelle": "Canaux navigables"
+  },
+  {
+    "code": "89.22",
+    "libelle": "Fossés et petits canaux"
+  },
+  {
+    "code": "89.23",
+    "libelle": "Lagunes industrielles et bassins ornementaux"
+  }
+]
