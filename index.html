@@ -338,16 +338,7 @@ function getRecords(){
 function setRecords(list){ localStorage.setItem('zh_records', JSON.stringify(list)); updateRecCount(); }
 function updateRecCount(){ document.getElementById('recCount').textContent = getRecords().length; }
 
-/* ===================== Species lists ===================== */
-const SP_NON_HUMIDE = ["Acer campestre","Acer pseudoplatanus","Achillea millefolium","Alopecurus pratensis","Arrhenatherum elatius","Bromus hordeaceus","Cirsium arvense","Clematis vitalba","Cornus sanguinea","Corylus avellana","Crataegus monogyna","Dactylis glomerata","Daucus carota","Fraxinus excelsior","Galium aparine","Geum urbanum","Hedera helix","Heracleum sphondylium","Schedonorus pratensis","Lolium perenne","Lotus corniculatus","Plantago lanceolata","Poa annua","Poa trivialis","Prunus spinosa","Quercus petraea","Quercus robur","Ranunculus acris","Ranunculus bulbosus","Rubus pruinosus","Rubus sp.","Rumex acetosa","Rumex crispus","Sambucus nigra","Torilis arvensis","Trifolium pratense","Trifolium repens","Urtica dioica"];
-
-const SP_GROUPS = {
-  "grp1_ligneux_prairial":{ title:"Groupe 1 — Ligneux humides & prairial", species:["Alnus glutinosa","Fraxinus angustifolia","Salix alba","Salix aurita","Salix cinerea","Salix purpurea","Salix sp.","Salix viminalis","Populus alba","Populus nigra","Prunus padus","Ulmus laevis","Ribes nigrum","Ribes rubrum","Rubus caesius","Achillea ptarmica","Agrostis stolonifera","Alisma plantago-aquatica","Alopecurus geniculatus","Cerastium dubium","Cirsium oleraceum","Cirsium palustre"]},
-  "grp2_carex":{ title:"Groupe 2 — Cariçaies & mégaphorbiaies", species:["Angelica sylvestris","Berula erecta","Bidens tripartita","Bolboschoenus maritimus","Caltha palustris","Cardamine pratensis","Carex acuta","Carex acutiformis","Carex cuprina","Carex disticha","Carex echinata","Carex hirta","Carex pendula","Carex pseudocyperus","Carex remota","Carex riparia","Carex vulpina","Carex sp.","Calystegia sepium"]},
-  "grp3_amphibies":{ title:"Groupe 3 — Amphibies & roselières", species:["Cyperus fuscus","Deschampsia cespitosa","Eleocharis acicularis","Eleocharis palustris","Epilobium hirsutum","Epilobium parviflorum","Equisetum fluviatile","Equisetum palustre","Eupatorium cannabinum","Filipendula ulmaria","Galium debile","Galium palustre","Galium uliginosum","Glyceria fluitans","Glyceria maxima","Helosciadium nodiflorum","Humulus lupulus","Impatiens glandulifera","Iris pseudacorus","Juncus acutiflorus","Juncus articulatus","Juncus conglomeratus"]},
-  "grp4_joncs":{ title:"Groupe 4 — Joncs & prairies humides", species:["Juncus effusus","Juncus inflexus","Lycopus europaeus","Lysimachia nummularia","Lysimachia vulgaris","Lythrum salicaria","Mentha aquatica","Mentha arvensis","Molinia caerulea","Myosotis scorpioides","Nasturtium officinale","Oenanthe aquatica","Persicaria amphibia","Persicaria hydropiper","Persicaria lapathifolia","Phalaris arundinacea","Phragmites australis","Polygonum hydropiper","Potentilla anserina","Pulicaria dysenterica","Ranunculus flammula","Ranunculus repens"]},
-  "grp5_renoncules":{ title:"Groupe 5 — Renoncules & bords d'eau", species:["Ranunculus sceleratus","Rorippa amphibia","Rumex conglomeratus","Rumex hydrolapathum","Rumex sanguineus","Scirpus sylvaticus","Scrophularia auriculata","Silaum silaus","Silene flos-cuculi","Solanum dulcamara","Sparganium erectum","Stachys palustris","Stellaria alsine","Symphytum officinale","Thalictrum flavum","Typha angustifolia","Typha latifolia","Valeriana officinalis","Veronica anagallis-aquatica","Veronica beccabunga"]}
-};
+/* ===================== Espèces : gérées via le catalogue flore importé (voir renderEspecesSearchBlock) ===================== */
 
 const ATTEINTES = ["Assèchement, drainage","Atterrissement","Création plan d'eau","Décharge","Enfrichement","Fertilisation","Modif. cours d'eau, canalisation","Espèces invasives","Remblais","Extraction de matériaux","Suppr. haies, boisements","Surfréquentation","Urbanisation","Eutrophisation","Populiculture/enrésinement","Mise en culture","Rejet polluant","Surpâturage","Autre"];
 
@@ -407,6 +398,14 @@ function getCorineReferentiel(){
   try{ return JSON.parse(localStorage.getItem('zh_corine_ref')||'[]'); }catch(e){ return []; }
 }
 function setCorineReferentiel(list){ localStorage.setItem('zh_corine_ref', JSON.stringify(list)); }
+
+function getFloreReferentiel(){
+  try{ return JSON.parse(localStorage.getItem('zh_flore_ref')||'[]'); }catch(e){ return []; }
+}
+function setFloreReferentiel(list){ localStorage.setItem('zh_flore_ref', JSON.stringify(list)); }
+function especeLabel(entry){
+  return (entry['Taxon valide court']||entry.cdref16||'?') + (entry['Nom français'] ? ' — '+entry['Nom français'] : '');
+}
 
 /* ===================== Generic field renderers ===================== */
 function fieldWrap(label, hint, node){
@@ -531,44 +530,80 @@ function alimentationTable(items){
   return table;
 }
 
-function speciesCheckGroup(key, options){
-  // Comme checkGroup, mais avec un toggle "particulièrement abondante" par espèce cochée (donnée structurée, pas juste visuelle)
-  const wrap = el('div',{class:'checklist'});
-  const arr = new Set(getVal(key)||[]);
-  const abKey = 'abondant_'+key;
-  const ab = new Set(getVal(abKey)||[]);
-  options.forEach(opt=>{
-    const id = key+'_'+slug(opt);
-    const cb = el('input',{type:'checkbox', id});
-    cb.checked = arr.has(opt);
-    const lab = el('label',{for:id, class: ab.has(opt)?'abondant':''}, opt);
-    const abBtn = el('button',{type:'button', class:'btn', style:'padding:2px 7px; font-size:.65rem; margin-left:4px; background:'+(ab.has(opt)?'var(--rust)':'var(--line)')+'; color:'+(ab.has(opt)?'#fff':'var(--ink)')+';'}, '★');
-    abBtn.style.display = cb.checked ? 'inline-flex' : 'none';
-    cb.addEventListener('change', ()=>{
-      if(cb.checked){ arr.add(opt); abBtn.style.display='inline-flex'; }
-      else { arr.delete(opt); ab.delete(opt); abBtn.style.display='none'; lab.classList.remove('abondant'); setVal(abKey, Array.from(ab)); }
-      setVal(key, Array.from(arr));
-    });
-    abBtn.addEventListener('click', ()=>{
-      if(ab.has(opt)){ ab.delete(opt); lab.classList.remove('abondant'); }
-      else { ab.add(opt); lab.classList.add('abondant'); }
-      setVal(abKey, Array.from(ab));
-    });
-    wrap.appendChild(el('div',{class:'chk'}, cb, lab, abBtn));
-  });
-  return wrap;
-}
+function renderEspecesSearchBlock(container){
+  container.innerHTML = '';
+  const ref = getFloreReferentiel();
+  const selection = getVal('especes_selection')||[];
 
-function speciesBlock(id, title, species){
-  const box = el('div',{});
-  box.appendChild(el('h3',{}, title));
-  const cov = el('input',{type:'number', min:0, max:100, placeholder:'% recouvrement (10–100)'});
-  cov.value = getVal('cover_'+id) || '';
-  cov.addEventListener('input', ()=>setVal('cover_'+id, cov.value));
-  box.appendChild(fieldWrap('% recouvrement du groupe', null, cov));
-  box.appendChild(el('div',{class:'hint'},'Touche ★ pour signaler une espèce particulièrement abondante.'));
-  box.appendChild(speciesCheckGroup('species_'+id, species));
-  return box;
+  container.appendChild(el('div',{class:'hint'}, ref.length
+    ? `Catalogue flore chargé : ${ref.length} taxons.`
+    : 'Aucun catalogue flore importé — recherche indisponible, importer le catalogue ci-dessous.'));
+
+  const fileLabel = el('label',{class:'btn btn-outline', style:'cursor:pointer;'}, '📥 Importer le catalogue flore (JSON)');
+  const fileInput = el('input',{type:'file', accept:'.json', style:'display:none;'});
+  fileInput.addEventListener('change', (e)=>{
+    const file = e.target.files[0]; if(!file) return;
+    const reader = new FileReader();
+    reader.onload = ()=>{
+      try{
+        const data = JSON.parse(reader.result);
+        if(!Array.isArray(data)) throw new Error('format');
+        setFloreReferentiel(data);
+        toast('Catalogue flore importé ('+data.length+' taxons)');
+        renderEspecesSearchBlock(container);
+      }catch(err){ toast('Fichier invalide'); }
+    };
+    reader.readAsText(file);
+  });
+  fileLabel.appendChild(fileInput);
+  container.appendChild(fileLabel);
+
+  const searchInput = el('input',{type:'text', placeholder:'Nom scientifique, nom français ou famille…'});
+  container.appendChild(fieldWrap('Rechercher une espèce dans le catalogue', null, searchInput));
+  const results = el('div',{});
+  container.appendChild(results);
+
+  searchInput.addEventListener('input', ()=>{
+    results.innerHTML = '';
+    const q = searchInput.value.trim().toLowerCase();
+    if(!q || ref.length===0) return;
+    ref.filter(r=>
+      (r['Taxon valide court']||'').toLowerCase().includes(q) ||
+      (r['Nom français']||'').toLowerCase().includes(q) ||
+      (r['Famille']||'').toLowerCase().includes(q)
+    ).slice(0,10).forEach(r=>{
+      const item = el('div',{class:'chk', style:'cursor:pointer;'}, especeLabel(r));
+      item.addEventListener('click', ()=>{
+        const list = getVal('especes_selection')||[];
+        if(list.some(e=>e.cdref16===r.cdref16)){ toast('Espèce déjà ajoutée'); return; }
+        list.push(Object.assign({}, r, {abondante:false}));
+        setVal('especes_selection', list);
+        searchInput.value=''; results.innerHTML='';
+        renderEspecesSearchBlock(container);
+      });
+      results.appendChild(item);
+    });
+  });
+
+  container.appendChild(el('div',{class:'hint', style:'margin-top:10px;'},'Touche ★ pour signaler une espèce particulièrement abondante.'));
+  const list_container = el('div',{class:'checklist'});
+  selection.forEach((entry, idx)=>{
+    const lab = el('label',{class: entry.abondante?'abondant':''}, especeLabel(entry));
+    const abBtn = el('button',{type:'button', class:'btn', style:'padding:2px 7px; font-size:.65rem; margin-left:4px; background:'+(entry.abondante?'var(--rust)':'var(--line)')+'; color:'+(entry.abondante?'#fff':'var(--ink)')+';'}, '★');
+    abBtn.addEventListener('click', ()=>{
+      entry.abondante = !entry.abondante;
+      setVal('especes_selection', selection);
+      renderEspecesSearchBlock(container);
+    });
+    const rm = el('button',{type:'button', class:'btn btn-danger', style:'padding:2px 7px; font-size:.65rem; margin-left:4px;'}, '×');
+    rm.addEventListener('click', ()=>{
+      selection.splice(idx,1);
+      setVal('especes_selection', selection);
+      renderEspecesSearchBlock(container);
+    });
+    list_container.appendChild(el('div',{class:'chk'}, lab, abBtn, rm));
+  });
+  container.appendChild(list_container);
 }
 
 function ratingListSelectable(keyPrefix, items, options){
@@ -1030,8 +1065,8 @@ function buildFonctions(card){
   card.appendChild(alimentationTable(ALIMENTATION_ITEMS));
 
   card.appendChild(el('h2',{},'Fonctions majeures'));
-  card.appendChild(el('div',{class:'hint'},'Cocher les fonctions concernées ; graduation 0 (nulle) à 9 (maximale).'));
-  card.appendChild(numberListSelectable('fonction', ['Biologique','Hydraulique','Épuratrice'], 0, 9));
+  card.appendChild(el('div',{class:'hint'},'Cocher les fonctions concernées ; graduation -, +/-, +.'));
+  card.appendChild(ratingListSelectable('fonction', ['Biologique','Hydraulique','Épuratrice'], RATING3));
 
   card.appendChild(el('h2',{},'Valeurs majeures'));
   card.appendChild(el('div',{class:'hint'},'Cocher les valeurs concernées ; graduation -, +/-, +.'));
@@ -1157,13 +1192,9 @@ function buildEspeces(card){
   renderCorineBlock(corineBox);
 
   card.appendChild(el('h2',{},'Cortège floristique'));
-  card.appendChild(el('div',{class:'hint'},'Cocher les espèces observées. % de recouvrement par groupe hygrophile.'));
-  Object.entries(SP_GROUPS).forEach(([id,g])=>{
-    card.appendChild(speciesBlock(id, g.title, g.species));
-  });
-  card.appendChild(el('h3',{},'Cortège non humide'));
-  card.appendChild(el('div',{class:'hint'},'Touche ★ pour signaler une espèce particulièrement abondante.'));
-  card.appendChild(speciesCheckGroup('species_non_humide', SP_NON_HUMIDE));
+  const especesBox = el('div',{});
+  card.appendChild(especesBox);
+  renderEspecesSearchBlock(especesBox);
 
   card.appendChild(el('h2',{},'Type SAGE'));
   const sageSel = el('select',{});
