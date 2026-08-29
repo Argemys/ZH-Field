@@ -558,21 +558,37 @@ function renderEspecesSearchBlock(container){
   fileLabel.appendChild(fileInput);
   container.appendChild(fileLabel);
 
-  const searchInput = el('input',{type:'text', placeholder:'Nom scientifique, nom français ou famille…'});
+  const searchInput = el('input',{type:'text', placeholder:'Nom scientifique, nom français ou famille…', autocomplete:'off'});
   container.appendChild(fieldWrap('Rechercher une espèce dans le catalogue', null, searchInput));
-  const results = el('div',{});
+  const results = el('div',{style:'position:relative; z-index:20;'});
   container.appendChild(results);
+
+  const normalize = value => String(value||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
 
   searchInput.addEventListener('input', ()=>{
     results.innerHTML = '';
-    const q = searchInput.value.trim().toLowerCase();
+    const q = normalize(searchInput.value);
     if(!q || ref.length===0) return;
-    ref.filter(r=>
-      (r['Taxon valide court']||'').toLowerCase().includes(q) ||
-      (r['Nom français']||'').toLowerCase().includes(q) ||
-      (r['Famille']||'').toLowerCase().includes(q)
-    ).slice(0,10).forEach(r=>{
-      const item = el('div',{class:'chk', style:'cursor:pointer;'}, especeLabel(r));
+
+    const matches = ref.map(r=>{
+      const scientific = normalize(r['Taxon valide court']);
+      const french = normalize(r['Nom français']);
+      const family = normalize(r['Famille']);
+      const starts = scientific.startsWith(q) || french.startsWith(q) || family.startsWith(q);
+      const contains = scientific.includes(q) || french.includes(q) || family.includes(q);
+      return {r, starts, contains};
+    }).filter(x=>x.starts || x.contains)
+      .sort((a,b)=>{
+        if(a.starts!==b.starts) return a.starts ? -1 : 1;
+        return normalize(a.r['Taxon valide court']).localeCompare(normalize(b.r['Taxon valide court']));
+      })
+      .slice(0,10);
+
+    if(!matches.length) return;
+
+    const list = el('div',{style:'background:#fff; border:1px solid var(--line); border-radius:7px; box-shadow:0 3px 8px rgba(0,0,0,.12); overflow:hidden; margin-top:-8px; margin-bottom:8px;'});
+    matches.forEach(({r})=>{
+      const item = el('div',{class:'chk', style:'cursor:pointer; padding:8px 10px; border-bottom:1px solid var(--line);'}, especeLabel(r));
       item.addEventListener('click', ()=>{
         const list = getVal('especes_selection')||[];
         if(list.some(e=>e.cdref16===r.cdref16)){ toast('Espèce déjà ajoutée'); return; }
@@ -581,8 +597,9 @@ function renderEspecesSearchBlock(container){
         searchInput.value=''; results.innerHTML='';
         renderEspecesSearchBlock(container);
       });
-      results.appendChild(item);
+      list.appendChild(item);
     });
+    results.appendChild(list);
   });
 
   container.appendChild(el('div',{class:'hint', style:'margin-top:10px;'},'Touche ★ pour signaler une espèce particulièrement abondante.'));
@@ -1135,9 +1152,9 @@ function renderCorineBlock(container){
   fileLabel.appendChild(fileInput);
   container.appendChild(fileLabel);
 
-  const searchInput = el('input',{type:'text', placeholder:'Rechercher par code ou intitulé…'});
+  const searchInput = el('input',{type:'text', placeholder:'Rechercher par code ou intitulé…', autocomplete:'off'});
   container.appendChild(fieldWrap('Rechercher dans le référentiel', null, searchInput));
-  const results = el('div',{});
+  const results = el('div',{style:'position:relative; z-index:20;'});
   container.appendChild(results);
 
   const searchRow = el('div',{class:'searchrow', style:'margin-top:10px;'});
@@ -1147,15 +1164,41 @@ function renderCorineBlock(container){
   searchRow.appendChild(libelleInput);
   container.appendChild(searchRow);
 
+  const normalize = value => String(value||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
+
   searchInput.addEventListener('input', ()=>{
     results.innerHTML = '';
-    const q = searchInput.value.trim().toLowerCase();
+    const q = normalize(searchInput.value);
     if(!q || ref.length===0) return;
-    ref.filter(r=>(r.code||'').toLowerCase().includes(q) || (r.libelle||'').toLowerCase().includes(q)).slice(0,8).forEach(r=>{
-      const item = el('div',{class:'chk', style:'cursor:pointer;'}, r.code+' — '+r.libelle);
-      item.addEventListener('click', ()=>{ codeInput.value = r.code; libelleInput.value = r.libelle; searchInput.value=''; results.innerHTML=''; });
-      results.appendChild(item);
+
+    const matches = ref.map(r=>{
+      const code = normalize(r.code);
+      const libelle = normalize(r.libelle);
+      const isCodeQuery = /^[0-9]+(?:\.[0-9]+)*$/.test(q);
+      const starts = isCodeQuery ? code.startsWith(q) : (code.startsWith(q) || libelle.startsWith(q));
+      const contains = isCodeQuery ? code.includes(q) : (code.includes(q) || libelle.includes(q));
+      return {r, starts, contains};
+    }).filter(x=>x.starts || x.contains)
+      .sort((a,b)=>{
+        if(a.starts!==b.starts) return a.starts ? -1 : 1;
+        return normalize(a.r.code).localeCompare(normalize(b.r.code), undefined, {numeric:true});
+      })
+      .slice(0,10);
+
+    if(!matches.length) return;
+
+    const list = el('div',{style:'background:#fff; border:1px solid var(--line); border-radius:7px; box-shadow:0 3px 8px rgba(0,0,0,.12); overflow:hidden; margin-top:-8px; margin-bottom:8px;'});
+    matches.forEach(({r})=>{
+      const item = el('div',{class:'chk', style:'cursor:pointer; padding:8px 10px; border-bottom:1px solid var(--line);'}, r.code+' — '+r.libelle);
+      item.addEventListener('click', ()=>{
+        codeInput.value = r.code;
+        libelleInput.value = r.libelle;
+        searchInput.value='';
+        results.innerHTML='';
+      });
+      list.appendChild(item);
     });
+    results.appendChild(list);
   });
 
   const addBtn = el('button',{class:'btn btn-primary', type:'button', style:'margin-top:6px;'}, '+ Ajouter cet habitat');
