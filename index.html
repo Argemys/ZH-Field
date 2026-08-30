@@ -308,6 +308,7 @@ function el(tag, attrs={}, ...kids){
 /* ===================== Data model ===================== */
 let record = {}; // current in-progress record (key/value, including structured photos)
 let editingId = null;
+let currentSectionId = null;
 
 function setVal(key, val){ record[key] = val; saveDraft(); }
 function getVal(key){ return record[key]; }
@@ -399,12 +400,94 @@ function getCorineReferentiel(){
 }
 function setCorineReferentiel(list){ localStorage.setItem('zh_corine_ref', JSON.stringify(list)); }
 
-function getFloreReferentiel(){
-  try{ return JSON.parse(localStorage.getItem('zh_flore_ref')||'[]'); }catch(e){ return []; }
+/* ===================== Catalogues flore — multi-référentiels ===================== */
+// Chaque catalogue définit : son stockage local, son fichier à charger, les champs utilisés
+// pour la recherche (nom scientifique/français/famille), et comment en extraire l'affichage
+// compact "Nom scientifique — Rareté — Protection — ZH". Pour ajouter un futur catalogue,
+// il suffit d'ajouter une entrée ici (rien d'autre à modifier dans le code).
+function champFilled(v){ return v!=null && String(v).trim()!=='' && String(v).trim()!=='_'; }
+const CATALOGUES = {
+  alslor: {
+    label: 'Alsace-Lorraine',
+    storageKey: 'zh_flore_ref_alslor',
+    fetchUrl: 'catalogue_flore_alslor_floragis_zh.json',
+    idField: 'cdref16',
+    nomField: 'Taxon valide court',
+    frenchField: 'Nom français',
+    familyField: 'Famille',
+    searchLabel(r){ return especeLabelGeneric(r, this); },
+    compact(r){
+      const parts = [r['Taxon valide court']||r.cdref16||'?'];
+      if(champFilled(r['Rareté AlsLor'])) parts.push(r['Rareté AlsLor']);
+      if(champFilled(r['PN'])) parts.push('PN');
+      else if(champFilled(r['PR Als']) || champFilled(r['PR Lor'])) parts.push('PR');
+      if(champFilled(r['ZH 2008'])) parts.push(r['ZH 2008']);
+      return parts.join(' — ');
+    }
+  },
+  ca: {
+    label: 'Champagne-Ardenne',
+    storageKey: 'zh_flore_ref_ca',
+    fetchUrl: 'catalogue_flore_champagne_ardenne.json',
+    idField: 'CD_REF (Taxref_7)',
+    nomField: 'Taxon (Taxref 7)',
+    frenchField: 'Nom commun',
+    familyField: null, // pas de champ famille dans ce catalogue
+    searchLabel(r){ return especeLabelGeneric(r, this); },
+    compact(r){
+      // Nom complet avec auteur/année conservé tel quel (choix validé — pas d'extraction automatique,
+      // qui serait peu fiable sur les hybrides/sous-espèces de ce catalogue).
+      const parts = [r['Taxon (Taxref 7)']||r['CD_REF (Taxref_7)']||'?'];
+      if(champFilled(r['Rar. C.A. 2016'])) parts.push(r['Rar. C.A. 2016']);
+      if(champFilled(r['Prot. Nat.'])) parts.push('PN');
+      else if(champFilled(r['Prot. C.A.'])) parts.push('PR');
+      // Pas de ZH pour Champagne-Ardenne (le catalogue n'en fournit pas), volontairement.
+      return parts.join(' — ');
+    }
+  }
+};
+function getCatalogueSelected(){ return localStorage.getItem('zh_catalogue_selected') || 'alslor'; }
+function setCatalogueSelected(id){ localStorage.setItem('zh_catalogue_selected', id); }
+function getFloreReferentiel(catId){
+  try{ return JSON.parse(localStorage.getItem(CATALOGUES[catId].storageKey)||'[]'); }catch(e){ return []; }
 }
-function setFloreReferentiel(list){ localStorage.setItem('zh_flore_ref', JSON.stringify(list)); }
+function setFloreReferentiel(catId, list){ localStorage.setItem(CATALOGUES[catId].storageKey, JSON.stringify(list)); }
+
+// Chargement automatique des référentiels depuis les fichiers du dépôt (déposés à côté d'index.html).
+// L'import manuel (boutons "Importer…") reste disponible en secours si ce chargement échoue
+// (ex. premier lancement hors connexion avant tout accès réseau, ou fichier pas encore déployé).
+async function autoLoadReferentiel(url, setter){
+  try{
+    const res = await fetch(url, {cache:'no-cache'});
+    if(!res.ok) throw new Error('http '+res.status);
+    const data = await res.json();
+    if(!Array.isArray(data)) throw new Error('format inattendu');
+    setter(data);
+    return data.length;
+  }catch(e){
+    return null;
+  }
+}
+async function autoLoadReferentiels(){
+  const results = await Promise.all([
+    autoLoadReferentiel('corine_biotopes.json', setCorineReferentiel),
+    autoLoadReferentiel(CATALOGUES.alslor.fetchUrl, d=>setFloreReferentiel('alslor', d)),
+    autoLoadReferentiel(CATALOGUES.ca.fetchUrl, d=>setFloreReferentiel('ca', d))
+  ]);
+  if(results.some(n=>n!=null)){
+    const activeId = currentSectionId;
+    renderAll();
+    if(activeId) showSection(activeId);
+  }
+}
+function especeLabelGeneric(entry, cat){
+  const nom = entry[cat.nomField] || entry[cat.idField] || '?';
+  const fr = cat.frenchField ? entry[cat.frenchField] : null;
+  return nom + (fr ? ' — '+fr : '');
+}
 function especeLabel(entry){
-  return (entry['Taxon valide court']||entry.cdref16||'?') + (entry['Nom français'] ? ' — '+entry['Nom français'] : '');
+  // Rétrocompatibilité : utilisé pour des entrées sans catalogue explicite (anciennes fiches).
+  return especeLabelGeneric(entry, CATALOGUES.alslor);
 }
 
 /* ===================== Generic field renderers ===================== */
@@ -532,14 +615,25 @@ function alimentationTable(items){
 
 function renderEspecesSearchBlock(container){
   container.innerHTML = '';
-  const ref = getFloreReferentiel();
+  const catId = getCatalogueSelected();
+  const cat = CATALOGUES[catId];
+  const ref = getFloreReferentiel(catId);
   const selection = getVal('especes_selection')||[];
 
-  container.appendChild(el('div',{class:'hint'}, ref.length
-    ? `Catalogue flore chargé : ${ref.length} taxons.`
-    : 'Aucun catalogue flore importé — recherche indisponible, importer le catalogue ci-dessous.'));
+  const catSel = el('select',{});
+  Object.entries(CATALOGUES).forEach(([id,c])=>{
+    const op = el('option',{value:id}, c.label);
+    if(id===catId) op.selected = true;
+    catSel.appendChild(op);
+  });
+  catSel.addEventListener('change', ()=>{ setCatalogueSelected(catSel.value); renderEspecesSearchBlock(container); });
+  container.appendChild(fieldWrap('Catalogue utilisé pour la recherche', null, catSel));
 
-  const fileLabel = el('label',{class:'btn btn-outline', style:'cursor:pointer;'}, '📥 Importer le catalogue flore (JSON)');
+  container.appendChild(el('div',{class:'hint'}, ref.length
+    ? `Catalogue ${cat.label} chargé : ${ref.length} taxons.`
+    : `Aucun catalogue ${cat.label} importé — recherche indisponible, importer le catalogue ci-dessous.`));
+
+  const fileLabel = el('label',{class:'btn btn-outline', style:'cursor:pointer;'}, '📥 Importer le catalogue '+cat.label+' (JSON)');
   const fileInput = el('input',{type:'file', accept:'.json', style:'display:none;'});
   fileInput.addEventListener('change', (e)=>{
     const file = e.target.files[0]; if(!file) return;
@@ -548,8 +642,8 @@ function renderEspecesSearchBlock(container){
       try{
         const data = JSON.parse(reader.result);
         if(!Array.isArray(data)) throw new Error('format');
-        setFloreReferentiel(data);
-        toast('Catalogue flore importé ('+data.length+' taxons)');
+        setFloreReferentiel(catId, data);
+        toast('Catalogue '+cat.label+' importé ('+data.length+' taxons)');
         renderEspecesSearchBlock(container);
       }catch(err){ toast('Fichier invalide'); }
     };
@@ -571,28 +665,28 @@ function renderEspecesSearchBlock(container){
     if(!q || ref.length===0) return;
 
     const matches = ref.map(r=>{
-      const scientific = normalize(r['Taxon valide court']);
-      const french = normalize(r['Nom français']);
-      const family = normalize(r['Famille']);
+      const scientific = normalize(r[cat.nomField]);
+      const french = normalize(cat.frenchField ? r[cat.frenchField] : '');
+      const family = normalize(cat.familyField ? r[cat.familyField] : '');
       const starts = scientific.startsWith(q) || french.startsWith(q) || family.startsWith(q);
       const contains = scientific.includes(q) || french.includes(q) || family.includes(q);
       return {r, starts, contains};
     }).filter(x=>x.starts || x.contains)
       .sort((a,b)=>{
         if(a.starts!==b.starts) return a.starts ? -1 : 1;
-        return normalize(a.r['Taxon valide court']).localeCompare(normalize(b.r['Taxon valide court']));
+        return normalize(a.r[cat.nomField]).localeCompare(normalize(b.r[cat.nomField]));
       })
-      .slice(0,10);
+      .slice(0,30);
 
     if(!matches.length) return;
 
-    const list = el('div',{style:'background:#fff; border:1px solid var(--line); border-radius:7px; box-shadow:0 3px 8px rgba(0,0,0,.12); overflow:hidden; margin-top:-8px; margin-bottom:8px;'});
+    const list = el('div',{style:'background:#fff; border:1px solid var(--line); border-radius:7px; box-shadow:0 3px 8px rgba(0,0,0,.12); overflow-y:auto; max-height:280px; margin-top:-8px; margin-bottom:8px;'});
     matches.forEach(({r})=>{
-      const item = el('div',{class:'chk', style:'cursor:pointer; padding:8px 10px; border-bottom:1px solid var(--line);'}, especeLabel(r));
+      const item = el('div',{class:'chk', style:'cursor:pointer; padding:8px 10px; border-bottom:1px solid var(--line);'}, cat.searchLabel(r));
       item.addEventListener('click', ()=>{
         const list = getVal('especes_selection')||[];
-        if(list.some(e=>e.cdref16===r.cdref16)){ toast('Espèce déjà ajoutée'); return; }
-        list.push(Object.assign({}, r, {abondante:false}));
+        if(list.some(e=>e[cat.idField]===r[cat.idField] && e.catalogue===catId)){ toast('Espèce déjà ajoutée'); return; }
+        list.push(Object.assign({}, r, {abondante:false, catalogue:catId}));
         setVal('especes_selection', list);
         searchInput.value=''; results.innerHTML='';
         renderEspecesSearchBlock(container);
@@ -605,7 +699,9 @@ function renderEspecesSearchBlock(container){
   container.appendChild(el('div',{class:'hint', style:'margin-top:10px;'},'Touche ★ pour signaler une espèce particulièrement abondante.'));
   const list_container = el('div',{class:'checklist'});
   selection.forEach((entry, idx)=>{
-    const lab = el('label',{class: entry.abondante?'abondant':''}, especeLabel(entry));
+    const entryCat = CATALOGUES[entry.catalogue] || cat; // rétrocompatibilité si l'entrée n'a pas encore de catalogue enregistré
+    const compactText = entryCat.compact ? entryCat.compact(entry) : especeLabel(entry);
+    const lab = el('label',{class: entry.abondante?'abondant':''}, compactText);
     const abBtn = el('button',{type:'button', class:'btn', style:'padding:2px 7px; font-size:.65rem; margin-left:4px; background:'+(entry.abondante?'var(--rust)':'var(--line)')+'; color:'+(entry.abondante?'#fff':'var(--ink)')+';'}, '★');
     abBtn.addEventListener('click', ()=>{
       entry.abondante = !entry.abondante;
@@ -1183,11 +1279,11 @@ function renderCorineBlock(container){
         if(a.starts!==b.starts) return a.starts ? -1 : 1;
         return normalize(a.r.code).localeCompare(normalize(b.r.code), undefined, {numeric:true});
       })
-      .slice(0,10);
+      .slice(0,30);
 
     if(!matches.length) return;
 
-    const list = el('div',{style:'background:#fff; border:1px solid var(--line); border-radius:7px; box-shadow:0 3px 8px rgba(0,0,0,.12); overflow:hidden; margin-top:-8px; margin-bottom:8px;'});
+    const list = el('div',{style:'background:#fff; border:1px solid var(--line); border-radius:7px; box-shadow:0 3px 8px rgba(0,0,0,.12); overflow-y:auto; max-height:280px; margin-top:-8px; margin-bottom:8px;'});
     matches.forEach(({r})=>{
       const item = el('div',{class:'chk', style:'cursor:pointer; padding:8px 10px; border-bottom:1px solid var(--line);'}, r.code+' — '+r.libelle);
       item.addEventListener('click', ()=>{
@@ -1305,6 +1401,7 @@ function renderAll(){
   showSection(SECTIONS[0].id);
 }
 function showSection(id){
+  currentSectionId = id;
   document.querySelectorAll('.section').forEach(s=>s.classList.toggle('active', s.id==='sec_'+id));
   document.querySelectorAll('nav.tabs button').forEach(b=>b.classList.toggle('active', b.dataset.id===id));
   window.scrollTo({top:0, behavior:'instant'});
@@ -1438,6 +1535,8 @@ if('serviceWorker' in navigator){
     navigator.serviceWorker.register('sw.js').catch(()=>{/* offline install needs https hosting */});
   });
 }
+
+autoLoadReferentiels();
 </script>
 </body>
 </html>
