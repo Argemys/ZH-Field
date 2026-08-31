@@ -30,7 +30,7 @@
   --chip-bg: #10201A;
   --chip-fg: #6FE39B;
   --radius: 10px;
-  --font-head: Georgia, 'Iowan Old Style', 'Times New Roman', serif;
+  --font-head: 'Baskerville', 'Palatino Linotype', 'Iowan Old Style', Georgia, 'Times New Roman', serif;
   --font-body: -apple-system, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
 }
@@ -44,20 +44,58 @@ body{
   -webkit-tap-highlight-color:transparent;
 }
 header.app-head{
-  background:var(--marsh);
-  color:#fff;
-  padding:14px 16px 10px;
+  background:var(--paper);
+  color:var(--marsh);
+  padding:10px 16px 8px;
   position:sticky; top:0; z-index:50;
-  box-shadow:0 2px 8px rgba(0,0,0,.15);
+  box-shadow:0 2px 10px rgba(0,0,0,.10);
+  border-bottom:1px solid var(--line);
 }
+.app-head-layout{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);
+  align-items:center;
+  gap:18px;
+  max-width:1400px;
+  margin:0 auto;
+}
+.app-brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-width:0;
+}
+.app-brand-logo{
+  width:58px;
+  height:58px;
+  flex:0 0 58px;
+  border-radius:14px;
+  object-fit:cover;
+  box-shadow:0 2px 7px rgba(0,0,0,.12);
+}
+.app-brand-text{min-width:0;}
 header.app-head h1{
   font-family:var(--font-head);
-  font-size:1.15rem;
+  font-size:1.05rem;
   margin:0 0 2px;
   font-weight:700;
   letter-spacing:.2px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
-header.app-head .sub{font-size:.75rem;opacity:.85;}
+header.app-head .sub{font-size:.72rem;color:var(--ink-soft);white-space:nowrap;}
+.app-wordmark{
+  font-family:'Baskerville','Iowan Old Style','Palatino Linotype',Georgia,serif;
+  font-size:clamp(2rem,4vw,3.25rem);
+  line-height:1;
+  font-weight:400;
+  font-style:italic;
+  letter-spacing:.06em;
+  color:var(--marsh);
+  white-space:nowrap;
+}
+.app-wordmark::first-letter{color:var(--marsh-light);}
 .status-row{display:flex;align-items:center;gap:10px;margin-top:8px;flex-wrap:wrap;}
 .gps-chip{
   font-family:var(--font-mono);
@@ -80,16 +118,18 @@ header.app-head .sub{font-size:.75rem;opacity:.85;}
 .btn-danger{background:var(--rust); color:#fff;}
 .btn:active{transform:scale(.97);}
 nav.tabs{
-  display:flex; overflow-x:auto; gap:4px; padding:8px 10px;
-  background:var(--marsh); position:sticky; top:66px; z-index:49;
-  border-top:1px solid rgba(255,255,255,.15);
+  display:flex; overflow-x:auto; gap:6px; padding:8px 10px;
+  background:var(--paper); position:sticky; top:78px; z-index:49;
+  border-bottom:1px solid var(--line);
 }
 nav.tabs button{
-  flex:0 0 auto; background:rgba(255,255,255,.08); color:#dfe6df;
-  border:none; padding:8px 12px; border-radius:20px; font-size:.78rem;
+  flex:0 0 auto; background:transparent; color:var(--ink-soft);
+  border:1px solid var(--line); padding:8px 12px; border-radius:20px; font-size:.78rem;
   font-family:var(--font-body); font-weight:600; white-space:nowrap; cursor:pointer;
 }
-nav.tabs button.active{background:#fff; color:var(--marsh);}
+nav.tabs button.active{
+  background:var(--marsh-light); color:#fff; border-color:var(--marsh-light);
+}
 main{padding:14px 12px; max-width:760px; margin:0 auto;}
 .section{display:none;}
 .section.active{display:block; animation:fade .15s ease;}
@@ -99,9 +139,36 @@ main{padding:14px 12px; max-width:760px; margin:0 auto;}
   padding:14px; margin-bottom:14px;
 }
 .card h2{
+  position:relative;
   font-family:var(--font-head); font-size:1rem; margin:0 0 10px;
-  color:var(--marsh); border-bottom:2px solid var(--line); padding-bottom:6px;
+  color:var(--marsh); border-bottom:0; padding-bottom:10px;
 }
+.card h2::after{
+  content:'';
+  position:absolute;
+  left:0; right:0; bottom:0;
+  height:1px;
+  background:var(--line);
+}
+.card h2::before{
+  content:'';
+  position:absolute;
+  left:50%;
+  bottom:-6px;
+  transform:translateX(-50%) rotate(-18deg);
+  width:15px;
+  height:9px;
+  background:var(--paper);
+  border:2px solid var(--marsh-light);
+  border-radius:100% 0 100% 0;
+  z-index:2;
+  box-shadow:0 0 0 3px var(--paper);
+}
+.card h2{
+  --leaf-stem: var(--marsh-light);
+}
+
+.card h2::marker{display:none;}
 .card h3{font-size:.82rem; margin:14px 0 8px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.4px;}
 .field{margin-bottom:12px;}
 .field label{display:block; font-size:.8rem; font-weight:600; margin-bottom:5px; color:var(--ink-soft);}
@@ -247,16 +314,38 @@ footer.bar .btn{flex:1; justify-content:center;}
 }
 .section-nav .btn{min-width:130px;}
 
+@media (max-width:700px){
+  header.app-head{padding:8px 10px 7px;}
+  .app-head-layout{grid-template-columns:minmax(0,1fr) auto; gap:8px;}
+  .app-brand-logo{width:48px;height:48px;flex-basis:48px;border-radius:12px;}
+  header.app-head h1{font-size:.88rem;}
+  header.app-head .sub{font-size:.62rem;}
+  .app-wordmark{font-size:1.8rem;letter-spacing:.03em;}
+  nav.tabs{top:67px; background:var(--paper);}
+  .status-row{gap:6px;margin-top:5px;}
+  .gps-chip{font-size:.65rem;padding:5px 7px;}
+  .status-row .btn{font-size:.68rem;padding:6px 8px;}
+}
+
 </style>
 </head>
 <body>
 
 <header class="app-head">
-  <h1>🌿 Fiche Zone Humide — Terrain</h1>
-  <div class="sub">Saisie hors connexion · export GeoJSON / CSV</div>
-  <div class="status-row">
-    <div class="gps-chip" id="gpsChip"><span class="dot"></span><span id="gpsText">GPS non localisé</span></div>
-    <button class="btn btn-ghost" id="btnRecords" type="button">📋 Fiches enregistrées (<span id="recCount">0</span>)</button>
+  <div class="app-head-layout">
+    <div class="app-brand">
+      <img class="app-brand-logo" src="palustris-logo.png" alt="Palustris">
+      <div class="app-brand-text">
+        <h1>Fiche Zone Humide — Terrain</h1>
+        <div class="sub">Saisie hors connexion · export GeoJSON / CSV</div>
+        <div class="status-row">
+          <div class="gps-chip" id="gpsChip"><span class="dot"></span><span id="gpsText">GPS non localisé</span></div>
+          <button class="btn btn-outline" id="btnRecords" type="button">📋 Fiches enregistrées (<span id="recCount">0</span>)</button>
+        </div>
+      </div>
+    </div>
+    <div class="app-wordmark" aria-label="Palustris">Palustris</div>
+    <div></div>
   </div>
 </header>
 
